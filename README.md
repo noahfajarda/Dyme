@@ -2,6 +2,12 @@
 
 App is linked with [localHost:3000](http://localhost:3000/) when being run in development.
 
+## Todos
+
+Establish detailed functionality for all aspects of app
+Establish what data we want to store so we can figure out database structure
+Establish all page layout designs
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -20,6 +26,10 @@ Add the seed data.
 
 Run `app` in development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### Apollo
+
+Use [Apollo](https://studio.apollographql.com/sandbox/explorer) to run queries in the DB.
 
 ## Our Githubs:
 
