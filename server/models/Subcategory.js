@@ -1,17 +1,17 @@
-const { Schema, model } = require("mongoose");
+// const { Schema, model } = require("mongoose");
 
-const subcategorySchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
-  },
-  price: {
-    type: Number
-  }
-});
+// const subcategorySchema = new Schema({
+//   name: {
+//     type: String,
+//     required: true,
+//     unique: true,
+//     trim: true,
+//   },
+//   price: {
+//     type: Number
+//   }
+// });
 
-const Subcategory = model("Subcategory", subcategorySchema);
+// const Subcategory = model("Subcategory", subcategorySchema);
 
-module.exports = Subcategory;
+// module.exports = Subcategory;
