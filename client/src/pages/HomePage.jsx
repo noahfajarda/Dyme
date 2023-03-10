@@ -1,7 +1,7 @@
 // import React, { useEffect, useState } from "react";
 import React from "react";
 import "../App.css";
-import "../styles/homepage.css"
+import "../styles/Homepage.css"
 
 function HomePage() {
   return (
