@@ -121,8 +121,8 @@ function LoginPage1() {
                 <div className="panels-container">
                     <div className="panel left-panel">
                         <div className="content">
-                            <h3>New To Our Website ?</h3>
-                            <p>Click the Sign Up button to see the effect...</p>
+                            <h3>Take control of your money with ease</h3>
+                            <p>Sign up now and watch your savings grow!</p>
                             <button
                                 className="btn transparent"
                                 id="sign-up-btn"
