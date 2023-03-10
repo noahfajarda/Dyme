@@ -5,7 +5,7 @@ import "../styles/Homepage.css";
 function HomePage() {
   return (
     <div class="app-container">
-      <div class="app-left">
+      {/* <div class="app-left">
         <button class="close-menu">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +145,7 @@ function HomePage() {
             </a>
           </li>
         </ul>
-      </div>
+      </div> */}
       <div class="app-main">
         <div class="main-header-line">
           <h1>Applications Dashboard</h1>
@@ -401,7 +401,7 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <div class="app-right">
+      {/* <div class="app-right">
         <button class="close-right">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -699,7 +699,7 @@ function HomePage() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

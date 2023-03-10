@@ -51,7 +51,7 @@ body {
   max-width: 1680px;
 }
 
-.app-left {
+/* .app-left {
   flex-basis: 240px;
   background-color: var(--app-bg-dark);
   height: 100;
@@ -63,7 +63,7 @@ body {
 .app-left.show {
   right: 0;
   opacity: 1;
-}
+} */
 
 .app-main {
   flex: 1;
@@ -200,6 +200,7 @@ button {
 
 .main-header-line {
   display: flex;
+  width: 1500px;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
