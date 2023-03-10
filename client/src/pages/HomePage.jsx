@@ -190,7 +190,7 @@ function HomePage() {
           <div class="chart-container-wrapper">
             <div class="chart-container">
               <div class="chart-info-wrapper">
-                <h2>Applications</h2>
+                <h2>Goals</h2>
                 <span>20.5 K</span>
               </div>
               <div class="chart-svg">
@@ -218,7 +218,7 @@ function HomePage() {
           <div class="chart-container-wrapper">
             <div class="chart-container">
               <div class="chart-info-wrapper">
-                <h2>Shortlisted</h2>
+                <h2>Budget</h2>
                 <span>5.5 K</span>
               </div>
               <div class="chart-svg">
@@ -246,7 +246,7 @@ function HomePage() {
           <div class="chart-container-wrapper">
             <div class="chart-container">
               <div class="chart-info-wrapper">
-                <h2>On-hold</h2>
+                <h2>Income</h2>
                 <span>10.5 K</span>
               </div>
               <div class="chart-svg">
@@ -276,7 +276,7 @@ function HomePage() {
           <div class="chart-container-wrapper big">
             <div class="chart-container">
               <div class="chart-container-header">
-                <h2>Top Active Jobs</h2>
+                <h2>Summary Breakdown:</h2>
                 <span>Last 30 days</span>
               </div>
               <div class="line-chart">
