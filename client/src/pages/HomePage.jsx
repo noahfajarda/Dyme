@@ -290,7 +290,7 @@ function HomePage() {
           <div class="chart-container-wrapper small">
             <div class="chart-container">
               <div class="chart-container-header">
-                <h2>Acquisitions</h2>
+                <h2>Expenses</h2>
                 <span href="#">This month</span>
               </div>
               <div class="acquisitions-bar">
@@ -313,22 +313,27 @@ function HomePage() {
               </div>
               <div class="progress-bar-info">
                 <span class="progress-color applications"></span>
-                <span class="progress-type">Applications</span>
-                <span class="progress-amount">64%</span>
+                <span class="progress-type">Food & Dining</span>
+                <span class="progress-amount">56%</span>
               </div>
               <div class="progress-bar-info">
                 <span class="progress-color shortlisted"></span>
-                <span class="progress-type">Shortlisted</span>
+                <span class="progress-type">Entertainment</span>
                 <span class="progress-amount">18%</span>
               </div>
               <div class="progress-bar-info">
                 <span class="progress-color on-hold"></span>
-                <span class="progress-type">On-hold</span>
+                <span class="progress-type">Auto Expenses</span>
                 <span class="progress-amount">10%</span>
               </div>
               <div class="progress-bar-info">
                 <span class="progress-color rejected"></span>
-                <span class="progress-type">Rejected</span>
+                <span class="progress-type">Bills</span>
+                <span class="progress-amount">8%</span>
+              </div>
+              <div class="progress-bar-info">
+                <span class="progress-color blue "></span>
+                <span class="progress-type">Miscellaneous Expenses</span>
                 <span class="progress-amount">8%</span>
               </div>
             </div>
