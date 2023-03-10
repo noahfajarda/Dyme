@@ -11,29 +11,29 @@ import TestPage from "./pages/TestPage";
 import HomePage from "./pages/HomePage";
 
 const client = new ApolloClient({
-    uri: "/graphql",
-    cache: new InMemoryCache(),
+  uri: "/graphql",
+  cache: new InMemoryCache(),
 });
 
 function App() {
-    return (
-        <ApolloProvider client={client}>
-            {/* wrapper for everything routing related */}
-            <Router>
-                <div className="App">
-                    <header className="App-header">
-                        <Routes>
-                            {/* individual display route */}
-                            <Route path="/test" element={<TestPage />} />
-                            {/* all other routes */}
-                            <Route path="*" element={<MainPage />} />
-                            <Route path="/home" element={<HomePage />} />
-                        </Routes>
-                    </header>
-                </div>
-            </Router>
-        </ApolloProvider>
-    );
+  return (
+    <ApolloProvider client={client}>
+      {/* wrapper for everything routing related */}
+      <Router>
+        <div className="App">
+          <header className="App-header">
+            <Routes>
+              {/* individual display route */}
+              <Route path="/test" element={<TestPage />} />
+              {/* all other routes */}
+              <Route path="/home" element={<HomePage />} />
+              <Route path="*" element={<MainPage />} />
+            </Routes>
+          </header>
+        </div>
+      </Router>
+    </ApolloProvider>
+  );
 }
 
 export default App;
