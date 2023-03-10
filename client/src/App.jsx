@@ -1,6 +1,6 @@
 // React Boilerplate
 import React, { useEffect, useState } from "react";
-import "./App.css";
+// import "./App.css";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -8,6 +8,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import TestPage from "./pages/TestPage";
 import QuestionPage from "./pages/QuestionPage";
+import LoginPage from "./pages/LoginPage";
+import LoginPage1 from "./pages/LoginPage1";
 
 const client = new ApolloClient({
     uri: "/graphql",
@@ -28,6 +30,8 @@ function App() {
                                 path="/question"
                                 element={<QuestionPage />}
                             />
+                            <Route path="/login" element={<LoginPage1 />} />
+                            {/* <Route path="/login" element={<LoginPage />} /> */}
                             {/* all other routes */}
                             <Route path="*" element={<MainPage />} />
                         </Routes>
