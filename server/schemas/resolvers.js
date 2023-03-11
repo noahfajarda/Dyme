@@ -1,43 +1,43 @@
-const { Profile } = require('../models');
+const { User, Category } = require('../models');
 
 const resolvers = {
-  Query: {
-    profiles: async () => {
-      return Profile.find();
-    },
-
-    profile: async (parent, { profileId }) => {
-      return Profile.findOne({ _id: profileId });
-    },
-  },
-
-  Mutation: {
-    addProfile: async (parent, { name }) => {
-      return Profile.create({ name });
-    },
-    addSkill: async (parent, { profileId, skill }) => {
-      return Profile.findOneAndUpdate(
-        { _id: profileId },
-        {
-          $addToSet: { skills: skill },
+    Query: {
+        // ---- USER
+        // FIND ALL
+        users: async () => {
+            try {
+                return await User.find({})
+            } catch (err) {
+                console.log("\n\n\nThere was a server-side error: \n\n\n", err)
+            }
         },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+        // FIND ONE BY ID
+        user: async (parent, { _id }) => {
+            try {
+                // timestamps are in the console logs
+                console.log(await User.findById(_id))
+                return await User.findById(_id);
+            } catch (err) {
+                console.log("\n\n\nThere was a server-side error: \n\n\n", err)
+            }
+        },
     },
-    removeProfile: async (parent, { profileId }) => {
-      return Profile.findOneAndDelete({ _id: profileId });
+
+    Mutation: {
+        // ---- USER
+        // CREATE
+        addUser: async (parent, { firstName, lastName, username, password, email, budget, availableBalance }) => {
+            return await User.create({ firstName, lastName, username, password, email, budget, availableBalance })
+        },
+        // UPDATE
+        updateUser: async (parent, { _id, firstName, lastName, username, password, email, budget, availableBalance }) => {
+            return User.findByIdAndUpdate(_id, { firstName, lastName, username, password, email, budget, availableBalance }, { new: true });
+        },
+        // DELETE
+        deleteUser: async (parent, { _id }) => {
+            return User.findOneAndDelete({ _id });
+        },
     },
-    removeSkill: async (parent, { profileId, skill }) => {
-      return Profile.findOneAndUpdate(
-        { _id: profileId },
-        { $pull: { skills: skill } },
-        { new: true }
-      );
-    },
-  },
 };
 
 module.exports = resolvers;
