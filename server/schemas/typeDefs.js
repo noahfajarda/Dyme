@@ -14,9 +14,22 @@ const typeDefs = gql`
         # categories: [Category]!
     }
 
+    type Category {
+        _id: ID
+        name: String!
+        amountAllocated: Float!
+        description: String!
+        # subCategories: [Category]!
+    }
+
     type Query {
+        # ---- USER
         users: [User]
         user(_id: ID!): User
+
+        # ---- CATEGORY
+        categories: [Category]
+        category(_id: ID!): Category
     }
 
     type Mutation {
@@ -27,6 +40,14 @@ const typeDefs = gql`
         updateUser(_id: ID!, firstName: String!, lastName: String!, username: String!, password: String!, email: String!, budget: Float!, availableBalance: Float!): User
         # DELETE
         deleteUser(_id: ID!): User
+
+        # ---- CATEGORY
+        # CREATE
+        addCategory(_id: ID, name: String!, amountAllocated: Float!, description: String!): Category
+        # UPDATE
+        updateCategory(_id: ID, name: String!, amountAllocated: Float!, description: String!): Category
+        # DELETE
+        deleteCategory(_id: ID!): Category
     }
 `;
 

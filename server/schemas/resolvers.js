@@ -6,6 +6,7 @@ const resolvers = {
         // FIND ALL
         users: async () => {
             try {
+                // console.log(await User.find({}))
                 return await User.find({})
             } catch (err) {
                 console.log("\n\n\nThere was a server-side error: \n\n\n", err)
@@ -17,6 +18,27 @@ const resolvers = {
                 // timestamps are in the console logs
                 console.log(await User.findById(_id))
                 return await User.findById(_id);
+            } catch (err) {
+                console.log("\n\n\nThere was a server-side error: \n\n\n", err)
+            }
+        },
+
+        // ---- CATEGORY
+        // FIND ALL
+        categories: async () => {
+            try {
+                // console.log(await Category.find({}))
+                return await Category.find({})
+            } catch (err) {
+                console.log("\n\n\nThere was a server-side error: \n\n\n", err)
+            }
+        },
+        // FIND ONE BY ID
+        category: async (parent, { _id }) => {
+            try {
+                // timestamps are in the console logs
+                console.log(await Category.findById(_id))
+                return await Category.findById(_id);
             } catch (err) {
                 console.log("\n\n\nThere was a server-side error: \n\n\n", err)
             }
@@ -36,6 +58,20 @@ const resolvers = {
         // DELETE
         deleteUser: async (parent, { _id }) => {
             return User.findOneAndDelete({ _id });
+        },
+
+        // ---- CATEGORY
+        // CREATE
+        addCategory: async (parent, { name, amountAllocated, description }) => {
+            return await Category.create({ name, amountAllocated, description })
+        },
+        // UPDATE
+        updateCategory: async (parent, { _id, name, amountAllocated, description }) => {
+            return Category.findByIdAndUpdate(_id, { name, amountAllocated, description }, { new: true });
+        },
+        // DELETE
+        deleteCategory: async (parent, { _id }) => {
+            return Category.findOneAndDelete({ _id });
         },
     },
 };
