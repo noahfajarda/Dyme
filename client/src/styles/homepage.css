@@ -250,6 +250,12 @@ button {
 }
 .chart-row.three .chart-container-wrapper .chart-container {
   justify-content: space-between;
+  height: 500px;
+}
+
+#expense-color {
+  background-color: #01081f;
+  border-radius: 10px;
 }
 .chart-row.two .big {
   flex: 1;

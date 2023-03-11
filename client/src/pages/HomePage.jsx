@@ -1,8 +1,10 @@
 import React from "react";
 import "../App.css";
 import "../styles/Homepage.css";
+import "../styles/Menu.css"
 
 function HomePage() {
+  
   return (
     <div class="app-container">
       {/* <div class="app-left">
@@ -148,7 +150,8 @@ function HomePage() {
       </div> */}
       <div class="app-main">
         <div class="main-header-line">
-          <h1>Applications Dashboard</h1>
+          <h1>Hello, Welcome back </h1>
+
           <div class="action-buttons">
             <button class="open-right-area">
               <svg
@@ -187,34 +190,57 @@ function HomePage() {
           </div>
         </div>
         <div class="chart-row three">
-          <div class="chart-container-wrapper">
-            <div class="chart-container">
-              <div class="chart-info-wrapper">
-                <h2>Goals</h2>
-                <span>20.5 K</span>
+        <div class="chart-container-wrapper" id="expense-color">
+          
+              <div class="chart-container-header">
+                <h2>Expenses</h2>
+                <span href="#">This month</span>
               </div>
-              <div class="chart-svg">
-                <svg viewBox="0 0 36 36" class="circular-chart pink">
-                  <path
-                    class="circle-bg"
-                    d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-                  ></path>
-                  <path
-                    class="circle"
-                    stroke-dasharray="30, 100"
-                    d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-                  ></path>
-                  <text x="18" y="20.35" class="percentage">
-                    30%
-                  </text>
-                </svg>
+              <div class="acquisitions-bar">
+                <span
+                  class="bar-progress rejected"
+                  style={{ width: "8%" }}
+                ></span>
+                <span
+                  class="bar-progress on-hold"
+                  style={{ width: "10%" }}
+                ></span>
+                <span
+                  class="bar-progress shortlisted"
+                  style={{ width: "18%" }}
+                ></span>
+                <span
+                  class="bar-progress applications"
+                  style={{ width: "64%" }}
+                ></span>
               </div>
+              <div class="progress-bar-info">
+                <span class="progress-color applications"></span>
+                <span class="progress-type">Food & Dining</span>
+                <span class="progress-amount">56%</span>
+              </div>
+              <div class="progress-bar-info">
+                <span class="progress-color shortlisted"></span>
+                <span class="progress-type">Entertainment</span>
+                <span class="progress-amount">18%</span>
+              </div>
+              <div class="progress-bar-info">
+                <span class="progress-color on-hold"></span>
+                <span class="progress-type">Auto Expenses</span>
+                <span class="progress-amount">10%</span>
+              </div>
+              <div class="progress-bar-info">
+                <span class="progress-color rejected"></span>
+                <span class="progress-type">Bills</span>
+                <span class="progress-amount">8%</span>
+              </div>
+              <div class="progress-bar-info">
+                <span class="progress-color blue "></span>
+                <span class="progress-type">Miscellaneous Expenses</span>
+                <span class="progress-amount">8%</span>
+              </div>
+              <div id="doughnutChart" class="chart"></div>
             </div>
-          </div>
           <div class="chart-container-wrapper">
             <div class="chart-container">
               <div class="chart-info-wrapper">
@@ -288,56 +314,35 @@ function HomePage() {
             </div>
           </div>
           <div class="chart-container-wrapper small">
+          <div class="chart-container">
             <div class="chart-container">
-              <div class="chart-container-header">
-                <h2>Expenses</h2>
-                <span href="#">This month</span>
+              <div class="chart-info-wrapper">
+                <h2>Goals</h2>
+                <span>20.5 K</span>
               </div>
-              <div class="acquisitions-bar">
-                <span
-                  class="bar-progress rejected"
-                  style={{ width: "8%" }}
-                ></span>
-                <span
-                  class="bar-progress on-hold"
-                  style={{ width: "10%" }}
-                ></span>
-                <span
-                  class="bar-progress shortlisted"
-                  style={{ width: "18%" }}
-                ></span>
-                <span
-                  class="bar-progress applications"
-                  style={{ width: "64%" }}
-                ></span>
-              </div>
-              <div class="progress-bar-info">
-                <span class="progress-color applications"></span>
-                <span class="progress-type">Food & Dining</span>
-                <span class="progress-amount">56%</span>
-              </div>
-              <div class="progress-bar-info">
-                <span class="progress-color shortlisted"></span>
-                <span class="progress-type">Entertainment</span>
-                <span class="progress-amount">18%</span>
-              </div>
-              <div class="progress-bar-info">
-                <span class="progress-color on-hold"></span>
-                <span class="progress-type">Auto Expenses</span>
-                <span class="progress-amount">10%</span>
-              </div>
-              <div class="progress-bar-info">
-                <span class="progress-color rejected"></span>
-                <span class="progress-type">Bills</span>
-                <span class="progress-amount">8%</span>
-              </div>
-              <div class="progress-bar-info">
-                <span class="progress-color blue "></span>
-                <span class="progress-type">Miscellaneous Expenses</span>
-                <span class="progress-amount">8%</span>
+              <div class="chart-svg">
+                <svg viewBox="0 0 36 36" class="circular-chart pink">
+                  <path
+                    class="circle-bg"
+                    d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+                  ></path>
+                  <path
+                    class="circle"
+                    stroke-dasharray="30, 100"
+                    d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+                  ></path>
+                  <text x="18" y="20.35" class="percentage">
+                    30%
+                  </text>
+                </svg>
               </div>
             </div>
-            <div class="chart-container applicants">
+          </div>
+            {/* <div class="chart-container applicants">
               <div class="chart-container-header">
                 <h2>New Applicants</h2>
                 <span>Today</span>
@@ -402,7 +407,7 @@ function HomePage() {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
