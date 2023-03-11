@@ -11,7 +11,7 @@ const typeDefs = gql`
         email: String!
         budget: Float!
         availableBalance: Float!
-        # categories: [Category]!
+        categories: [Category]
     }
 
     type Category {
@@ -48,6 +48,12 @@ const typeDefs = gql`
         updateCategory(_id: ID, name: String!, amountAllocated: Float!, description: String!): Category
         # DELETE
         deleteCategory(_id: ID!): Category
+
+        # ---- CATEGORY X USER ASSOCIATIONS
+        # ADD
+        addCategoryToUser(user_id: ID!, category_id: ID!): User
+        # REMOVE
+        removeCategoryFromUser(user_id: ID!, category_id: ID!): User
     }
 `;
 

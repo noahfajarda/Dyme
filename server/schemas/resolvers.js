@@ -7,7 +7,7 @@ const resolvers = {
         users: async () => {
             try {
                 // console.log(await User.find({}))
-                return await User.find({})
+                return await User.find({}).populate("categories")
             } catch (err) {
                 console.log("\n\n\nThere was a server-side error: \n\n\n", err)
             }
@@ -73,6 +73,33 @@ const resolvers = {
         deleteCategory: async (parent, { _id }) => {
             return Category.findOneAndDelete({ _id });
         },
+
+        // ---- CATEGORY X USER ASSOCIATIONS
+        // ADD
+        addCategoryToUser: async (parent, { user_id, category_id }) => {
+            return User.findOneAndUpdate(
+                { _id: user_id },
+                {
+                    $addToSet: { categories: category_id }
+                },
+                {
+                    // return the NEWLY UPDATED data
+                    new: true
+                }
+            )
+        },
+        // REMOVE
+        removeCategoryFromUser: async (parent, { user_id, category_id }) => {
+            return User.findOneAndUpdate(
+                { _id: user_id },
+                {
+                    $pull: { categories: category_id }
+                },
+                {
+                    new: true
+                }
+            )
+        }
     },
 };
 
