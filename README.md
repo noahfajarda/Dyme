@@ -2,6 +2,14 @@
 
 App is linked with [localHost:3000](http://localhost:3000/) when being run in development.
 
+## MERGE MAIN TO YOUR BRANCH
+
+git checkout main <br/>
+git pull <br/>
+git checkout "YOUR BRANCH" <br/>
+git merge main <br/>
+git push <br/>
+
 ## Todos
 
 Establish detailed functionality for all aspects of app
