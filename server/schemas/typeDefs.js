@@ -19,7 +19,7 @@ const typeDefs = gql`
         name: String!
         amountAllocated: Float!
         description: String!
-        # subCategories: [Category]!
+        # subCategories: [Category]
     }
 
     type Query {
