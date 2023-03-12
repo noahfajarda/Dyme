@@ -7,9 +7,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // pages
 import MainPage from "./pages/MainPage";
 import TestPage from "./pages/TestPage";
+import HomePage from "./pages/HomePage";
 import QuestionPage from "./pages/QuestionPage";
-import LoginPage from "./pages/LoginPage";
 import LoginPage1 from "./pages/LoginPage1";
+import LoginPage from "./pages/LoginPage";
 
 const client = new ApolloClient({
     uri: "/graphql",
@@ -31,7 +32,11 @@ function App() {
                                 element={<QuestionPage />}
                             />
                             <Route path="/login" element={<LoginPage1 />} />
-                            {/* <Route path="/login" element={<LoginPage />} /> */}
+                            <Route
+                                path="/loginDeprecated"
+                                element={<LoginPage />}
+                            />
+                            <Route path="/home" element={<HomePage />} />
                             {/* all other routes */}
                             <Route path="*" element={<MainPage />} />
                         </Routes>
