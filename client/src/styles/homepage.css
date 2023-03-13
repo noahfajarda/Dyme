@@ -51,20 +51,6 @@ body {
   max-width: 1680px;
 }
 
-/* .app-left {
-  flex-basis: 240px;
-  background-color: var(--app-bg-dark);
-  height: 100;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 24px 0;
-  transition: all 0.4s ease-in;
-}
-.app-left.show {
-  right: 0;
-  opacity: 1;
-} */
-
 .app-main {
   flex: 1;
   height: 100%;
@@ -200,7 +186,7 @@ button {
 
 .main-header-line {
   display: flex;
-  width: 1500px;
+  width: 1800px;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
@@ -294,6 +280,7 @@ button {
 
 .chart-container-wrapper {
   padding: 8px;
+  flex: 0.5;
 }
 
 .chart-info-wrapper {
@@ -383,7 +370,7 @@ button {
 .chart-container-header h2 {
   margin: 0;
   color: var(--main-color);
-  font-size: 12px;
+  font-size: 16px;
   line-height: 16px;
   opacity: 0.8;
 }
