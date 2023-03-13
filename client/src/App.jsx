@@ -11,6 +11,7 @@ import HomePage from "./pages/HomePage";
 import QuestionPage from "./pages/QuestionPage";
 import LoginPage1 from "./pages/LoginPage1";
 import LoginPage from "./pages/LoginPage";
+import DisplayDataPage from "./pages/DisplayDataPage";
 
 const client = new ApolloClient({
     uri: "/graphql",
@@ -27,6 +28,10 @@ function App() {
                         <Routes>
                             {/* individual display route */}
                             <Route path="/test" element={<TestPage />} />
+                            <Route
+                                path="/DisplayDataPage"
+                                element={<DisplayDataPage />}
+                            />
                             <Route
                                 path="/question"
                                 element={<QuestionPage />}
