@@ -1,7 +1,7 @@
 import React from "react";
 // import "../App.css";
 import SavingsGoal from "../components/SavingsGoal";
-import "../styles/Homepage.css";
+import "../styles/Homestyles.css";
 import Menu from "../components/Menu/Menu";
 
 function HomePage() {
