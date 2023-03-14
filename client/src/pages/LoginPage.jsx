@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/LoginPage.css";
 import Signup from "../components/Signup/Signup";
+import Login from "../components/Login/Login";
 // import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 
 // const styles = {
@@ -31,60 +32,7 @@ function LoginPage() {
             <div className="container">
                 <div className="forms-container">
                     <div className="signin-signup">
-                        {!signup ? (
-                            <form action="#" className="sign-in-form">
-                                <h2 className="title">Sign In </h2>
-                                <div className="input-field">
-                                    <i className="fas fa-user"></i>
-                                    <input type="text" placeholder="Username" />
-                                </div>
-                                <div className="input-field">
-                                    <i className="fas fa-lock"></i>
-                                    <input
-                                        type="password"
-                                        placeholder="Password"
-                                    />
-                                </div>
-                                <input
-                                    type="submit"
-                                    value="Login"
-                                    className="btn solid"
-                                />
-                                <p className="social-text">
-                                    Or Sign in with social platforms
-                                </p>
-
-                                {/* <!-- ------Social Icons For Sign In Page --------> */}
-                                <div className="social-media">
-                                    <a
-                                        href="https://facebook.com/"
-                                        className="social-icon"
-                                    >
-                                        {/* <i className="fab fa-facebook-f"></i> */}
-                                    </a>
-                                    <a
-                                        href="https://twitter.com/home"
-                                        className="social-icon"
-                                    >
-                                        {/* <i className="fab fa-twitter"></i> */}
-                                    </a>
-                                    <a
-                                        href="https://google.com/"
-                                        className="social-icon"
-                                    >
-                                        {/* <i className="fab fa-google"></i> */}
-                                    </a>
-                                    <a
-                                        href="https://google.com/"
-                                        className="social-icon"
-                                    >
-                                        {/* <i className="fab fa-linkedin-in"></i> */}
-                                    </a>
-                                </div>
-                            </form>
-                        ) : (
-                            <Signup />
-                        )}
+                        {!signup ? <Login /> : <Signup />}
                         {/* <!-------- Left Side Of Sign Up Page ----------> */}
                     </div>
                 </div>

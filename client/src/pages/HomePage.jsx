@@ -5,14 +5,41 @@ import "../styles/Homestyles.css";
 import Menu from "../components/Menu/Menu";
 import { Link } from "react-router-dom";
 
+// queries
+import { QUERY_ONE_USER } from "../utils/queries";
+import { useQuery } from "@apollo/client";
+
 // import class that has the function to check log in status
 import Auth from "../utils/auth";
 
 function HomePage() {
+    // set initial logged in state to false
     let loggedIn = false;
+
+    // use JWT from local storage to decode data
+    // GOAL: just get the id
+    const tokenData = Auth.tokenData();
 
     // check if the user is logged in within 2hrs
     loggedIn = Auth.checkLogIn();
+
+    // retrieve individual user data
+    const { loading, data } = useQuery(QUERY_ONE_USER, {
+        // pass in the id from decoded JWT as parameter
+        variables: { id: tokenData.data._id },
+    });
+
+    // isolate the DB data you need
+    const user = data?.user || [];
+
+    // THIS IS WERE ALL USER DATA IS STORED
+    // THIS IS WERE ALL USER DATA IS STORED
+    // THIS IS WERE ALL USER DATA IS STORED
+    // THIS IS WERE ALL USER DATA IS STORED
+    // THIS IS WERE ALL USER DATA IS STORED
+    // THIS IS WERE ALL USER DATA IS STORED
+    // THIS IS WERE ALL USER DATA IS STORED
+    console.log(user);
 
     const styles = {
         checkStatus: {
@@ -26,7 +53,7 @@ function HomePage() {
                 {/* display different elements based on log in status */}
                 {loggedIn ? (
                     <div style={styles.checkStatus}>
-                        <h1>Hello, Welcome back</h1>
+                        <h1>Hello, Welcome </h1>
                         <div className="main-header-line">
                             <Menu />
 

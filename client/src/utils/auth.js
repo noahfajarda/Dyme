@@ -36,6 +36,15 @@ class AuthService {
     return false;
   }
 
+  tokenData() {
+    const token = localStorage.getItem("id_token");
+    if (token) {
+      return decode(token);
+    }
+    return "no token data"
+
+  }
+
   login(idToken) {
     // Saves user token to localStorage and reloads the application for logged in status to take effect
     localStorage.setItem('id_token', idToken);
