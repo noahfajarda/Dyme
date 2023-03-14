@@ -34,7 +34,6 @@ const userSchema = new Schema(
             // Must have upper, lower, & numbers
             match: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,25}$/
         },
-
         // user specified fields: budget, availableBalance
         budget: {
             type: Number,
