@@ -10,7 +10,6 @@ import "../styles/LoginPage1.css";
 
 function LoginPage1() {
   const [signup, setsignup] = useState(false);
-
   return (
     <div className="login-container">
       <div className="container">
