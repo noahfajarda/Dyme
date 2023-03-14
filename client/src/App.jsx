@@ -1,7 +1,13 @@
 // React Boilerplate
 import React, { useEffect, useState } from "react";
 // import "./App.css";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import {
+    ApolloClient,
+    InMemoryCache,
+    ApolloProvider,
+    createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // pages
@@ -10,7 +16,7 @@ import UserAmount from "./pages/UserAmount";
 import TestPage from "./pages/TestPage";
 import HomePage from "./pages/HomePage";
 import QuestionPage from "./pages/QuestionPage";
-import LoginPage1 from "./pages/LoginPage1";
+import LoginPage from "./pages/LoginPage";
 import DisplayDataPage from "./pages/DisplayDataPage";
 
 const client = new ApolloClient({
@@ -36,13 +42,13 @@ function App() {
                                 path="/question"
                                 element={<QuestionPage />}
                             />
-                            <Route path="/login" element={<LoginPage1 />} />
+                            <Route path="/login" element={<LoginPage />} />
                             <Route
                                 path="/useramount"
                                 element={<UserAmount />}
                             />
-
                             <Route path="/home" element={<HomePage />} />
+
                             {/* all other routes */}
                             <Route path="*" element={<MainPage />} />
                         </Routes>

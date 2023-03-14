@@ -27,6 +27,8 @@ const userSchema = new Schema(
             type: String,
             required: true,
             unique: true,
+            // checking if it's an actual email address
+            match: [/.+@.+\..+/, 'Must match an email address!'],
             trim: true,
         },
         password: {
@@ -61,6 +63,22 @@ const userSchema = new Schema(
         timestamps: true
     }
 );
+
+// THIS SOLELY ENCRYPTS THE PASSWORD
+userSchema.pre('save', async function (next) {
+    if (this.isNew || this.isModified('password')) {
+        const saltRounds = 10;
+        // jumble the encrypted password 10 times
+        this.password = await bcrypt.hash(this.password, saltRounds)
+    }
+})
+
+// THIS CHECKS IF THE HASH OF THE PASSWORD ENTERED
+// MATCHES THE HASH IN THE DB
+userSchema.methods.isCorrectPassword = async function (password) {
+    return bcrypt.compare(password, this.password)
+}
+
 
 const User = model('User', userSchema);
 

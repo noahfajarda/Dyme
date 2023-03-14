@@ -19,4 +19,23 @@ const REMOVE_PROFILE = gql`
   }
 `;
 
-export { ADD_PROFILE, REMOVE_PROFILE }
+
+const ADD_USER = gql`
+  mutation AddUser($firstName: String!, $lastName: String!, $username: String!, $email: String!, $budget: Float!, $availableBalance: Float!, $password: String!) {
+    addUser(firstName: $firstName, lastName: $lastName, username: $username, email: $email, budget: $budget, availableBalance: $availableBalance, password: $password) {
+      token
+      user {
+        _id
+        firstName
+        lastName
+        username
+        password
+        email
+        budget
+        availableBalance
+      }
+    }
+  }
+`;
+
+export { ADD_PROFILE, REMOVE_PROFILE, ADD_USER }

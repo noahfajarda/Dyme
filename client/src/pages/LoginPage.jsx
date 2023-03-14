@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "../styles/LoginPage1.css";
+import "../styles/LoginPage.css";
+import Signup from "../components/Signup/Signup";
 // import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 
 // const styles = {
@@ -8,10 +9,10 @@ import "../styles/LoginPage1.css";
 //     },
 // };
 
-function LoginPage1() {
+function LoginPage() {
     // steps:
     // define mutation
-    // use useMuation to accept the data
+    // use useMuation to accept the datas
 
     // get the user using a query FIND ONE USER
     // cache the found user
@@ -24,6 +25,7 @@ function LoginPage1() {
     // return the object
 
     const [signup, setsignup] = useState(false);
+
     return (
         <div className="login-container">
             <div className="container">
@@ -81,60 +83,7 @@ function LoginPage1() {
                                 </div>
                             </form>
                         ) : (
-                            <form action="#" className="sign-up-form">
-                                <h2 className="title">Sign Up</h2>
-                                <div className="input-field">
-                                    <i className="fas fa-user"></i>
-                                    <input type="text" placeholder="Username" />
-                                </div>
-                                <div className="input-field">
-                                    <i className="fas fa-envelope"></i>
-                                    <input type="email" placeholder="Email" />
-                                </div>
-                                <div className="input-field">
-                                    <i className="fas fa-lock"></i>
-                                    <input
-                                        type="password"
-                                        placeholder="Password"
-                                    />
-                                </div>
-                                <input
-                                    type="submit"
-                                    className="btn"
-                                    value="Sign up"
-                                />
-                                <p className="social-text">
-                                    Or Sign up with social platforms
-                                </p>
-
-                                {/* <!---------  Social Media Icons For Sign Up  -------> */}
-                                <div className="social-media">
-                                    <a
-                                        href="https://facebook.com/"
-                                        className="social-icon"
-                                    >
-                                        {/* <i className="fab fa-facebook-f"></i> */}
-                                    </a>
-                                    <a
-                                        href="https://twitter.com/home"
-                                        className="social-icon"
-                                    >
-                                        {/* <i className="fab fa-twitter"></i> */}
-                                    </a>
-                                    <a
-                                        href="https://google.com/"
-                                        className="social-icon"
-                                    >
-                                        {/* <i className="fab fa-google"></i> */}
-                                    </a>
-                                    <a
-                                        href="https://google.com/"
-                                        className="social-icon"
-                                    >
-                                        {/* <i className="fab fa-linkedin-in"></i> */}
-                                    </a>
-                                </div>
-                            </form>
+                            <Signup />
                         )}
                         {/* <!-------- Left Side Of Sign Up Page ----------> */}
                     </div>
@@ -183,4 +132,4 @@ function LoginPage1() {
     );
 }
 
-export default LoginPage1;
+export default LoginPage;
