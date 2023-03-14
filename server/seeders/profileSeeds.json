@@ -1,7 +1,32 @@
 [
     {
-        "name": "Jason Bixby",
-        "skills": ["AWK", "AMPL", "Unix"]
+        "firstName": "Anderson",
+        "lastName": ".Paak",
+        "username": "PaakMan24",
+        "email": "PaakMan24@gmail.com",
+        "password": "password4Paak",
+        "budget": 91851957019587,
+        "availableBalance": 230000000,
+        "categories": [
+            {
+                "name": "Subscriptions",
+                "amountAllocated": 40,
+                "description": "All the subcriptions, including Netflix, Hulu, Disney+",
+                "subCategories": {
+                    "name": "something subcategory",
+                    "amountAllocated": 401412,
+                    "description": "something else",
+                    "subCategories": {}
+                }
+            },
+            {
+                "_id": "640cff0391a2c4afb4f552fc",
+                "name": "Purchases",
+                "amountAllocated": 259,
+                "description": "Everything I purchased. AND MORE!!!",
+                "subCategories": {}
+            }
+        ]
     },
     {
         "name": "Max Kanat-Alexander",

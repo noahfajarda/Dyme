@@ -9,6 +9,20 @@ import "../styles/LoginPage1.css";
 // };
 
 function LoginPage1() {
+    // steps:
+    // define mutation
+    // use useMuation to accept the data
+
+    // get the user using a query FIND ONE USER
+    // cache the found user
+
+    // on sign up
+    // add user mutation
+    // THEN, get user, params: user ID, then RETURN payload
+    // extract the token
+    // any time user wants to do a mutation, check if there's a user obejct available
+    // return the object
+
     const [signup, setsignup] = useState(false);
     return (
         <div className="login-container">
