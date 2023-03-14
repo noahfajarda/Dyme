@@ -1,11 +1,5 @@
-const Profile = require("./Profile");
-const Category = require("./Category");
-const Subcategory = require("./Subcategory");
-const Budget = require("./Budget");
+const Profile = require('./Profile');
+const User = require('./User');
+const Category = require('./Category');
 
-module.exports = {
-  Profile,
-  Category,
-  Subcategory,
-  Budget,
-};
+module.exports = { Profile, User, Category };

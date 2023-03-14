@@ -64,9 +64,9 @@ const DisplayProfiles = ({ profiles, title }) => {
                 {profiles &&
                     profiles.map((profile) => (
                         // give each one a unique key
-                        <div key={profile._id}>
+                        <div key={profile?._id}>
                             {/* display the names */}
-                            <h1>{profile.name}</h1>
+                            <h1>{profile?.name}</h1>
                             <p>
                                 {/* if they have skills, display them iteratively */}
                                 {profile?.skills?.map((skill) => (
