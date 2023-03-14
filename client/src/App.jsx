@@ -1,6 +1,7 @@
 // React Boilerplate
-import React, { useEffect, useState } from "react";
-import "./App.css";
+// import React, { useEffect, useState } from "react";
+import React from "react";
+// import "./App.css";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 

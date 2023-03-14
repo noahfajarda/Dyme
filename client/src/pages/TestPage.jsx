@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
+import React from "react";
 import "../App.css";
 
-function testPage() {
+function TestPage() {
     return (
         <div>
             <button>
@@ -13,4 +14,4 @@ function testPage() {
     );
 }
 
-export default testPage;
+export default TestPage;
