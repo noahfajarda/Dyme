@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // pages
 import MainPage from "./pages/MainPage";
+import UserAmount from "./pages/UserAmount";
 import TestPage from "./pages/TestPage";
 import HomePage from "./pages/HomePage";
 import QuestionPage from "./pages/QuestionPage";
@@ -30,6 +31,7 @@ function App() {
               {/* all other routes */}
               <Route path="/home" element={<HomePage />} />
               <Route path="/question" element={<QuestionPage />} />
+              <Route path="/useramount" element={<UserAmount />} />
               <Route path="/login" element={<LoginPage1 />} />
               {/* <Route path="/login" element={<LoginPage />} /> */}
               {/* all other routes */}
