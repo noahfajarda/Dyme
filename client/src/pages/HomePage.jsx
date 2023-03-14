@@ -3,10 +3,10 @@ import React from "react";
 import SavingsGoal from "../components/SavingsGoal";
 import "../styles/Homestyles.css";
 import Menu from "../components/Menu/Menu";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 // queries
-import { QUERY_ONE_USER } from "../utils/queries";
+import { QUERY_me } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 
 // import class that has the function to check log in status
@@ -14,20 +14,17 @@ import Auth from "../utils/auth";
 
 function HomePage() {
     // set initial logged in state to false
-    let loggedIn = false;
+
+    const { loading, data } = useQuery(QUERY_me);
 
     // use JWT from local storage to decode data
     // GOAL: just get the id
-    const tokenData = Auth.tokenData();
+    // const tokenData = Auth.tokenData();
 
     // check if the user is logged in within 2hrs
-    loggedIn = Auth.checkLogIn();
-
+    const loggedIn = data?.me;
+    if (!loggedIn) return <Navigate to = "/login" />
     // retrieve individual user data
-    const { loading, data } = useQuery(QUERY_ONE_USER, {
-        // pass in the id from decoded JWT as parameter
-        variables: { id: tokenData.data._id },
-    });
 
     // isolate the DB data you need
     const user = data?.user || [];

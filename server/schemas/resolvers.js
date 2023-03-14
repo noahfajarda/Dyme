@@ -16,15 +16,22 @@ const resolvers = {
             }
         },
         // FIND ONE BY ID
-        user: async (parent, { _id }) => {
-            try {
-                // timestamps are in the console logs
-                console.log(await User.findById(_id))
-                return await User.findById(_id);
-            } catch (err) {
-                console.log("\n\n\nThere was a server-side error: \n\n\n", err)
-            }
-        },
+        // user: async (parent, { _id }) => {
+        //     try {
+        //         // timestamps are in the console logs
+        //         console.log(await User.findById(_id))
+        //         return await User.findById(_id);
+        //     } catch (err) {
+        //         console.log("\n\n\nThere was a server-side error: \n\n\n", err)
+        //     }
+        // },
+    me: async(parent, { _id }, context) => {
+        console.log (context.user)
+        if (context.user) {
+            const user = await user.findById(context.user._id)
+            return user
+        }
+    },
 
         // ---- CATEGORY
         // FIND ALL

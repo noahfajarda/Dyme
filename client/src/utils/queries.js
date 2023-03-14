@@ -11,6 +11,21 @@ export const QUERY_PROFILES = gql`
     }
 `;
 
+export const QUERY_me= gql`
+    query me {
+        me{
+        token
+        user {
+          _id
+          email
+          firstName
+          lastName
+          username
+        }
+      }
+    }
+`;
+
 // initialize a query that works in GraphQL
 // GET ALL USERS AND THEIR INFO
 export const QUERY_USERS = gql`

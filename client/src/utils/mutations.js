@@ -29,7 +29,6 @@ const ADD_USER = gql`
         firstName
         lastName
         username
-        password
         email
         budget
         availableBalance

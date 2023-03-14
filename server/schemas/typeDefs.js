@@ -7,9 +7,9 @@ const typeDefs = gql`
         firstName: String!
         lastName: String!
         username: String!
-        password: String!
         email: String!
         budget: Float!
+        password: String
         availableBalance: Float!
         categories: [Category]
     }
@@ -29,6 +29,7 @@ const typeDefs = gql`
     }
 
     type Query {
+        me: Auth
         # ---- USER
         users: [User]
         user(_id: ID!): User
