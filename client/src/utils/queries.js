@@ -47,10 +47,10 @@ export const QUERY_ONE_USER = gql`
             budget
             availableBalance
             categories {
-            _id
-            name
-            amountAllocated
-            description
+                _id
+                name
+                amountAllocated
+                description
             }
         }
     }

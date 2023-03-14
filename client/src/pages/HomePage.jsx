@@ -38,7 +38,6 @@ function HomePage() {
     // THIS IS WERE ALL USER DATA IS STORED
     // THIS IS WERE ALL USER DATA IS STORED
     // THIS IS WERE ALL USER DATA IS STORED
-    // THIS IS WERE ALL USER DATA IS STORED
     console.log(user);
 
     const styles = {
@@ -54,6 +53,14 @@ function HomePage() {
                 {loggedIn ? (
                     <div style={styles.checkStatus}>
                         <h1>Hello, Welcome </h1>
+                        <h1>{user._id}</h1>
+                        <h1>{user.availableBalance}</h1>
+                        <h1>{user.budget}</h1>
+                        <h1>{user.categories}</h1>
+                        <h1>{user.email}</h1>
+                        <h1>{user.firstName}</h1>
+                        <h1>{user.lastName}</h1>
+                        <h1>{user.username}</h1>
                         <div className="main-header-line">
                             <Menu />
 
