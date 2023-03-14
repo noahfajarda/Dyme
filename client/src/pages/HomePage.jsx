@@ -1,71 +1,17 @@
 import React from "react";
 // import "../App.css";
 import SavingsGoal from "../components/SavingsGoal";
-import "../styles/Homepage.css";
-import "../styles/Menu.css";
-import "../styles/PieChart.css";
-import "../styles/SavingsGoals.css";
+import "../styles/Homestyles.css";
+import Menu from "../components/Menu/Menu";
+
 function HomePage() {
-  // This is the code for the menu button
-
-  window.onload = function () {
-    var navbarLinksList = document.querySelectorAll(".navbar .navbar-link");
-    var navbarUnderscore = document.querySelector(".navbar .navbar-underscore");
-    var activeNavLinkclassNameName = "active";
-
-    navbarLinksList.forEach(function (navLink) {
-      if (navLink.classNameList.contains(activeNavLinkclassNameName)) {
-        showNavbarUnderscore(navLink);
-      }
-
-      navLink.addEventListener("click", function () {
-        for (var i = 0; i < navbarLinksList.length; i++) {
-          var link = navbarLinksList[i];
-          if (link.classNameList.contains(activeNavLinkclassNameName)) {
-            link.classNameList.remove(activeNavLinkclassNameName);
-            break;
-          }
-        }
-
-        this.classNameList.add(activeNavLinkclassNameName);
-        showNavbarUnderscore(this);
-      });
-    });
-
-    function showNavbarUnderscore(navLink) {
-      navbarUnderscore.style.width = navLink.offsetWidth + "px";
-      navbarUnderscore.style.transform =
-        "translateX(" + navLink.offsetLeft + "px)";
-
-      if (navbarUnderscore.style.display !== "block") {
-        navbarUnderscore.style.display = "block";
-      }
-    }
-  };
-
   return (
     <div className="app-container">
       <div className="app-main">
         <div className="main-header-line">
           <h1>Hello, Welcome back </h1>
 
-          <nav className="navbar">
-            <ul className="navbar-list">
-              <li className="navbar-item">
-                <a className="navbar-link" href="www.google.com">
-                  <i className="bi bi-house navbar-link-icon"></i>
-                </a>
-              </li>
-
-              <li className="navbar-item">
-                <a className="navbar-link" href="www.google.com">
-                  <i className="bi bi-person navbar-link-icon"></i>
-                </a>
-              </li>
-
-              <div className="navbar-underscore"></div>
-            </ul>
-          </nav>
+          <Menu/>
 
           <div className="action-buttons">
             <button className="open-right-area">
@@ -159,34 +105,6 @@ function HomePage() {
           <div className="chart-container-wrapper">
             <div className="chart-container">
               <div className="chart-info-wrapper">
-                <h2>Budget</h2>
-                <span>5.5 K</span>
-              </div>
-              <div className="chart-svg">
-                <svg viewBox="0 0 36 36" className="circular-chart blue">
-                  <path
-                    className="circle-bg"
-                    d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-                  ></path>
-                  <path
-                    className="circle"
-                    stroke-dasharray="60, 100"
-                    d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-                  ></path>
-                  <text x="18" y="20.35" className="percentage">
-                    60%
-                  </text>
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div className="chart-container-wrapper">
-            <div className="chart-container">
-              <div className="chart-info-wrapper">
                 <h2>Income</h2>
               </div>
               <div id="root">
@@ -235,69 +153,20 @@ function HomePage() {
                         </span>
                       </div>
                     </div>
-                    {/* <div class="c-dashboardInfo col-lg-3 col-md-6">
-                      <div class="wrap">
-                        <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">
-                          Available funds
-                          <svg
-                            class="MuiSvgIcon-root-19"
-                            focusable="false"
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
-                            role="presentation"
-                          >
-                            <path fill="none" d="M0 0h24v24H0z"></path>
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path>
-                          </svg>
-                        </h4>
-                        <span class="hind-font caption-12 c-dashboardInfo__count">
-                          €5000
-                        </span>
-                      </div>
-                    </div> */}
-                    {/* <div class="c-dashboardInfo col-lg-3 col-md-6"> */}
-                    {/* <div class="wrap">
-                        <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">
-                          Rental return
-                          <svg
-                            class="MuiSvgIcon-root-19"
-                            focusable="false"
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
-                            role="presentation"
-                          >
-                            <path fill="none" d="M0 0h24v24H0z"></path>
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path>
-                          </svg>
-                        </h4>
-                        <span class="hind-font caption-12 c-dashboardInfo__count">
-                          6,40%
-                        </span>
-                      </div> */}
-                    {/* </div> */}
                   </div>
                 </div>
               </div>
-              {/* <div className="chart-svg">
-                <svg viewBox="0 0 36 36" className="circular-chart orange">
-                  <path
-                    className="circle-bg"
-                    d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-                  ></path>
-                  <path
-                    className="circle"
-                    stroke-dasharray="90, 100"
-                    d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-                  ></path>
-                  <text x="18" y="20.35" className="percentage">
-                    90%
-                  </text>
-                </svg>
-              </div> */}
+            </div>
+          </div>
+          <div className="chart-container-wrapper">
+            <div className="chart-container">
+              <div className="chart-info-wrapper">
+                <h2>Recent Transactions</h2>
+                <h3> 1. Tesco £122.50 05/02/2016</h3>
+                <h3> 2. Game £22.50 05/02/2016 </h3>
+                <h3> 3. Tesco £10.00 01/02/2016 </h3>
+                <h3> 4. Steam £19.99 05/02/2016</h3>
+              </div>
             </div>
           </div>
         </div>
