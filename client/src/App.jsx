@@ -11,51 +11,36 @@ import TestPage from "./pages/TestPage";
 import HomePage from "./pages/HomePage";
 import QuestionPage from "./pages/QuestionPage";
 import LoginPage1 from "./pages/LoginPage1";
-import LoginPage from "./pages/LoginPage";
 import DisplayDataPage from "./pages/DisplayDataPage";
 
 const client = new ApolloClient({
-    uri: "/graphql",
-    cache: new InMemoryCache(),
+  uri: "/graphql",
+  cache: new InMemoryCache(),
 });
 
 function App() {
-    return (
-        <ApolloProvider client={client}>
-            {/* wrapper for everything routing related */}
-            <Router>
-                <div className="App">
-                    <header className="App-header">
-                        <Routes>
-                            {/* individual display route */}
-                            <Route path="/test" element={<TestPage />} />
-                            <Route
-                                path="/DisplayDataPage"
-                                element={<DisplayDataPage />}
-                            />
-                            <Route
-                                path="/question"
-                                element={<QuestionPage />}
-                            />
-                            <Route path="/login" element={<LoginPage1 />} />
-                            <Route
-                                path="/useramount"
-                                element={<UserAmount />}
-                            />
-
-                            <Route
-                                path="/loginDeprecated"
-                                element={<LoginPage />}
-                            />
-                            <Route path="/home" element={<HomePage />} />
-                            {/* all other routes */}
-                            <Route path="*" element={<MainPage />} />
-                        </Routes>
-                    </header>
-                </div>
-            </Router>
-        </ApolloProvider>
-    );
+  return (
+    <ApolloProvider client={client}>
+      {/* wrapper for everything routing related */}
+      <Router>
+        <div className="App">
+          <header className="App-header">
+            <Routes>
+              {/* individual display route */}
+              <Route path="/test" element={<TestPage />} />
+              <Route path="/DisplayDataPage" element={<DisplayDataPage />} />
+              <Route path="/question" element={<QuestionPage />} />
+              <Route path="/login" element={<LoginPage1 />} />
+              <Route path="/useramount" element={<UserAmount />} />
+              <Route path="/home" element={<HomePage />} />
+              {/* all other routes */}
+              <Route path="*" element={<MainPage />} />
+            </Routes>
+          </header>
+        </div>
+      </Router>
+    </ApolloProvider>
+  );
 }
 
 export default App;
