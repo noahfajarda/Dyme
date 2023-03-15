@@ -1,131 +1,58 @@
 [
     {
-        "firstName": "Anderson",
-        "lastName": ".Paak",
-        "username": "PaakMan24",
-        "email": "PaakMan24@gmail.com",
-        "password": "password4Paak",
-        "budget": 91851957019587,
-        "availableBalance": 230000000,
-        "categories": [
-            {
-                "name": "Subscriptions",
-                "amountAllocated": 40,
-                "description": "All the subcriptions, including Netflix, Hulu, Disney+",
-                "subCategories": {
-                    "name": "something subcategory",
-                    "amountAllocated": 401412,
-                    "description": "something else",
-                    "subCategories": {}
-                }
-            },
-            {
-                "name": "Purchases",
-                "amountAllocated": 259,
-                "description": "Everything I purchased. AND MORE!!!"
-            },
-            {
-                "name": "Music Equipment",
-                "amountAllocated": 5500,
-                "description": "Drum kit, guitar, etc.",
-                "subCategories": {
-                    "name": "speakers",
-                    "amountAllocated": 500,
-                    "description": "Bose",
-                    "subCategories": {}
-                }
-            }
+        "name": "Jason Bixby",
+        "skills": ["AWK", "AMPL", "Unix"]
+    },
+    {
+        "name": "Max Kanat-Alexander",
+        "skills": ["Java", "Perl", "Apache", "Python"]
+    },
+    {
+        "name": "Amiko",
+        "skills": ["NodeJS", "MySQL", "MongoDB", "React", "CSS-in-JS"]
+    },
+    {
+        "name": "Kent Beck",
+        "skills": [
+            "Test-Driven Development",
+            "Extreme Programming",
+            "Software Design Patterns",
+            "JUnit"
         ]
     },
     {
-        "firstName": "Bootcamp",
-        "lastName": "Student",
-        "username": "bootcamp1",
-        "email": "bootcamp1@gmail.com",
-        "password": "Password1",
-        "budget": 2500,
-        "availableBalance": 3000,
-        "categories": [
-            {
-                "name": "Rent",
-                "amountAllocated": 1000,
-                "description": "Living expense",
-                "subCategories": {
-                    "name": "Plumbing",
-                    "amountAllocated": 99,
-                    "description": "Had to fix leak",
-                    "subCategories": {}
-                }
-            },
-            {
-                "name": "Auto",
-                "amountAllocated": 200,
-                "description": "Auto expenses"
-            },
-            {
-                "name": "Insurance",
-                "amountAllocated": 100,
-                "description": "Auto expenses"
-            },
-            {
-                "name": "Food",
-                "amountAllocated": 400,
-                "description": "Groceries"
-            }
+        "name": "Edward V. Berard",
+        "skills": ["Object-Oriented Design"]
+    },
+    {
+        "name": "Alan Kay",
+        "skills": [
+            "Graphical User Interface (GUI) Design",
+            "Jazz Guitar",
+            "Education"
         ]
     },
     {
-        "firstName": "Rich",
-        "lastName": "Bitch",
-        "username": "richy",
-        "email": "guccislides@gmail.com",
-        "password": "IamRich21",
-        "budget": 15000,
-        "availableBalance": 200000,
-        "categories": [
-            {
-                "name": "Rent",
-                "amountAllocated": 4200,
-                "description": "Living expense",
-                "subCategories": {
-                    "name": "Decor",
-                    "amountAllocated": 2500,
-                    "description": "New paintings",
-                    "subCategories": {}
-                }
-            },
-            {
-                "name": "Entertainment",
-                "amountAllocated": 2000,
-                "description": "Money Trees concert",
-                "subCategories": {
-                    "name": "upgrade",
-                    "amountAllocated": 500,
-                    "description": "VIP Section",
-                    "subCategories": {}
-                }
-            },
-            {
-                "name": "Food",
-                "amountAllocated": 1000,
-                "description": "Dinner at Nobu",
-                "subCategories": {
-                    "name": "Drinks",
-                    "amountAllocated": 200,
-                    "description": "Champagne",
-                    "subCategories": {}
-                }
-            },
-            {
-                "name": "Auto",
-                "amountAllocated": 1500,
-                "description": "Bently payment"
-            },
-            {
-                "name": "Auto",
-                "amountAllocated": 2500,
-                "description": "Lamborghini payment"
-            }
+        "name": "C.A.R. Hoare",
+        "skills": ["Algorithms", "Quicksort", "Hoare Logic"]
+    },
+    {
+        "name": "David Thomas",
+        "skills": ["Author", "Code Kata", "Ruby", "Pragmatic Programming"]
+    },
+    {
+        "name": "Donald Knuth",
+        "skills": ["TeX Computer Typesetting", "Algorithms", "Author"]
+    },
+    {
+        "name": "Lernantino",
+        "skills": [
+            "JavaScript",
+            "CSS",
+            "HTML",
+            "Design Systems",
+            "Typescript",
+            "PWAs"
         ]
     }
 ]

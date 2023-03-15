@@ -33,7 +33,7 @@
   --draft-icon: #e9780e;
 }
 
-.home-page {
+body {
   height: 100vh;
   width: 100%;
   overflow: hidden;
@@ -54,6 +54,7 @@ h3 {
   height: 100%;
   display: flex;
   position: relative;
+  max-width: 1680px;
 }
 
 /* .app-left {

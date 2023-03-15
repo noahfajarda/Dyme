@@ -43,12 +43,13 @@ function App() {
                                 path="/useramount"
                                 element={<UserAmount />}
                             />
+
                             <Route
                                 path="/loginDeprecated"
                                 element={<LoginPage />}
                             />
-                            <Route path="/home" element={<HomePage />} />
                             <Route path="/expenses" element={<ExpensesPage />} />
+                            <Route path="/home" element={<HomePage />} />
                             {/* all other routes */}
                             <Route path="*" element={<MainPage />} />
                         </Routes>

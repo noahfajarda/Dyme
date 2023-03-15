@@ -1,12 +1,11 @@
 import React from "react";
-import "../App.css";
+// import "../App.css";
 import SavingsGoal from "../components/SavingsGoal";
 import "../styles/Homestyles.css";
 import Menu from "../components/Menu/Menu";
 
 function HomePage() {
   return (
-    <div className="home-page">
     <div className="app-container">
       <div className="app-main">
         <div className="main-header-line">
@@ -52,11 +51,9 @@ function HomePage() {
           </div>
         </div>
         <div className="chart-row three">
-          <div className="chart-container-wrapper">
+          <div className="chart-container-wrapper" id="expense-color">
             <div className="chart-container-header">
-              <a href="/expenses">
               <h2>Expenses</h2>
-              </a>
               <span href="#">This month</span>
             </div>
             <div className="acquisitions-bar">
@@ -220,7 +217,6 @@ function HomePage() {
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }
