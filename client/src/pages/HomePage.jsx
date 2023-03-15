@@ -1,30 +1,22 @@
 import React from "react";
-// import "../App.css";
 import SavingsGoal from "../components/SavingsGoal";
 import "../styles/Homestyles.css";
 import Menu from "../components/Menu/Menu";
 import { Link, Navigate } from "react-router-dom";
+import Auth from "../utils/auth";
 
 // queries
 import { QUERY_me } from "../utils/queries";
 import { useQuery } from "@apollo/client";
-
-// import class that has the function to check log in status
-import Auth from "../utils/auth";
 
 function HomePage() {
     // set initial logged in state to false
 
     const { loading, data } = useQuery(QUERY_me);
 
-    // use JWT from local storage to decode data
-    // GOAL: just get the id
-    // const tokenData = Auth.tokenData();
-
-    // check if the user is logged in within 2hrs
-    const loggedIn = data?.me;
-    if (!loggedIn) return <Navigate to = "/login" />
-    // retrieve individual user data
+    if (!Auth.loggedIn()) {
+        return <Navigate to="/login" />;
+    }
 
     // isolate the DB data you need
     const user = data?.user || [];
@@ -47,8 +39,9 @@ function HomePage() {
         <div className="app-container">
             <div className="app-main">
                 {/* display different elements based on log in status */}
-                {loggedIn ? (
+                {Auth.loggedIn() ? (
                     <div style={styles.checkStatus}>
+                        loggedIn
                         <h1>Hello, Welcome </h1>
                         <h1>{user._id}</h1>
                         <h1>{user.availableBalance}</h1>

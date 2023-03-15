@@ -8,18 +8,36 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 // pages
-import MainPage from "./pages/MainPage";
 import UserAmount from "./pages/UserAmount";
-import TestPage from "./pages/TestPage";
 import HomePage from "./pages/HomePage";
 import QuestionPage from "./pages/QuestionPage";
-import LoginPage from "./pages/LoginPage";
+import LoginSignupPage from "./pages/LoginSignupPage";
 import DisplayDataPage from "./pages/DisplayDataPage";
 
-const client = new ApolloClient({
+// Construct our main GraphQL API endpoint
+const httpLink = createHttpLink({
     uri: "/graphql",
+});
+
+// Construct request middleware that will attach the JWT token to every request as an `authorization` header
+const authLink = setContext((_, { headers }) => {
+    // get the authentication token from local storage if it exists
+    const token = localStorage.getItem("id_token");
+    // return the headers to the context so httpLink can read them
+    return {
+        headers: {
+            ...headers,
+            authorization: token ? `Bearer ${token}` : "",
+        },
+    };
+});
+
+const client = new ApolloClient({
+    // uri: "/graphql",
+    link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
 });
 
@@ -32,7 +50,6 @@ function App() {
                     <header className="App-header">
                         <Routes>
                             {/* individual display route */}
-                            <Route path="/test" element={<TestPage />} />
                             <Route
                                 path="/DisplayDataPage"
                                 element={<DisplayDataPage />}
@@ -41,7 +58,10 @@ function App() {
                                 path="/question"
                                 element={<QuestionPage />}
                             />
-                            <Route path="/login" element={<LoginPage />} />
+                            <Route
+                                path="/login"
+                                element={<LoginSignupPage />}
+                            />
                             <Route
                                 path="/useramount"
                                 element={<UserAmount />}
@@ -49,7 +69,10 @@ function App() {
                             <Route path="/home" element={<HomePage />} />
 
                             {/* all other routes */}
-                            <Route path="*" element={<MainPage />} />
+                            <Route
+                                path="*"
+                                element={<Navigate to="/login" />}
+                            />
                         </Routes>
                     </header>
                 </div>

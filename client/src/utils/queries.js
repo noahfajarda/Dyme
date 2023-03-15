@@ -11,7 +11,7 @@ export const QUERY_PROFILES = gql`
     }
 `;
 
-export const QUERY_me= gql`
+export const QUERY_me = gql`
     query me {
         me{
         token
