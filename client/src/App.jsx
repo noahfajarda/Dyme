@@ -9,7 +9,7 @@ import MainPage from "./pages/MainPage";
 import UserAmount from "./pages/UserAmount";
 import TestPage from "./pages/TestPage";
 import HomePage from "./pages/HomePage";
-import QuestionPage from "./pages/QuestionPage";
+import QuestionPage from "./pages/QuestionPage.tsx";
 import LoginPage1 from "./pages/LoginPage1";
 import DisplayDataPage from "./pages/DisplayDataPage";
 
