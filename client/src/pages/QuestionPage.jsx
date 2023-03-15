@@ -1,56 +1,72 @@
-import React, { useEffect, useState } from "react";
-import "../App.css";
+import React, { useState } from 'react';
+import '../styles/QuestionPage.css';
 
 function QuestionPage() {
-    const [answerArray, setAnswerArray] = useState([]);
-    const [answer, setAnswer] = useState("");
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); 
+  const [questions, setQuestions] = useState([
+    {
+      id: 1,
+      text: 'What is your monthly Income?',
+      answer: '',
+    },
+    {
+      id: 2,
+      text: 'Do you pay rent?',
+      answer: '',
+    },
+    {
+      id: 3,
+      text: 'Do you have any monthly expenses such as subscriptions?',
+      answer: '',
+    },
+    {
+      id: 4,
+      text: 'Do you have a phone plan?',
+      answer: '',
+    },
+    {
+      id: 5,
+      text: 'Please provide an estimate on how much you spend on food monthly?',
+      answer: '',
+    },
+    {
+      id: 6,
+      text: 'Do you have a Health Insurnace payment plan?',
+      answer: '',
+    },
+    {
+      id: 7,
+      text: 'Can you input a budget that you have in mind?',
+      answer: '',
+    },
+  ]);
 
-    const submitAnswer = async (event) => {
-        event.preventDefault();
-
-        try {
-            console.log(answer);
-            await setAnswerArray((prev) => [...prev, answer]);
-            console.log("This is the prev answerArray:", answerArray);
-            setAnswer("");
-        } catch (err) {
-            console.error(err);
-        }
-    };
-
-    return (
-        <div>
-            {/* <button>test</button> */}
-            <button>
-                <a href="/">Link to main page</a>
-            </button>
-            <div className="col-lg-6">
-                <div className="content float-left rounded shadow-lg">
-                    <h3>What's the demographic?</h3>
-                    <form
-                        className="flex-row justify-center justify-space-between-md align-center"
-                        onSubmit={submitAnswer}
-                    >
-                        <input
-                            placeholder="Add your profile name..."
-                            value={answer}
-                            className="form-input w-100"
-                            onChange={(event) => setAnswer(event.target.value)}
-                        />
-                        <button
-                            type="submit"
-                            className="btn btn-primary"
-                            id="searchBtn"
-                        >
-                            Next
-                        </button>
-                    </form>
-                </div>
-            </div>
-            {/* <div>testing this to see if it works</div> */}
-            {/* <img src="https://tinyurl.com/29ajxfnr" alt="dre" /> */}
-        </div>
+  const handleAnswerSubmit = (id, answer) => {
+    const updatedQuestions = questions.map((question) =>
+      question.id === id ? { ...question, answer } : question
     );
+    setQuestions(updatedQuestions);
+  };
+
+  const handleNextQuestion = () => { 
+    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+  };
+
+  const currentQuestion = questions[currentQuestionIndex]; 
+
+  return (
+    <div className="question-page">
+      <h1>Questions {currentQuestionIndex + 1}</h1>
+      <p>{currentQuestion.text}</p>
+      <input 
+      type = "text"
+      value = {currentQuestion.answer}
+      onChange = {(event) => 
+      handleAnswerSubmit(currentQuestion.id, event.target.value)}/>
+    {currentQuestionIndex < questions.length -1 && 
+    (<button className="next-button" onClick={handleNextQuestion}>Next</button>)}
+    </div>
+  );
 }
 
-export default QuestionPage;
+export default QuestionPage; 
