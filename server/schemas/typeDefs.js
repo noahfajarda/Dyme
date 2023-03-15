@@ -7,11 +7,17 @@ const typeDefs = gql`
         firstName: String!
         lastName: String!
         username: String!
-        password: String!
         email: String!
         budget: Float!
+        password: String
         availableBalance: Float!
         categories: [Category]
+    }
+
+    # set up another type that attatches the JWT to the returned user
+    type Auth {
+        token: ID!
+        user: User
     }
 
     type Category {
@@ -23,6 +29,7 @@ const typeDefs = gql`
     }
 
     type Query {
+        me: Auth
         # ---- USER
         users: [User]
         user(_id: ID!): User
@@ -35,7 +42,7 @@ const typeDefs = gql`
     type Mutation {
         # ---- USER
         # CREATE
-        addUser(firstName: String!, lastName: String!, username: String!, password: String!, email: String!, budget: Float!, availableBalance: Float!): User
+        addUser(firstName: String!, lastName: String!, username: String!, password: String!, email: String!, budget: Float!, availableBalance: Float!): Auth
         # UPDATE
         updateUser(_id: ID!, firstName: String!, lastName: String!, username: String!, password: String!, email: String!, budget: Float!, availableBalance: Float!): User
         # DELETE
@@ -54,6 +61,9 @@ const typeDefs = gql`
         addCategoryToUser(user_id: ID!, category_id: ID!): User
         # REMOVE
         removeCategoryFromUser(user_id: ID!, category_id: ID!): User
+
+        # ---- LOGIN
+        login(email: String!, password: String!): Auth
     }
 `;
 

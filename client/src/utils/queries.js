@@ -11,6 +11,21 @@ export const QUERY_PROFILES = gql`
     }
 `;
 
+export const QUERY_me= gql`
+    query me {
+        me{
+        token
+        user {
+          _id
+          email
+          firstName
+          lastName
+          username
+        }
+      }
+    }
+`;
+
 // initialize a query that works in GraphQL
 // GET ALL USERS AND THEIR INFO
 export const QUERY_USERS = gql`
@@ -33,3 +48,26 @@ export const QUERY_USERS = gql`
         }
     }
 `;
+
+// GET ONE USERS AND THEIR INFO
+export const QUERY_ONE_USER = gql`
+    query retrieveOneUser($id: ID!) {
+        user(_id: $id) {
+            _id
+            firstName
+            lastName
+            username
+            password
+            email
+            budget
+            availableBalance
+            categories {
+                _id
+                name
+                amountAllocated
+                description
+            }
+        }
+    }
+`;
+
