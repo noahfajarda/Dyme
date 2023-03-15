@@ -10,11 +10,11 @@ db.once('open', async () => {
     // delete existing users & expenses
     await User.deleteMany({});
     await Expense.deleteMany({});
-    // create existing users & categories
+    // create existing users
     await User.create(userSeeds);
-    // await Expense.create(expenseSeeds);
 
 
+    // create categories and associate them with users
     for (let i = 0; i < expenseSeeds.length; i++) {
       const { _id, associatedUser } = await Expense.create(expenseSeeds[i]);
       const user = await User.findOneAndUpdate(
