@@ -16,48 +16,36 @@ import DisplayDataPage from "./pages/DisplayDataPage";
 import ExpensesPage from "./pages/ExpensesPage";
 
 const client = new ApolloClient({
-    uri: "/graphql",
-    cache: new InMemoryCache(),
+  uri: "/graphql",
+  cache: new InMemoryCache(),
 });
 
 function App() {
-    return (
-        <ApolloProvider client={client}>
-            {/* wrapper for everything routing related */}
-            <Router>
-                <div className="App">
-                    <header className="App-header">
-                        <Routes>
-                            {/* individual display route */}
-                            <Route path="/test" element={<TestPage />} />
-                            <Route
-                                path="/DisplayDataPage"
-                                element={<DisplayDataPage />}
-                            />
-                            <Route
-                                path="/question"
-                                element={<QuestionPage />}
-                            />
-                            <Route path="/login" element={<LoginPage1 />} />
-                            <Route
-                                path="/useramount"
-                                element={<UserAmount />}
-                            />
+  return (
+    <ApolloProvider client={client}>
+      {/* wrapper for everything routing related */}
+      <Router>
+        <div className="App">
+          <header className="App-header">
+            <Routes>
+              {/* individual display route */}
+              <Route path="/test" element={<TestPage />} />
+              <Route path="/DisplayDataPage" element={<DisplayDataPage />} />
+              <Route path="/question" element={<QuestionPage />} />
+              <Route path="/login" element={<LoginPage1 />} />
+              <Route path="/useramount" element={<UserAmount />} />
 
-                            <Route
-                                path="/loginDeprecated"
-                                element={<LoginPage />}
-                            />
-                            <Route path="/expenses" element={<ExpensesPage />} />
-                            <Route path="/home" element={<HomePage />} />
-                            {/* all other routes */}
-                            <Route path="*" element={<MainPage />} />
-                        </Routes>
-                    </header>
-                </div>
-            </Router>
-        </ApolloProvider>
-    );
+              <Route path="/loginDeprecated" element={<LoginPage />} />
+              <Route path="/expenses" element={<ExpensesPage />} />
+              <Route path="/home" element={<HomePage />} />
+              {/* all other routes */}
+              <Route path="*" element={<MainPage />} />
+            </Routes>
+          </header>
+        </div>
+      </Router>
+    </ApolloProvider>
+  );
 }
 
 export default App;
