@@ -8,7 +8,7 @@ const userSchema = new Schema(
         firstName: {
             type: String,
             required: true,
-            trim: true
+            trim: true,
         },
         lastName: {
             type: String,
@@ -34,7 +34,8 @@ const userSchema = new Schema(
             required: true,
             trim: true,
             // Must have upper, lower, number, 8-25 char
-            match: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,25}$/
+            match: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,25}$/,
+            minLength: 8,
         },
         // budget
         budget: {
