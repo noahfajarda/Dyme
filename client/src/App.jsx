@@ -13,6 +13,7 @@ import QuestionPage from "./pages/QuestionPage";
 import LoginPage1 from "./pages/LoginPage1";
 import LoginPage from "./pages/LoginPage";
 import DisplayDataPage from "./pages/DisplayDataPage";
+import ExpensesPage from "./pages/ExpensesPage";
 
 const client = new ApolloClient({
     uri: "/graphql",
@@ -42,12 +43,12 @@ function App() {
                                 path="/useramount"
                                 element={<UserAmount />}
                             />
-
                             <Route
                                 path="/loginDeprecated"
                                 element={<LoginPage />}
                             />
                             <Route path="/home" element={<HomePage />} />
+                            <Route path="/expenses" element={<ExpensesPage />} />
                             {/* all other routes */}
                             <Route path="*" element={<MainPage />} />
                         </Routes>
