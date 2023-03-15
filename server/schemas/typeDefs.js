@@ -8,10 +8,9 @@ const typeDefs = gql`
         lastName: String!
         username: String!
         email: String!
+        password: String!
         budget: Float!
-        password: String
-        availableBalance: Float!
-        categories: [Category]
+        expenses: [Expense]
     }
 
     # set up another type that attatches the JWT to the returned user
@@ -20,47 +19,48 @@ const typeDefs = gql`
         user: User
     }
 
-    type Category {
+    type Expense {
         _id: ID
         name: String!
-        amountAllocated: Float!
-        description: String!
-        # subCategories: [Category]
+        amount: Float!
+        category: String!,
+        description: String!,
+        associatedUser: String!
     }
 
     type Query {
-        me: Auth
+        # me: Auth
         # ---- USER
         users: [User]
         user(_id: ID!): User
 
         # ---- CATEGORY
-        categories: [Category]
-        category(_id: ID!): Category
+        expenses: [Expense]
+        expense(_id: ID!): Expense
     }
 
     type Mutation {
         # ---- USER
         # CREATE
-        addUser(firstName: String!, lastName: String!, username: String!, password: String!, email: String!, budget: Float!, availableBalance: Float!): Auth
+        addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!, budget: Float!): Auth
         # UPDATE
-        updateUser(_id: ID!, firstName: String!, lastName: String!, username: String!, password: String!, email: String!, budget: Float!, availableBalance: Float!): User
+        updateUser(_id: ID!, firstName: String!, lastName: String!, username: String!, email: String!, password: String!, budget: Float!): User
         # DELETE
         deleteUser(_id: ID!): User
 
-        # ---- CATEGORY
+        # ---- EXPENSE
         # CREATE
-        addCategory(_id: ID, name: String!, amountAllocated: Float!, description: String!): Category
+        addExpense(name: String!, amount: Float!, category: String!, description: String!, associatedUser: String!): Expense
         # UPDATE
-        updateCategory(_id: ID, name: String!, amountAllocated: Float!, description: String!): Category
+        updateExpense(_id: ID, name: String!, amount: Float!, category: String!, description: String!, associatedUser: String!): Expense
         # DELETE
-        deleteCategory(_id: ID!): Category
+        deleteExpense(_id: ID!): Expense
 
-        # ---- CATEGORY X USER ASSOCIATIONS
+        # ---- EXPENSE X USER ASSOCIATIONS
         # ADD
-        addCategoryToUser(user_id: ID!, category_id: ID!): User
+        addExpenseToUser(user_id: ID!, expense_id: ID!): User
         # REMOVE
-        removeCategoryFromUser(user_id: ID!, category_id: ID!): User
+        removeExpenseFromUser(user_id: ID!, expense_id: ID!): User
 
         # ---- LOGIN
         login(email: String!, password: String!): Auth

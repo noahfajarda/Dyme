@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useMutation } from "@apollo/client";
+import Auth from "../../utils/auth";
+import { LOG_IN } from "../../utils/mutations";
 
 export default function Login() {
-    const [formState, setFormState] = useState({ username: "", password: "" });
+    const [formState, setFormState] = useState({ email: "", password: "" });
+    const [LogIn, { error, data }] = useMutation(LOG_IN);
 
     // update state based on form input changes
     const handleChange = (event) => {
@@ -15,11 +19,30 @@ export default function Login() {
     // submit form toward the log-in mutation
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState.username);
-        console.log(formState.password);
 
-        // TODO: find a way to fix error in console
-        // TODO: run the log in mutation query
+        if (!formState.email || !formState.password) {
+            console.log("Not All Fields Were Entered. Please Try Again.");
+            return;
+        }
+        if (!formState.email.includes("@")) {
+            console.log("Your Email Is Invalid. Please Try Again.");
+            return;
+        }
+
+        try {
+            const { data } = await LogIn({
+                variables: formState,
+            });
+            console.log(data);
+
+            Auth.login(data.login.token);
+            document.location.href = "/home";
+        } catch (error) {
+            console.log("There Was An Error Signing Up. Please Try Again.");
+            console.error(error);
+        }
+        console.log(formState.email);
+        console.log(formState.password);
 
         // clear form values
         setFormState({
@@ -35,8 +58,8 @@ export default function Login() {
                 <i className="fas fa-user"></i>
                 <input
                     type="text"
-                    placeholder="Username"
-                    name="username"
+                    placeholder="Email"
+                    name="email"
                     value={formState.email}
                     onChange={handleChange}
                 />
@@ -52,23 +75,6 @@ export default function Login() {
                 />
             </div>
             <input type="submit" value="Login" className="btn solid" />
-            <p className="social-text">Or Log in with social platforms</p>
-
-            {/* <!-- ------Social Icons For Log In Page --------> */}
-            <div className="social-media">
-                <a href="https://facebook.com/" className="social-icon">
-                    {/* <i className="fab fa-facebook-f"></i> */}
-                </a>
-                <a href="https://twitter.com/home" className="social-icon">
-                    {/* <i className="fab fa-twitter"></i> */}
-                </a>
-                <a href="https://google.com/" className="social-icon">
-                    {/* <i className="fab fa-google"></i> */}
-                </a>
-                <a href="https://google.com/" className="social-icon">
-                    {/* <i className="fab fa-linkedin-in"></i> */}
-                </a>
-            </div>
         </form>
     );
 }

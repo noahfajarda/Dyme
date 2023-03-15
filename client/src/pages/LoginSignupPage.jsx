@@ -1,39 +1,24 @@
 import React, { useEffect, useState } from "react";
-import "../styles/LoginPage.css";
+import "../styles/LoginSignupPage.css";
 import Signup from "../components/Signup/Signup";
 import Login from "../components/Login/Login";
-// import FontAwesomeIcon from "@fortawesome/react-fontawesome";
-
-// const styles = {
-//     card: {
-//         padding: 20,
-//     },
-// };
+import { Link, Navigate } from "react-router-dom";
+import Auth from "../utils/auth";
 
 function LoginPage() {
-    // steps:
-    // define mutation
-    // use useMuation to accept the datas
-
-    // get the user using a query FIND ONE USER
-    // cache the found user
-
-    // on sign up
-    // add user mutation
-    // THEN, get user, params: user ID, then RETURN payload
-    // extract the token
-    // any time user wants to do a mutation, check if there's a user obejct available
-    // return the object
-
     const [signup, setsignup] = useState(false);
+
+    if (Auth.loggedIn()) {
+        return <Navigate to="/home" />;
+    }
 
     return (
         <div className="login-container">
             <div className="container">
                 <div className="forms-container">
                     <div className="signin-signup">
+                        {/* Data retrieval components */}
                         {!signup ? <Login /> : <Signup />}
-                        {/* <!-------- Left Side Of Sign Up Page ----------> */}
                     </div>
                 </div>
 

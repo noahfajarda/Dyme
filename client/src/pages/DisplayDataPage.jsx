@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-// import 'useQuery' & 'gql' from 'apollo client'
 import { useQuery } from "@apollo/client";
 import { gql } from "@apollo/client";
-// import the READ query to display data
 import { QUERY_USERS } from "../utils/queries";
+import { Link, Navigate } from "react-router-dom";
+import Auth from "../utils/auth";
 
 export default function DisplayDataPage() {
     // use 'useQuery' to retrieve the data back from the query
@@ -11,6 +11,10 @@ export default function DisplayDataPage() {
     // isolate the data you need
     const users = data?.users || [];
     console.log(users);
+
+    if (!Auth.loggedIn()) {
+        return <Navigate to="/login" />;
+    }
 
     return (
         <div>

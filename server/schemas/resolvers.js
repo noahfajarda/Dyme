@@ -1,5 +1,5 @@
-const { User, Category } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
+const { User, Expense } = require('../models');
 const { signToken } = require('../utils/auth');
 
 
@@ -9,46 +9,37 @@ const resolvers = {
         // FIND ALL
         users: async () => {
             try {
-                // console.log(await User.find({}))
-                return await User.find({}).populate("categories")
+                return await User.find({}).populate("expenses")
             } catch (err) {
                 console.log("\n\n\nThere was a server-side error: \n\n\n", err)
             }
         },
         // FIND ONE BY ID
-        // user: async (parent, { _id }) => {
-        //     try {
-        //         // timestamps are in the console logs
-        //         console.log(await User.findById(_id))
-        //         return await User.findById(_id);
-        //     } catch (err) {
-        //         console.log("\n\n\nThere was a server-side error: \n\n\n", err)
-        //     }
-        // },
-    me: async(parent, { _id }, context) => {
-        console.log (context.user)
-        if (context.user) {
-            const user = await user.findById(context.user._id)
-            return user
-        }
-    },
-
-        // ---- CATEGORY
-        // FIND ALL
-        categories: async () => {
-            try {
-                // console.log(await Category.find({}))
-                return await Category.find({})
-            } catch (err) {
-                console.log("\n\n\nThere was a server-side error: \n\n\n", err)
-            }
-        },
-        // FIND ONE BY ID
-        category: async (parent, { _id }) => {
+        user: async (parent, { _id }) => {
             try {
                 // timestamps are in the console logs
-                console.log(await Category.findById(_id))
-                return await Category.findById(_id);
+                console.log(await User.findById(_id).populate("expenses"))
+                return await User.findById(_id).populate("expenses");
+            } catch (err) {
+                console.log("\n\n\nThere was a server-side error: \n\n\n", err)
+            }
+        },
+
+        // ---- EXPENSES
+        // FIND ALL
+        expenses: async () => {
+            try {
+                return await Expense.find({})
+            } catch (err) {
+                console.log("\n\n\nThere was a server-side error: \n\n\n", err)
+            }
+        },
+        // FIND ONE BY ID
+        expense: async (parent, { _id }) => {
+            try {
+                // timestamps are in the console logs
+                console.log(await Expense.findById(_id))
+                return await Expense.findById(_id);
             } catch (err) {
                 console.log("\n\n\nThere was a server-side error: \n\n\n", err)
             }
@@ -74,25 +65,27 @@ const resolvers = {
 
         // ---- CATEGORY
         // CREATE
-        addCategory: async (parent, { name, amountAllocated, description }) => {
-            return await Category.create({ name, amountAllocated, description })
+        addExpense: async (parent, { name, amount, category, description, associatedUser }) => {
+            return await Expense.create({ name, amount, category, description, associatedUser })
         },
         // UPDATE
-        updateCategory: async (parent, { _id, name, amountAllocated, description }) => {
-            return Category.findByIdAndUpdate(_id, { name, amountAllocated, description }, { new: true });
+        updateExpense: async (parent, { _id, name, amount, category, description, associatedUser }) => {
+            return Expense.findByIdAndUpdate(_id, { name, amount, category, description, associatedUser }, { new: true });
         },
         // DELETE
-        deleteCategory: async (parent, { _id }) => {
-            return Category.findOneAndDelete({ _id });
+        deleteExpense: async (parent, { _id }) => {
+            return Expense.findOneAndDelete({ _id });
         },
 
-        // ---- CATEGORY X USER ASSOCIATIONS
+        // ---- EXPENSE X USER ASSOCIATIONS
         // ADD
-        addCategoryToUser: async (parent, { user_id, category_id }) => {
+        addExpenseToUser: async (parent, { user_id, expense_id }) => {
+            console.log()
+
             return User.findOneAndUpdate(
                 { _id: user_id },
                 {
-                    $addToSet: { categories: category_id }
+                    $addToSet: { expenses: expense_id }
                 },
                 {
                     // return the NEWLY UPDATED data
@@ -101,11 +94,11 @@ const resolvers = {
             )
         },
         // REMOVE
-        removeCategoryFromUser: async (parent, { user_id, category_id }) => {
+        removeExpenseFromUser: async (parent, { user_id, expense_id }) => {
             return User.findOneAndUpdate(
                 { _id: user_id },
                 {
-                    $pull: { categories: category_id }
+                    $pull: { expenses: expense_id }
                 },
                 {
                     new: true
@@ -135,9 +128,6 @@ const resolvers = {
             const token = signToken(user);
 
             return { user, token };
-
-
-            // return user;
         }
     },
 };

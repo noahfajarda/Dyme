@@ -1,7 +1,6 @@
 // use this to decode a token and get the user's information out of it
 import decode from 'jwt-decode';
 
-
 // create a new class to instantiate for a user
 class AuthService {
   // get user data from JSON web token by decoding it
@@ -20,29 +19,6 @@ class AuthService {
   getToken() {
     // Retrieves the user token from localStorage
     return localStorage.getItem('id_token');
-  }
-
-  // NEW CHECK LOG IN FUNCTION
-  checkLogIn() {
-    // retrieve a token from local storage
-    const token = localStorage.getItem("id_token");
-    if (token) {
-      let decodedToken = decode(token);
-      // check if the session is within 1 hour
-      if (token && decodedToken.exp > Date.now() / 1000) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  tokenData() {
-    const token = localStorage.getItem("id_token");
-    if (token) {
-      return decode(token);
-    }
-    return "no token data"
-
   }
 
   login(idToken) {
