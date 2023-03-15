@@ -16,6 +16,7 @@ import HomePage from "./pages/HomePage";
 import QuestionPage from "./pages/QuestionPage";
 import LoginSignupPage from "./pages/LoginSignupPage";
 import DisplayDataPage from "./pages/DisplayDataPage";
+import ExpensesPage from "./pages/ExpensesPage";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -65,6 +66,10 @@ function App() {
                             <Route
                                 path="/useramount"
                                 element={<UserAmount />}
+                            />
+                            <Route
+                                path="/expenses"
+                                element={<ExpensesPage />}
                             />
                             <Route path="/home" element={<HomePage />} />
 
