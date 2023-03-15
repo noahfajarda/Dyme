@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SavingsGoal from "../components/SavingsGoal";
 import "../styles/Homestyles.css";
 import Menu from "../components/Menu/Menu";
@@ -27,10 +27,10 @@ function HomePage() {
         return <Navigate to="/login" />;
     }
 
-    const styles = {
-        checkStatus: {
-            color: "white",
-        },
+    // updating each expense
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        console.log(e.target.parentNode);
     };
 
     return (
@@ -38,62 +38,17 @@ function HomePage() {
             <div className="app-main">
                 {/* display different elements based on log in status */}
                 {Auth.loggedIn() ? (
-                    <div style={styles.checkStatus}>
-                        <div>
+                    <div>
+                        {/* showing ALL data stored in a user */}
+                        <div className="DB-info-container-1">
                             <h1>
                                 UserID: <p className="DB-info">{user._id}</p>
-                            </h1>
-                            <h1>
-                                Available balance
-                                <p className="DB-info">
-                                    {user.availableBalance}
-                                </p>
                             </h1>
                             <h1>
                                 Budget
                                 <p className="DB-info">{user.budget}</p>
                             </h1>
-                            <h1>
-                                Expenses
-                                <p className="DB-info">
-                                    {user.expenses.map((expense) => {
-                                        return (
-                                            <div>
-                                                <div>
-                                                    <div className="label">
-                                                        Amount
-                                                    </div>
-                                                    {expense.amount}
-                                                </div>
-                                                <div>
-                                                    <div className="label">
-                                                        Associated User
-                                                    </div>
-                                                    {expense.associatedUser}
-                                                </div>
-                                                <div>
-                                                    <div className="label">
-                                                        Category
-                                                    </div>
-                                                    {expense.category}
-                                                </div>
-                                                <div>
-                                                    <div className="label">
-                                                        Description
-                                                    </div>
-                                                    {expense.description}
-                                                </div>
-                                                <div>
-                                                    <div className="label">
-                                                        Name
-                                                    </div>
-                                                    {expense.name}
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
-                                </p>
-                            </h1>
+
                             <h1>
                                 Email
                                 <p className="DB-info">{user.email}</p>
@@ -111,6 +66,125 @@ function HomePage() {
                                 <p className="DB-info">{user.username}</p>
                             </h1>
                         </div>
+                        <div className="DB-info-container-2">
+                            <div className="expenses">
+                                <h1>Expenses</h1>
+                                <table className="expenses-table">
+                                    {/* column names */}
+                                    <thead>
+                                        <tr>
+                                            <th className="field-label">ID</th>
+                                            <th className="field-label">
+                                                Amount
+                                            </th>
+                                            <th className="field-label">
+                                                Associated User
+                                            </th>
+                                            <th className="field-label">
+                                                Category
+                                            </th>
+                                            <th className="field-label">
+                                                Description
+                                            </th>
+                                            <th className="field-label">
+                                                Name
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    {/* data */}
+                                    <tbody className="expenses-info">
+                                        {user.expenses &&
+                                            user.expenses.map((expense) => {
+                                                return (
+                                                    <tr key={expense._id}>
+                                                        <td>
+                                                            <div>
+                                                                {expense._id}
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                ${" "}
+                                                                {expense.amount}
+                                                            </div>
+                                                            $
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                {
+                                                                    expense.associatedUser
+                                                                }
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                {
+                                                                    expense.category
+                                                                }
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                {
+                                                                    expense.description
+                                                                }
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                {expense.name}
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            })}
+                                        <tr>
+                                            <td>
+                                                <input type="text" />
+                                            </td>
+                                            <td>
+                                                <input type="text" />
+                                            </td>
+                                            <td>
+                                                <input type="text" />
+                                            </td>
+                                            <td>
+                                                <select
+                                                    id="categories"
+                                                    name="categories"
+                                                >
+                                                    <option value="Food & Dining">
+                                                        Food & Dining
+                                                    </option>
+                                                    <option value="saab">
+                                                        Saab
+                                                    </option>
+                                                    <option
+                                                        value="fiat"
+                                                        selected
+                                                    >
+                                                        Fiat
+                                                    </option>
+                                                    <option value="audi">
+                                                        Audi
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="text" />
+                                            </td>
+                                            <td>
+                                                <input type="text" />
+                                            </td>
+                                            <button onClick={handleFormSubmit}>
+                                                submit
+                                            </button>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        {/* display the stylized homepage */}
                         <h1>Hello, Welcome </h1>
                         <div className="main-header-line">
                             <Menu />
@@ -344,7 +418,7 @@ function HomePage() {
                         </div>
                     </div>
                 ) : (
-                    <div style={styles.checkStatus}>
+                    <div>
                         <Link to="/login">
                             <h1>Log In to see the view! </h1>
                         </Link>

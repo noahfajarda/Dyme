@@ -57,26 +57,41 @@ h3 {
     max-width: 1680px;
 }
 
+/* DB stuff */
 .DB-info {
     color: green;
 }
-.label {
+.field-label {
     color: rgb(172, 245, 172);
+    font-size: 20px;
+}
+.DB-info-container-1 {
+    display: flex;
+    font-size: 12px;
+    color: white;
+}
+.DB-info-container-2 {
+    display: flex;
+    font-size: 12px;
+    color: white;
+}
+h1 {
+    margin: 20px;
+}
+.expenses-info {
+    color: green;
+}
+.expenses-table {
+    border: "1px solid red";
+    background-color: rgb(214, 122, 122);
+    font-size: 20px;
+}
+th,
+td {
+    padding: 20px;
 }
 
-/* .app-left {
-  flex-basis: 240px;
-  background-color: var(--app-bg-dark);
-  height: 100;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 24px 0;
-  transition: all 0.4s ease-in;
-}
-.app-left.show {
-  right: 0;
-  opacity: 1;
-} */
+/* END DB stuff */
 
 .app-main {
     flex: 1;
