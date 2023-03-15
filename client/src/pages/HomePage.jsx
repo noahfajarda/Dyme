@@ -6,28 +6,26 @@ import { Link, Navigate } from "react-router-dom";
 import Auth from "../utils/auth";
 
 // queries
-import { QUERY_me } from "../utils/queries";
+import { QUERY_ONE_USER } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 
 function HomePage() {
-    // set initial logged in state to false
+    // retrieve the id from token to get specific user data
+    const token = Auth.getProfile();
+    const id = token.data._id;
 
-    const { loading, data } = useQuery(QUERY_me);
-
-    if (!Auth.loggedIn()) {
-        return <Navigate to="/login" />;
-    }
+    const { loading, error, data } = useQuery(QUERY_ONE_USER, {
+        variables: { id },
+    });
 
     // isolate the DB data you need
     const user = data?.user || [];
-
-    // THIS IS WERE ALL USER DATA IS STORED
-    // THIS IS WERE ALL USER DATA IS STORED
-    // THIS IS WERE ALL USER DATA IS STORED
-    // THIS IS WERE ALL USER DATA IS STORED
-    // THIS IS WERE ALL USER DATA IS STORED
-    // THIS IS WERE ALL USER DATA IS STORED
     console.log(user);
+
+    // log in check
+    if (!Auth.loggedIn()) {
+        return <Navigate to="/login" />;
+    }
 
     const styles = {
         checkStatus: {
@@ -41,16 +39,79 @@ function HomePage() {
                 {/* display different elements based on log in status */}
                 {Auth.loggedIn() ? (
                     <div style={styles.checkStatus}>
-                        loggedIn
+                        <div>
+                            <h1>
+                                UserID: <p className="DB-info">{user._id}</p>
+                            </h1>
+                            <h1>
+                                Available balance
+                                <p className="DB-info">
+                                    {user.availableBalance}
+                                </p>
+                            </h1>
+                            <h1>
+                                Budget
+                                <p className="DB-info">{user.budget}</p>
+                            </h1>
+                            <h1>
+                                Expenses
+                                <p className="DB-info">
+                                    {user.expenses.map((expense) => {
+                                        return (
+                                            <div>
+                                                <div>
+                                                    <div className="label">
+                                                        Amount
+                                                    </div>
+                                                    {expense.amount}
+                                                </div>
+                                                <div>
+                                                    <div className="label">
+                                                        Associated User
+                                                    </div>
+                                                    {expense.associatedUser}
+                                                </div>
+                                                <div>
+                                                    <div className="label">
+                                                        Category
+                                                    </div>
+                                                    {expense.category}
+                                                </div>
+                                                <div>
+                                                    <div className="label">
+                                                        Description
+                                                    </div>
+                                                    {expense.description}
+                                                </div>
+                                                <div>
+                                                    <div className="label">
+                                                        Name
+                                                    </div>
+                                                    {expense.name}
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </p>
+                            </h1>
+                            <h1>
+                                Email
+                                <p className="DB-info">{user.email}</p>
+                            </h1>
+                            <h1>
+                                First Name
+                                <p className="DB-info">{user.firstName}</p>
+                            </h1>
+                            <h1>
+                                Last Name
+                                <p className="DB-info">{user.lastName}</p>
+                            </h1>
+                            <h1>
+                                Username
+                                <p className="DB-info">{user.username}</p>
+                            </h1>
+                        </div>
                         <h1>Hello, Welcome </h1>
-                        <h1>{user._id}</h1>
-                        <h1>{user.availableBalance}</h1>
-                        <h1>{user.budget}</h1>
-                        <h1>{user.categories}</h1>
-                        <h1>{user.email}</h1>
-                        <h1>{user.firstName}</h1>
-                        <h1>{user.lastName}</h1>
-                        <h1>{user.username}</h1>
                         <div className="main-header-line">
                             <Menu />
 

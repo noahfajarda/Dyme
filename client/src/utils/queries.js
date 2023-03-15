@@ -16,11 +16,11 @@ export const QUERY_me = gql`
         me{
         token
         user {
-          _id
-          email
-          firstName
-          lastName
-          username
+            _id
+            email
+            firstName
+            lastName
+            username
         }
       }
     }
@@ -57,17 +57,17 @@ export const QUERY_ONE_USER = gql`
             firstName
             lastName
             username
-            password
             email
+            password
             budget
-            availableBalance
-            categories {
-                _id
-                name
-                amountAllocated
-                description
+            expenses {
+            _id
+            name
+            amount
+            category
+            description
+            associatedUser
             }
         }
     }
 `;
-

@@ -18,8 +18,8 @@ const resolvers = {
         user: async (parent, { _id }) => {
             try {
                 // timestamps are in the console logs
-                console.log(await User.findById(_id))
-                return await User.findById(_id);
+                console.log(await User.findById(_id).populate("expenses"))
+                return await User.findById(_id).populate("expenses");
             } catch (err) {
                 console.log("\n\n\nThere was a server-side error: \n\n\n", err)
             }
