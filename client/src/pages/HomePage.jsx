@@ -53,7 +53,9 @@ function HomePage() {
         <div className="chart-row three">
           <div className="chart-container-wrapper" id="expense-color">
             <div className="chart-container-header">
+              <a href="/expenses">
               <h2>Expenses</h2>
+              </a>
               <span href="#">This month</span>
             </div>
             <div className="acquisitions-bar">

@@ -13,12 +13,61 @@ function ExpensesPage() {
         misc: 0
     });
 
+//     const submitButton = document.getElementById("submit");
+
+// submitButton.addEventListener("click", (event) => {
+//   event.preventDefault(); // prevent the form from submitting and reloading the page
+
+//   const category = document.getElementById("category").value;
+//   const amount = document.getElementById("amount").value;
+//   const name = document.getElementById("name").value;
+
+//   // do something with the form data, for example:
+//   console.log(`Category: ${category}, Amount: ${amount}, Name: ${name}`);
+
+//   // clear the form fields
+//   document.getElementById("category").value = "rent";
+//   document.getElementById("amount").value = "";
+//   document.getElementById("name").value = "";
+// });
 
   return (
     <div className="expense-page">
     <div>
-        <h1>Expenses</h1>
+      <a href="/home">
+        <h1 className="exp-header">Expenses</h1>
+      </a>
     </div>
+
+
+    <div class="expense-form">
+  <h2>Add an expense:</h2>
+  <div class="expense-inputs">
+    <div class="expense-category">
+      <label for="category">Category:</label>
+      <select id="category">
+        <option value="rent">Rent & Living Expenses</option>
+        <option value="lifestyle">Lifestyle</option>
+        <option value="auto">Auto & Transportation</option>
+        <option value="food">Food/Dining</option>
+        <option value="health">Health & Fitness</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="misc">Misc</option>
+      </select>
+    </div>
+    <div class="expense-amount">
+      <label for="amount">Amount: $</label>
+      <input type="text" id="amount"/>
+    </div>
+    <div class="expense-name">
+      <label for="name">Label:</label>
+      <input type="text" id="name" />
+    </div>
+    <button id="submit">Submit</button>
+  </div>
+</div>
+
+
       <ul className="accordion">
         <li className="accordion-item">
           <input id="s1" className="hide" type="checkbox" />
