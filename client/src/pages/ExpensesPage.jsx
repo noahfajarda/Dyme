@@ -136,8 +136,8 @@ function ExpensesPage() {
       .map((expense) => {
         return expense.amount !== 0 ? (
           <li key={expense._id}>
-            <div style={{ marginTop: "10px" }}>{expense.name}</div>
-            <div>{expense.amount}</div>
+            <div>{expense.name}</div>
+            <div>${expense.amount}</div>
             <div>{expense.category}</div>
           </li>
         ) : (
@@ -161,8 +161,8 @@ function ExpensesPage() {
       .map((expense) => {
         return expense.amount !== 0 ? (
           <li key={expense._id}>
-            <div style={{ marginTop: "10px" }}>{expense.name}</div>
-            <div>{expense.amount}</div>
+            <div>{expense.name}</div>
+            <div>${expense.amount}</div>
             <div>{expense.category}</div>
           </li>
         ) : (
@@ -187,8 +187,8 @@ function ExpensesPage() {
       .map((expense) => {
         return expense.amount !== 0 ? (
           <li key={expense._id}>
-            <div style={{ marginTop: "10px" }}>{expense.name}</div>
-            <div>{expense.amount}</div>
+            <div>{expense.name}</div>
+            <div>${expense.amount}</div>
             <div>{expense.category}</div>
           </li>
         ) : (
@@ -213,8 +213,8 @@ function ExpensesPage() {
       .map((expense) => {
         return expense.amount !== 0 ? (
           <li key={expense._id}>
-            <div style={{ marginTop: "10px" }}>{expense.name}</div>
-            <div>{expense.amount}</div>
+            <div>{expense.name}</div>
+            <div>${expense.amount}</div>
             <div>{expense.category}</div>
           </li>
         ) : (
@@ -239,8 +239,8 @@ function ExpensesPage() {
       .map((expense) => {
         return expense.amount !== 0 ? (
           <li key={expense._id}>
-            <div style={{ marginTop: "10px" }}>{expense.name}</div>
-            <div>{expense.amount}</div>
+            <div>{expense.name}</div>
+            <div>${expense.amount}</div>
             <div>{expense.category}</div>
           </li>
         ) : (
@@ -265,8 +265,8 @@ function ExpensesPage() {
       .map((expense) => {
         return expense.amount !== 0 ? (
           <li key={expense._id}>
-            <div style={{ marginTop: "10px" }}>{expense.name}</div>
-            <div>{expense.amount}</div>
+            <div>{expense.name}</div>
+            <div>${expense.amount}</div>
             <div>{expense.category}</div>
           </li>
         ) : (
@@ -291,8 +291,8 @@ function ExpensesPage() {
       .map((expense) => {
         return expense.amount !== 0 ? (
           <li key={expense._id}>
-            <div style={{ marginTop: "10px" }}>{expense.name}</div>
-            <div>{expense.amount}</div>
+            <div>{expense.name}</div>
+            <div>${expense.amount}</div>
             <div>{expense.category}</div>
           </li>
         ) : (
