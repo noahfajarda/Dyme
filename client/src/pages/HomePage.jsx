@@ -1,15 +1,16 @@
 import React from "react";
 // import "../App.css";
-import SavingsGoal from "../components/SavingsGoal/SavingsGoal";
+// import SavingsGoal from "../components/SavingsGoal/SavingsGoal";
 import "../styles/Homestyles.css";
 import Menu from "../components/Menu/Menu";
+import PieChart from "../components/PieChart/PieChart";
 
 function HomePage() {
   return (
     <div className="app-container">
       <div className="app-main">
         <div className="main-header-line">
-          <h1>Hello, Welcome back </h1>
+          <h1>Hello, Welcome back</h1>
 
           <Menu />
 
@@ -100,6 +101,7 @@ function HomePage() {
                 <span className="progress-type">Miscellaneous Expenses</span>
                 <span className="progress-amount">8%</span>
               </div>
+              <PieChart />
             </div>
             <div id="app"></div>
           </div>
@@ -176,7 +178,7 @@ function HomePage() {
           <div className="chart-container-wrapper big">
             <div className="chart-container">
               <div className="chart-container-header">
-                <h2>Budgets</h2>
+                <h2>Budgets </h2>
                 <span>Last 30 days</span>
               </div>
               <div className="line-chart">
@@ -191,7 +193,7 @@ function HomePage() {
             <div className="chart-container">
               <div className="chart-container">
                 <div className="chart-info-wrapper">
-                  <h2>Goals</h2>
+                  <h2>Financial Advice</h2>
                   <span>$600/$1400</span>
                 </div>
                 <div className="chart-svg">
