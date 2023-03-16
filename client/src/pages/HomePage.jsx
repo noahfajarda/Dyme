@@ -2,12 +2,8 @@ import React, { useState, useEffect } from "react";
 import SavingsGoal from "../components/SavingsGoal";
 import "../styles/Homestyles.css";
 import Menu from "../components/Menu/Menu";
-import { Link, Navigate, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
-
-// queries
-import { QUERY_ONE_USER, QUERY_me } from "../utils/queries";
-import { useQuery } from "@apollo/client";
 
 // mutations
 import { CREATE_EXPENSE, ADD_EXPENSE_TO_USER } from "../utils/mutations";
