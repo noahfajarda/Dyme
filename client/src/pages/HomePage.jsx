@@ -21,7 +21,7 @@ function HomePage() {
         associatedUser: "",
         category: "Rent & Living Expenses",
         description: "",
-        // name: "",
+        name: "",
     });
     const [CreateExpense, { createExpenseError, createExpenseData }] =
         useMutation(CREATE_EXPENSE);
@@ -79,7 +79,15 @@ function HomePage() {
             });
             console.log(associateUserAndExpense.data);
 
-            document.location.href = "/home";
+            setexpenseForm({
+                amount: 0,
+                associatedUser: "",
+                category: "Rent & Living Expenses",
+                description: "",
+                name: "",
+            });
+
+            // document.location.href = "/home";
         } catch (e) {
             console.log("There Was An Error Signing Up. Please Try Again.");
             console.error(e);
@@ -101,6 +109,13 @@ function HomePage() {
         });
     };
 
+    let count = 0;
+    function calculateIndividualPercentage(expenseAmount, total) {
+        let percentage = (expenseAmount / total).toFixed(2) + "%";
+        percentage = percentage.replace("0.", "");
+        return percentage;
+    }
+
     return (
         <div className="app-container">
             <div className="app-main">
@@ -117,7 +132,6 @@ function HomePage() {
                                 Budget
                                 <p className="DB-info">{user.budget}</p>
                             </h1>
-
                             <h1>
                                 Email
                                 <p className="DB-info">{user.email}</p>
@@ -147,9 +161,6 @@ function HomePage() {
                                                 Amount
                                             </th>
                                             <th className="field-label">
-                                                Associated User
-                                            </th>
-                                            <th className="field-label">
                                                 Category
                                             </th>
                                             <th className="field-label">
@@ -158,10 +169,18 @@ function HomePage() {
                                             <th className="field-label">
                                                 Name
                                             </th>
+                                            <th className="field-label">
+                                                Percentage
+                                            </th>
                                         </tr>
                                     </thead>
                                     {/* data */}
+
                                     <tbody className="expenses-info">
+                                        {/* reset counter */}
+                                        <div className="counter">
+                                            {(count = 0)}
+                                        </div>
                                         {user.expenses &&
                                             user.expenses.map((expense) => {
                                                 return (
@@ -175,13 +194,6 @@ function HomePage() {
                                                             <div>
                                                                 ${" "}
                                                                 {expense.amount}
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div>
-                                                                {
-                                                                    expense.associatedUser
-                                                                }
                                                             </div>
                                                         </td>
                                                         <td>
@@ -203,12 +215,19 @@ function HomePage() {
                                                                 {expense.name}
                                                             </div>
                                                         </td>
+                                                        <div className="counter">
+                                                            {
+                                                                (count +=
+                                                                    expense.amount)
+                                                            }
+                                                        </div>
                                                     </tr>
                                                 );
                                             })}
                                         <tr>
+                                            {/* display total amount */}
                                             <td>
-                                                <input type="text" />
+                                                <h1>Total: ${count}</h1>
                                             </td>
                                             <td>
                                                 <input
@@ -217,16 +236,6 @@ function HomePage() {
                                                     value={expenseForm.amount}
                                                     onChange={handleChange}
                                                 />
-                                            </td>
-                                            <td>
-                                                {/* <input
-                                                    type="text"
-                                                    name="associatedUser"
-                                                    value={
-                                                        expenseForm.associatedUser
-                                                    }
-                                                    onChange={handleChange}
-                                                /> */}
                                             </td>
                                             <td>
                                                 <select
@@ -284,6 +293,20 @@ function HomePage() {
                                             </button>
                                         </tr>
                                     </tbody>
+                                    {user.expenses &&
+                                        user.expenses.map((expense) => {
+                                            return (
+                                                <td>
+                                                    <div>
+                                                        {expense.name}{" "}
+                                                        {calculateIndividualPercentage(
+                                                            expense.amount,
+                                                            count
+                                                        )}
+                                                    </div>
+                                                </td>
+                                            );
+                                        })}
                                 </table>
                             </div>
                         </div>
