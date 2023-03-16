@@ -26,6 +26,13 @@ const resolvers = {
                 console.log("\n\n\nThere was a server-side error: \n\n\n", err)
             }
         },
+        // ME
+        me: async (parent, args, context) => {
+            if (context.user) {
+                return User.findOne({ _id: context.user._id }).populate("expenses")
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
 
         // ---- EXPENSES
         // FIND ALL

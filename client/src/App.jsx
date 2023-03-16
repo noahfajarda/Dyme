@@ -5,10 +5,12 @@ import {
     InMemoryCache,
     ApolloProvider,
     createHttpLink,
+    useQuery,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Link, Navigate } from "react-router-dom";
+import { QUERY_ONE_USER, QUERY_me } from "./utils/queries";
 
 // pages
 import UserAmount from "./pages/UserAmount";
@@ -18,71 +20,48 @@ import LoginSignupPage from "./pages/LoginSignupPage";
 import DisplayDataPage from "./pages/DisplayDataPage";
 import ExpensesPage from "./pages/ExpensesPage";
 
-// Construct our main GraphQL API endpoint
-const httpLink = createHttpLink({
-    uri: "/graphql",
-});
-
-// Construct request middleware that will attach the JWT token to every request as an `authorization` header
-const authLink = setContext((_, { headers }) => {
-    // get the authentication token from local storage if it exists
-    const token = localStorage.getItem("id_token");
-    // return the headers to the context so httpLink can read them
-    return {
-        headers: {
-            ...headers,
-            authorization: token ? `Bearer ${token}` : "",
-        },
-    };
-});
-
-const client = new ApolloClient({
-    // uri: "/graphql",
-    link: authLink.concat(httpLink),
-    cache: new InMemoryCache(),
-});
-
 function App() {
+    const { loading, error, data } = useQuery(QUERY_me);
+    // isolate the DB data you need
+    const user = data?.me;
     return (
-        <ApolloProvider client={client}>
+        <Router>
             {/* wrapper for everything routing related */}
-            <Router>
-                <div className="App">
-                    <header className="App-header">
-                        <Routes>
-                            {/* individual display route */}
-                            <Route
-                                path="/DisplayDataPage"
-                                element={<DisplayDataPage />}
-                            />
-                            <Route
-                                path="/question"
-                                element={<QuestionPage />}
-                            />
-                            <Route
-                                path="/login"
-                                element={<LoginSignupPage />}
-                            />
-                            <Route
-                                path="/useramount"
-                                element={<UserAmount />}
-                            />
-                            <Route
-                                path="/expenses"
-                                element={<ExpensesPage />}
-                            />
-                            <Route path="/home" element={<HomePage />} />
-
-                            {/* all other routes */}
-                            <Route
-                                path="*"
-                                element={<Navigate to="/login" />}
-                            />
-                        </Routes>
-                    </header>
-                </div>
-            </Router>
-        </ApolloProvider>
+            <div className="App">
+                <header className="App-header">
+                    <Routes>
+                        {/* individual display route */}
+                        {user && (
+                            <>
+                                <Route
+                                    path="/DisplayDataPage"
+                                    element={<DisplayDataPage />}
+                                />
+                                <Route
+                                    path="/question"
+                                    element={<QuestionPage />}
+                                />
+                                <Route
+                                    path="/useramount"
+                                    element={<UserAmount />}
+                                />
+                                <Route
+                                    path="/expenses"
+                                    element={<ExpensesPage />}
+                                />
+                                <Route
+                                    path="/home"
+                                    element={<HomePage user={user} />}
+                                />
+                            </>
+                        )}
+                        <Route path="/login" element={<LoginSignupPage />} />
+                        {/* all other routes */}
+                        <Route path="*" element={<Navigate to="/login" />} />
+                    </Routes>
+                </header>
+            </div>
+        </Router>
     );
 }
 

@@ -2,19 +2,18 @@ import React, { useState, useEffect } from "react";
 import SavingsGoal from "../components/SavingsGoal";
 import "../styles/Homestyles.css";
 import Menu from "../components/Menu/Menu";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, redirect } from "react-router-dom";
 import Auth from "../utils/auth";
 
 // queries
-import { QUERY_ONE_USER } from "../utils/queries";
+import { QUERY_ONE_USER, QUERY_me } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 
 // mutations
-import { CREATE_EXPENSE } from "../utils/mutations";
-import { ADD_EXPENSE_TO_USER } from "../utils/mutations";
+import { CREATE_EXPENSE, ADD_EXPENSE_TO_USER } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 
-function HomePage() {
+function HomePage({ user }) {
     const [expenseForm, setexpenseForm] = useState({
         amount: 0,
         associatedUser: "",
@@ -26,20 +25,6 @@ function HomePage() {
         useMutation(CREATE_EXPENSE);
     const [AddExpenseToUser, { addExpenseToUserError, addExpenseToUserData }] =
         useMutation(ADD_EXPENSE_TO_USER);
-
-    // retrieve the id from token to get specific user data
-    const token = Auth.getProfile();
-    const { loading, error, data } = useQuery(QUERY_ONE_USER, {
-        variables: { id: token.data._id },
-    });
-    // isolate the DB data you need
-    const user = data?.user || [];
-    // console.log(user);
-
-    // log in check
-    if (!Auth.loggedIn()) {
-        return <Navigate to="/login" />;
-    }
 
     // submit entered variables in query
     const handleFormSubmit = async (e) => {
@@ -91,12 +76,6 @@ function HomePage() {
             console.log("There Was An Error Signing Up. Please Try Again.");
             console.error(e);
         }
-    };
-
-    // log out button
-    const logOutButtonClick = () => {
-        localStorage.removeItem("id_token");
-        return <Navigate to="/login" />;
     };
 
     // change form state
@@ -152,11 +131,15 @@ function HomePage() {
     }
 
     // account for error if user doesn't have expenses
-    if (user.expenses) {
-        user.expenses.forEach((user) => {
+    if (user) {
+        user.expenses?.forEach((user) => {
             totalExpensesByCategory[user.category] += user.amount;
         });
     }
+
+    const deleteExpense = () => {
+        console.log("test");
+    };
 
     return (
         <div className="app-container">
@@ -164,31 +147,31 @@ function HomePage() {
                 {/* display different elements based on log in status */}
                 {Auth.loggedIn() ? (
                     <div>
-                        <button onClick={logOutButtonClick}>Log Out</button>
+                        <button onClick={Auth.logout}>Log Out</button>
                         {/* showing ALL data stored in a user */}
                         <div className="DB-info-container-1">
                             <h1>
-                                UserID: <p className="DB-info">{user._id}</p>
+                                UserID: <p className="DB-info">{user?._id}</p>
                             </h1>
                             <h1>
                                 Budget
-                                <p className="DB-info">{user.budget}</p>
+                                <p className="DB-info">{user?.budget}</p>
                             </h1>
                             <h1>
                                 Email
-                                <p className="DB-info">{user.email}</p>
+                                <p className="DB-info">{user?.email}</p>
                             </h1>
                             <h1>
                                 First Name
-                                <p className="DB-info">{user.firstName}</p>
+                                <p className="DB-info">{user?.firstName}</p>
                             </h1>
                             <h1>
                                 Last Name
-                                <p className="DB-info">{user.lastName}</p>
+                                <p className="DB-info">{user?.lastName}</p>
                             </h1>
                             <h1>
                                 Username
-                                <p className="DB-info">{user.username}</p>
+                                <p className="DB-info">{user?.username}</p>
                             </h1>
                         </div>
                         <div className="DB-info-container-2">
@@ -219,10 +202,13 @@ function HomePage() {
                                         <div className="counter">
                                             {(count = 0)}
                                         </div>
-                                        {user.expenses &&
-                                            user.expenses.map((expense) => {
+                                        {user &&
+                                            user.expenses?.map((expense) => {
                                                 return (
-                                                    <tr key={expense._id}>
+                                                    <tr
+                                                        key={expense._id}
+                                                        id={expense._id}
+                                                    >
                                                         {expenseFields.map(
                                                             (expenseField) => {
                                                                 if (
@@ -269,6 +255,13 @@ function HomePage() {
                                                                     expense.amount)
                                                             }
                                                         </div>
+                                                        <button
+                                                            onClick={
+                                                                deleteExpense
+                                                            }
+                                                        >
+                                                            DELETE
+                                                        </button>
                                                     </tr>
                                                 );
                                             })}
@@ -354,8 +347,8 @@ function HomePage() {
                                             </button>
                                         </tr>
                                     </tbody>
-                                    {user.expenses &&
-                                        user.expenses.map((expense) => {
+                                    {user &&
+                                        user.expenses?.map((expense) => {
                                             return (
                                                 <td className="calculate">
                                                     <div>

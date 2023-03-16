@@ -30,6 +30,9 @@ const typeDefs = gql`
 
     type Query {
         # me: Auth
+        me: User
+
+
         # ---- USER
         users: [User]
         user(_id: ID!): User
