@@ -85,6 +85,7 @@ input[type="checkbox"]:checked ~ .accordion-label:before {
     transform: scale(1, 0);
     transform-origin: center top;
     background-color: pink;
+    color: black
 }
 
 input[type="checkbox"]:checked ~ .accordion-child {
@@ -100,8 +101,6 @@ input[type="checkbox"]:checked ~ .accordion-child {
 .exp-header {
     color: white;
     position: absolute;
-    top: 20px;
-    left: 20px;
     margin-bottom: 5vh;
 }
 
@@ -154,3 +153,8 @@ input[type="checkbox"]:checked ~ .accordion-child {
     border-radius: 4px;
     height: 26px;
 }
+
+ul .bullet-point {
+    list-style: disc;
+    margin-left: 20px;
+  }
