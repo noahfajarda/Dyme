@@ -67,56 +67,6 @@ h3 {
   background: radial-gradient(circle, #051340 1%, #040f32 100%);
 }
 
-.app-right {
-  flex-basis: 320px;
-  width: 320px;
-  background-color: var(--app-bg-dark);
-  height: 100%;
-  padding: 64px 0 0 0;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: all 0.4s ease-in;
-}
-.app-right:before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  height: 48px;
-  width: 100%;
-  background-image: var(--app-bg-before);
-  z-index: 1;
-}
-.app-right.show {
-  right: 0;
-  opacity: 1;
-}
-.app-right .close-right {
-  display: none;
-}
-
-.app-right-content {
-  flex: 1;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.app-logo {
-  display: flex;
-  align-items: center;
-  color: var(--app-logo);
-  margin-right: 16px;
-  padding: 0 24px;
-}
-.app-logo span {
-  color: #fff;
-  display: inline-block;
-  line-height: 24px;
-  font-size: 16px;
-  margin-left: 16px;
-}
-
 ul {
   list-style-type: none;
   padding: 0;

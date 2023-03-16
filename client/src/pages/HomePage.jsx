@@ -106,7 +106,7 @@ function HomePage() {
           <div className="chart-container-wrapper">
             <div className="chart-container">
               <div className="chart-info-wrapper">
-                <h2>Income</h2>
+                <h2>Balance</h2>
               </div>
               <div id="root">
                 <div class="container-1 pt-5">
@@ -167,6 +167,7 @@ function HomePage() {
                 <h3> 2. Game £22.50 05/02/2016 </h3>
                 <h3> 3. Tesco £10.00 01/02/2016 </h3>
                 <h3> 4. Steam £19.99 05/02/2016</h3>
+                <h3> 5. Hydroflask £29.99 06/03/2016</h3>
               </div>
             </div>
           </div>
