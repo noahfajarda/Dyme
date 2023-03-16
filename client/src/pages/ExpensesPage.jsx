@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import "../styles/ExpenseStyles.css";
+import Auth from "../utils/auth";
+import { Link, Navigate } from "react-router-dom";
+
+// queries
+import { QUERY_ONE_USER } from "../utils/queries";
+import { useQuery } from "@apollo/client";
 
 function ExpensesPage() {
     const [expenses, setExpenses] = useState({
@@ -11,6 +17,25 @@ function ExpensesPage() {
         entertainment: 0,
         Miscellaneous: 0,
     });
+
+    // retrieve the id from token to get specific user data
+    const token = Auth.getProfile();
+    const id = token.data._id;
+
+    const { loading, error, data } = useQuery(QUERY_ONE_USER, {
+        variables: { id },
+    });
+
+    // isolate the DB data you need
+    const user = data?.user || [];
+
+    // log in check
+    if (!Auth.loggedIn()) {
+        return <Navigate to="/login" />;
+    }
+
+    const expensesData = user.expenses;
+    console.log(expensesData);
 
     //     const submitButton = document.getElementById("submit");
 
@@ -36,6 +61,19 @@ function ExpensesPage() {
                 <a href="/home">
                     <h1 className="exp-header">Expenses</h1>
                 </a>
+            </div>
+
+            <div>
+                {expensesData &&
+                    expensesData.map((expense) => {
+                        return (
+                            <div id={expense._id}>
+                                <div>{expense.name}</div>
+                                <div>{expense.amount}</div>
+                                <div>{expense.category}</div>
+                            </div>
+                        );
+                    })}
             </div>
 
             <div class="expense-form">
