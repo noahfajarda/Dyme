@@ -153,20 +153,29 @@ function HomePage() {
                                                     id="categories"
                                                     name="categories"
                                                 >
+                                                    <option
+                                                        value="Rent & Living Expenses"
+                                                        selected
+                                                    >
+                                                        Rent & Living Expenses
+                                                    </option>
+                                                    <option value="Lifestyle">
+                                                        Lifestyle
+                                                    </option>
+                                                    <option value="Auto & Transportation">
+                                                        Auto & Transportation
+                                                    </option>
                                                     <option value="Food & Dining">
                                                         Food & Dining
                                                     </option>
-                                                    <option value="saab">
-                                                        Saab
+                                                    <option value="Health And Fitness">
+                                                        Health And Fitness
                                                     </option>
-                                                    <option
-                                                        value="fiat"
-                                                        selected
-                                                    >
-                                                        Fiat
+                                                    <option value="Entertainment">
+                                                        Entertainment
                                                     </option>
-                                                    <option value="audi">
-                                                        Audi
+                                                    <option value="Miscellaneous">
+                                                        Miscellaneous
                                                     </option>
                                                 </select>
                                             </td>

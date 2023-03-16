@@ -16,7 +16,7 @@
     {
         "name": "Metalic Utensils",
         "amount": 220,
-        "category": "Dining",
+        "category": "Food & Dining",
         "description": "Just some silverware from Ikea",
         "associatedUser": "StephCurry"
     },
@@ -44,21 +44,49 @@
     {
         "name": "Wireless Charger",
         "amount": 23,
-        "category": "Technology",
+        "category": "Lifestyle",
+        "description": "Needed to replace previous because it broke",
+        "associatedUser": "StephCurry"
+    },
+    {
+        "name": "Wireless Charger",
+        "amount": 23,
+        "category": "Rent",
+        "description": "Needed to replace previous because it broke",
+        "associatedUser": "StephCurry"
+    },
+    {
+        "name": "Wireless Charger",
+        "amount": 23,
+        "category": "Rent",
+        "description": "Needed to replace previous because it broke",
+        "associatedUser": "StephCurry"
+    },
+    {
+        "name": "Wireless Charger",
+        "amount": 23,
+        "category": "Food & Dining",
         "description": "Needed to replace previous because it broke",
         "associatedUser": "StephCurry"
     },
     {
         "name": "Skillet",
         "amount": 23,
-        "category": "Utilities",
+        "category": "Food & Dining",
+        "description": "Bought for my B-day. Need reimbursement from my boss",
+        "associatedUser": "StephCurry"
+    },
+    {
+        "name": "Skillet",
+        "amount": 23,
+        "category": "Food & Dining",
         "description": "Bought for my B-day. Need reimbursement from my boss",
         "associatedUser": "johnDoe23"
     },
     {
         "name": "Shoes",
         "amount": 175,
-        "category": "Apparel",
+        "category": "Lifestyle",
         "description": "My old shoes were broken.",
         "associatedUser": "StephCurry"
     }
