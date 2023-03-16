@@ -90,7 +90,8 @@ td {
     padding: 20px;
 }
 
-.counter {
+.counter,
+.calculate {
     display: none;
 }
 

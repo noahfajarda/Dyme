@@ -15,7 +15,6 @@ import { ADD_EXPENSE_TO_USER } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 
 function HomePage() {
-    const [name, setName] = useState("");
     const [expenseForm, setexpenseForm] = useState({
         amount: 0,
         associatedUser: "",
@@ -109,11 +108,42 @@ function HomePage() {
         });
     };
 
+    // EXPENSES MATH LOGIC
+
+    // function to calculate percentages of total expenses
     let count = 0;
     function calculateIndividualPercentage(expenseAmount, total) {
         let percentage = (expenseAmount / total).toFixed(2) + "%";
         percentage = percentage.replace("0.", "");
         return percentage;
+    }
+
+    // totals of expenses separated by category
+    const totalExpensesByCategory = {
+        "Rent & Living Expenses": 0,
+        Lifestyle: 0,
+        "Auto & Transportation": 0,
+        "Food & Dining": 0,
+        "Health & Fitness": 0,
+        Entertainment: 0,
+        Miscellaneous: 0,
+    };
+
+    // calculate percentage of each category based on the total
+    function calculateCategoryPercentage(categoryAmount, total) {
+        let percentage = ((categoryAmount / total).toFixed(2) + "%").replace(
+            "0.",
+            ""
+        );
+        if (percentage === "00%") percentage = "0%";
+        return percentage;
+    }
+
+    // account for error if user doesn't have expenses
+    if (user.expenses) {
+        user.expenses.forEach((user) => {
+            totalExpensesByCategory[user.category] += user.amount;
+        });
     }
 
     return (
@@ -259,8 +289,8 @@ function HomePage() {
                                                     <option value="Food & Dining">
                                                         Food & Dining
                                                     </option>
-                                                    <option value="Health And Fitness">
-                                                        Health And Fitness
+                                                    <option value="Health & Fitness">
+                                                        Health & Fitness
                                                     </option>
                                                     <option value="Entertainment">
                                                         Entertainment
@@ -296,7 +326,7 @@ function HomePage() {
                                     {user.expenses &&
                                         user.expenses.map((expense) => {
                                             return (
-                                                <td>
+                                                <td className="calculate">
                                                     <div>
                                                         {expense.name}{" "}
                                                         {calculateIndividualPercentage(
@@ -307,6 +337,75 @@ function HomePage() {
                                                 </td>
                                             );
                                         })}
+                                </table>
+                                <table className="expenses-table">
+                                    <tr>
+                                        <th>Rent & Living</th>
+                                        <th>Lifestyle</th>
+                                        <th>Auto & Transportation</th>
+                                        <th>Food & Dining</th>
+                                        <th>Health & Fitness</th>
+                                        <th>Entertainment</th>
+                                        <th>Miscellaneous</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {calculateCategoryPercentage(
+                                                totalExpensesByCategory[
+                                                    "Rent & Living Expenses"
+                                                ],
+                                                count
+                                            )}
+                                        </td>
+                                        <td>
+                                            {calculateCategoryPercentage(
+                                                totalExpensesByCategory[
+                                                    "Lifestyle"
+                                                ],
+                                                count
+                                            )}
+                                        </td>
+                                        <td>
+                                            {calculateCategoryPercentage(
+                                                totalExpensesByCategory[
+                                                    "Auto & Transportation"
+                                                ],
+                                                count
+                                            )}
+                                        </td>
+                                        <td>
+                                            {calculateCategoryPercentage(
+                                                totalExpensesByCategory[
+                                                    "Food & Dining"
+                                                ],
+                                                count
+                                            )}
+                                        </td>
+                                        <td>
+                                            {calculateCategoryPercentage(
+                                                totalExpensesByCategory[
+                                                    "Health & Fitness"
+                                                ],
+                                                count
+                                            )}
+                                        </td>
+                                        <td>
+                                            {calculateCategoryPercentage(
+                                                totalExpensesByCategory[
+                                                    "Entertainment"
+                                                ],
+                                                count
+                                            )}
+                                        </td>
+                                        <td>
+                                            {calculateCategoryPercentage(
+                                                totalExpensesByCategory[
+                                                    "Miscellaneous"
+                                                ],
+                                                count
+                                            )}
+                                        </td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>
