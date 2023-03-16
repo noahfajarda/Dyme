@@ -129,6 +129,18 @@ function HomePage() {
         Miscellaneous: 0,
     };
 
+    const expenseFields = ["_id", "amount", "category", "description", "name"];
+
+    const categories = [
+        "Rent & Living Expenses",
+        "Lifestyle",
+        "Auto & Transportation",
+        "Food & Dining",
+        "Health & Fitness",
+        "Entertainment",
+        "Miscellaneous",
+    ];
+
     // calculate percentage of each category based on the total
     function calculateCategoryPercentage(categoryAmount, total) {
         let percentage = ((categoryAmount / total).toFixed(2) + "%").replace(
@@ -199,13 +211,9 @@ function HomePage() {
                                             <th className="field-label">
                                                 Name
                                             </th>
-                                            <th className="field-label">
-                                                Percentage
-                                            </th>
                                         </tr>
                                     </thead>
                                     {/* data */}
-
                                     <tbody className="expenses-info">
                                         {/* reset counter */}
                                         <div className="counter">
@@ -215,36 +223,46 @@ function HomePage() {
                                             user.expenses.map((expense) => {
                                                 return (
                                                     <tr key={expense._id}>
-                                                        <td>
-                                                            <div>
-                                                                {expense._id}
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div>
-                                                                ${" "}
-                                                                {expense.amount}
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div>
-                                                                {
-                                                                    expense.category
+                                                        {expenseFields.map(
+                                                            (expenseField) => {
+                                                                if (
+                                                                    expenseField ===
+                                                                    "amount"
+                                                                ) {
+                                                                    return (
+                                                                        <td
+                                                                            key={
+                                                                                expenseField
+                                                                            }
+                                                                        >
+                                                                            <div>
+                                                                                $
+                                                                                {
+                                                                                    expense[
+                                                                                        expenseField
+                                                                                    ]
+                                                                                }
+                                                                            </div>
+                                                                        </td>
+                                                                    );
                                                                 }
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div>
-                                                                {
-                                                                    expense.description
-                                                                }
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div>
-                                                                {expense.name}
-                                                            </div>
-                                                        </td>
+                                                                return (
+                                                                    <td
+                                                                        key={
+                                                                            expenseField
+                                                                        }
+                                                                    >
+                                                                        <div>
+                                                                            {
+                                                                                expense[
+                                                                                    expenseField
+                                                                                ]
+                                                                            }
+                                                                        </div>
+                                                                    </td>
+                                                                );
+                                                            }
+                                                        )}
                                                         <div className="counter">
                                                             {
                                                                 (count +=
@@ -274,30 +292,43 @@ function HomePage() {
                                                     value={expenseForm.category}
                                                     onChange={handleChange}
                                                 >
-                                                    <option
-                                                        value="Rent & Living Expenses"
-                                                        selected
-                                                    >
-                                                        Rent & Living Expenses
-                                                    </option>
-                                                    <option value="Lifestyle">
-                                                        Lifestyle
-                                                    </option>
-                                                    <option value="Auto & Transportation">
-                                                        Auto & Transportation
-                                                    </option>
-                                                    <option value="Food & Dining">
-                                                        Food & Dining
-                                                    </option>
-                                                    <option value="Health & Fitness">
-                                                        Health & Fitness
-                                                    </option>
-                                                    <option value="Entertainment">
-                                                        Entertainment
-                                                    </option>
-                                                    <option value="Miscellaneous">
-                                                        Miscellaneous
-                                                    </option>
+                                                    {/* go through all categories for the drop down */}
+                                                    {categories.map(
+                                                        (category) => {
+                                                            if (
+                                                                category ===
+                                                                "Rent & Living Expenses"
+                                                            ) {
+                                                                return (
+                                                                    <option
+                                                                        key={
+                                                                            category
+                                                                        }
+                                                                        value={
+                                                                            category
+                                                                        }
+                                                                        selected
+                                                                    >
+                                                                        Rent &
+                                                                        Living
+                                                                        Expenses
+                                                                    </option>
+                                                                );
+                                                            }
+                                                            return (
+                                                                <option
+                                                                    key={
+                                                                        category
+                                                                    }
+                                                                    value={
+                                                                        category
+                                                                    }
+                                                                >
+                                                                    {category}
+                                                                </option>
+                                                            );
+                                                        }
+                                                    )}
                                                 </select>
                                             </td>
                                             <td>
@@ -340,71 +371,27 @@ function HomePage() {
                                 </table>
                                 <table className="expenses-table">
                                     <tr>
-                                        <th>Rent & Living</th>
-                                        <th>Lifestyle</th>
-                                        <th>Auto & Transportation</th>
-                                        <th>Food & Dining</th>
-                                        <th>Health & Fitness</th>
-                                        <th>Entertainment</th>
-                                        <th>Miscellaneous</th>
+                                        {categories.map((category) => {
+                                            return (
+                                                <th key={category}>
+                                                    {category}
+                                                </th>
+                                            );
+                                        })}
                                     </tr>
                                     <tr>
-                                        <td>
-                                            {calculateCategoryPercentage(
-                                                totalExpensesByCategory[
-                                                    "Rent & Living Expenses"
-                                                ],
-                                                count
-                                            )}
-                                        </td>
-                                        <td>
-                                            {calculateCategoryPercentage(
-                                                totalExpensesByCategory[
-                                                    "Lifestyle"
-                                                ],
-                                                count
-                                            )}
-                                        </td>
-                                        <td>
-                                            {calculateCategoryPercentage(
-                                                totalExpensesByCategory[
-                                                    "Auto & Transportation"
-                                                ],
-                                                count
-                                            )}
-                                        </td>
-                                        <td>
-                                            {calculateCategoryPercentage(
-                                                totalExpensesByCategory[
-                                                    "Food & Dining"
-                                                ],
-                                                count
-                                            )}
-                                        </td>
-                                        <td>
-                                            {calculateCategoryPercentage(
-                                                totalExpensesByCategory[
-                                                    "Health & Fitness"
-                                                ],
-                                                count
-                                            )}
-                                        </td>
-                                        <td>
-                                            {calculateCategoryPercentage(
-                                                totalExpensesByCategory[
-                                                    "Entertainment"
-                                                ],
-                                                count
-                                            )}
-                                        </td>
-                                        <td>
-                                            {calculateCategoryPercentage(
-                                                totalExpensesByCategory[
-                                                    "Miscellaneous"
-                                                ],
-                                                count
-                                            )}
-                                        </td>
+                                        {categories.map((category) => {
+                                            return (
+                                                <td key={category}>
+                                                    {calculateCategoryPercentage(
+                                                        totalExpensesByCategory[
+                                                            category
+                                                        ],
+                                                        count
+                                                    )}
+                                                </td>
+                                            );
+                                        })}
                                     </tr>
                                 </table>
                             </div>
