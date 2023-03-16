@@ -9,28 +9,96 @@ import Auth from "../utils/auth";
 import { QUERY_ONE_USER } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 
+// mutations
+import { CREATE_EXPENSE } from "../utils/mutations";
+import { ADD_EXPENSE_TO_USER } from "../utils/mutations";
+import { useMutation } from "@apollo/client";
+
 function HomePage() {
+    const [name, setName] = useState("");
+    const [expenseForm, setexpenseForm] = useState({
+        amount: 0,
+        associatedUser: "",
+        category: "Rent & Living Expenses",
+        description: "",
+        // name: "",
+    });
+    const [CreateExpense, { createExpenseError, createExpenseData }] =
+        useMutation(CREATE_EXPENSE);
+    const [AddExpenseToUser, { addExpenseToUserError, addExpenseToUserData }] =
+        useMutation(ADD_EXPENSE_TO_USER);
+
     // retrieve the id from token to get specific user data
     const token = Auth.getProfile();
-    const id = token.data._id;
-
     const { loading, error, data } = useQuery(QUERY_ONE_USER, {
-        variables: { id },
+        variables: { id: token.data._id },
     });
-
     // isolate the DB data you need
     const user = data?.user || [];
-    console.log(user);
+    // console.log(user);
 
     // log in check
     if (!Auth.loggedIn()) {
         return <Navigate to="/login" />;
     }
 
-    // updating each expense
-    const handleFormSubmit = (e) => {
+    // submit entered variables in query
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
-        console.log(e.target.parentNode);
+        console.log(expenseForm);
+
+        if (
+            !expenseForm.name ||
+            !expenseForm.description ||
+            !expenseForm.category ||
+            !expenseForm.amount
+        ) {
+            console.log(
+                "One Or More Fields Were Not Entered. Please Try Again."
+            );
+            return;
+        }
+
+        try {
+            // create the expense
+            const newExpense = await CreateExpense({
+                variables: {
+                    ...expenseForm,
+                    amount: Number(expenseForm.amount),
+                    associatedUser: user.username,
+                },
+            });
+            console.log(newExpense.data);
+
+            // associate new created expense with user
+            const associateUserAndExpense = await AddExpenseToUser({
+                variables: {
+                    userId: user._id,
+                    expenseId: newExpense.data.addExpense._id,
+                },
+            });
+            console.log(associateUserAndExpense.data);
+
+            document.location.href = "/home";
+        } catch (e) {
+            console.log("There Was An Error Signing Up. Please Try Again.");
+            console.error(e);
+        }
+    };
+
+    // log out button
+    const logOutButtonClick = () => {
+        localStorage.removeItem("id_token");
+        return <Navigate to="/login" />;
+    };
+
+    // change form state
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setexpenseForm({
+            ...expenseForm,
+            [name]: value,
+        });
     };
 
     return (
@@ -39,6 +107,7 @@ function HomePage() {
                 {/* display different elements based on log in status */}
                 {Auth.loggedIn() ? (
                     <div>
+                        <button onClick={logOutButtonClick}>Log Out</button>
                         {/* showing ALL data stored in a user */}
                         <div className="DB-info-container-1">
                             <h1>
@@ -107,7 +176,6 @@ function HomePage() {
                                                                 ${" "}
                                                                 {expense.amount}
                                                             </div>
-                                                            $
                                                         </td>
                                                         <td>
                                                             <div>
@@ -143,15 +211,29 @@ function HomePage() {
                                                 <input type="text" />
                                             </td>
                                             <td>
-                                                <input type="text" />
+                                                <input
+                                                    type="number"
+                                                    name="amount"
+                                                    value={expenseForm.amount}
+                                                    onChange={handleChange}
+                                                />
                                             </td>
                                             <td>
-                                                <input type="text" />
+                                                {/* <input
+                                                    type="text"
+                                                    name="associatedUser"
+                                                    value={
+                                                        expenseForm.associatedUser
+                                                    }
+                                                    onChange={handleChange}
+                                                /> */}
                                             </td>
                                             <td>
                                                 <select
-                                                    id="categories"
-                                                    name="categories"
+                                                    id="category"
+                                                    name="category"
+                                                    value={expenseForm.category}
+                                                    onChange={handleChange}
                                                 >
                                                     <option
                                                         value="Rent & Living Expenses"
@@ -180,10 +262,22 @@ function HomePage() {
                                                 </select>
                                             </td>
                                             <td>
-                                                <input type="text" />
+                                                <input
+                                                    type="text"
+                                                    name="description"
+                                                    value={
+                                                        expenseForm.description
+                                                    }
+                                                    onChange={handleChange}
+                                                />
                                             </td>
                                             <td>
-                                                <input type="text" />
+                                                <input
+                                                    type="text"
+                                                    name="name"
+                                                    value={expenseForm.name}
+                                                    onChange={handleChange}
+                                                />
                                             </td>
                                             <button onClick={handleFormSubmit}>
                                                 submit

@@ -61,12 +61,12 @@ export const QUERY_ONE_USER = gql`
             password
             budget
             expenses {
-            _id
-            name
-            amount
-            category
-            description
-            associatedUser
+                _id
+                name
+                amount
+                category
+                description
+                associatedUser
             }
         }
     }

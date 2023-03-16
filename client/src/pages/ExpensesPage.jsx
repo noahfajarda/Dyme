@@ -67,7 +67,7 @@ function ExpensesPage() {
                 {expensesData &&
                     expensesData.map((expense) => {
                         return (
-                            <div id={expense._id}>
+                            <div key={expense._id}>
                                 <div>{expense.name}</div>
                                 <div>{expense.amount}</div>
                                 <div>{expense.category}</div>
