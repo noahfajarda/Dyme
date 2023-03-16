@@ -44,7 +44,7 @@ const typeDefs = gql`
         # CREATE
         addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!, budget: Float!): Auth
         # UPDATE
-        updateUser(_id: ID!, firstName: String!, lastName: String!, username: String!, email: String!, password: String!, budget: Float!): User
+        updateUser(_id: ID!, firstName: String!, lastName: String!, username: String!, email: String!, newPassword: String!, budget: Float!): User
         # DELETE
         deleteUser(_id: ID!): User
 
