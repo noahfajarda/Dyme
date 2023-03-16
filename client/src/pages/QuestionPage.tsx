@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import '../styles/QuestionPage.css';
 
 function QuestionPage() {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); 
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [hasAnswered, setHasAnswered] = useState(false);
   const [questions, setQuestions] = useState([
+    
     {
       id: 1,
       text: 'What is your monthly Income?',
@@ -47,73 +49,99 @@ function QuestionPage() {
     },
   ]);
 
+  // Calls for Id/Answer and maps out the question to be declared in later functions 
   const handleAnswerSubmit = (id, answer) => {
     const updatedQuestions = questions.map((question) =>
       question.id === id ? { ...question, answer } : question
     );
     setQuestions(updatedQuestions);
+  
+    const currentQuestion = updatedQuestions[currentQuestionIndex];
+    // If answer = "yes" then prompt "please enter a value" triggers -> Currently not working, need help brain hurty
+    if (currentQuestion.choices && answer.toLowerCase() === "yes") {
+      let value;
+      do {
+        value = prompt("Please enter a value:");
+      } while (value === null);
+      const updatedQuestionsWithChoiceAnswer = updatedQuestions.map((question) =>
+        question.id === id ? { ...question, answer: value } : question
+      );
+      setQuestions(updatedQuestionsWithChoiceAnswer);
+
+      return; 
+  }
+  // Moves user to next question after answering current question 
+  setHasAnswered(true); 
+}; 
+
+// Moves to next question 
+  const handleNextQuestion = () => {
+    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    setHasAnswered(false);
+  };
+
+  // Function for submitting a choice for multiple choice questions 
+  const handleChoiceSubmit = (choice: string) => {
+    const currentQuestion = questions[currentQuestionIndex];
+    // Creates new array of questions with updated submitted choices 
+    const updatedQuestions = questions.map((question) =>
+      question.id === currentQuestion.id ? { ...question, answer: choice } : question
+    );
+    // sets to updated array 
+    setQuestions(updatedQuestions);
+    setHasAnswered(true);
+  
+    // Moves from one question to next so long as there are more 
     if (currentQuestionIndex < questions.length - 1) {
-      const nextQuestion = questions[currentQuestionIndex + 1];
-      if (nextQuestion && nextQuestion.choices) {
-        if (answer.toLowerCase() === "yes") {
-          const value = prompt("Please enter a value:");
-          const updatedNextQuestion = { ...nextQuestion, answer: value };
-          const updatedQuestions = questions.map((question) =>
-            question.id === updatedNextQuestion.id ? updatedNextQuestion : question
-          );
-          setQuestions(updatedQuestions);
-        } else {
-          setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-        }
-      } else {
-        setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-      }
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     }
   };
 
-  const handleNextQuestion = () => {
-    if (currentQuestionIndex === questions.length - 1) return; // Don't go past the last question
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-  };
-
-  const handlePrevQuestion = () => {
-    if (currentQuestionIndex === 0) return; // Don't go before the first question
+  // Previous question function 
+  const handlePreviousQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
+    setHasAnswered(false);
   };
 
-  const currentQuestion = questions[currentQuestionIndex]; 
+  const currentQuestion = questions[currentQuestionIndex];
 
   return (
     <div className="question-page">
       <h1>Questions {currentQuestionIndex + 1}</h1>
       <p>{currentQuestion.text}</p>
       {currentQuestion.choices ? (
-        currentQuestion.choices.map((choice, index) => (
-          <button
-            key={index}
-            className="choice-button"
-            onClick={() => handleAnswerSubmit(currentQuestion.id, choice)}
-          >
-            {choice}
-          </button>
-        ))
+        <div className="choices-container">
+          {currentQuestion.choices.map((choice, index) => (
+            <button
+              key={index}
+              onClick={() => handleChoiceSubmit(choice)}
+            >
+              {choice}
+            </button>
+          ))}
+        </div>
       ) : (
-        <input 
+        <input
           type="text"
           value={currentQuestion.answer}
-          onChange={(event) => handleAnswerSubmit(currentQuestion.id, event.target.value)}
+          onChange={(event) =>
+            handleAnswerSubmit(currentQuestion.id, event.target.value)
+          }
         />
       )}
+      {/* Adds prev button for all questions after ID:1 */}
       {currentQuestionIndex > 0 && (
-        <button className="prev-button" onClick={handlePrevQuestion}>
-          Prev
+        <button className="previous-button" onClick={handlePreviousQuestion}>
+          Previous
         </button>
       )}
-      {currentQuestionIndex < questions.length - 1 && (
-        <button className="next-button" onClick={handleNextQuestion}>
+      {!currentQuestion.choices && hasAnswered && (
+        <button 
+        className="next-button"
+        onClick={handleNextQuestion}>
           Next
         </button>
-      )}
+)}
     </div>
   );
 }
