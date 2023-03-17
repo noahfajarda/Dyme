@@ -7,7 +7,21 @@ import { Link, Navigate } from "react-router-dom";
 import { QUERY_ONE_USER, QUERY_me } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 
-function FormComponent({ updateExpenses }) {
+function FormComponent({ updateExpenses, userData, categories }) {
+    const [expenseForm, setExpenseForm] = useState({
+        name: "",
+        amount: 0,
+        description: "",
+        category: categories[0].category,
+        associatedUser: "",
+    });
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setExpenseForm({
+            ...expenseForm,
+            [name]: value,
+        });
+    };
     return (
         <form
             className="expense-form"
@@ -15,31 +29,56 @@ function FormComponent({ updateExpenses }) {
         >
             <h2>Add an expense:</h2>
             <div className="expense-inputs">
-                <div className="expense-category">
-                    <label htmlFor="category">Category:</label>
-                    <select id="category">
-                        <option value="Rent & Living Expenses">
-                            Rent & Living Expenses
-                        </option>
-                        <option value="Lifestyle">Lifestyle</option>
-                        <option value="Auto & Transportation">
-                            Auto & Transportation
-                        </option>
-                        <option value="Food & Dining">Food & Dining</option>
-                        <option value="Health And Fitness">
-                            Health And Fitness
-                        </option>
-                        <option value="Entertainment">Entertainment</option>
-                        <option value="Miscellaneous">Miscellaneous</option>
-                    </select>
+                <div className="expense-name">
+                    <label htmlFor="name">Name:</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={expenseForm.name}
+                        onChange={handleChange}
+                    />
                 </div>
                 <div className="expense-amount">
                     <label htmlFor="amount">Amount: $</label>
-                    <input type="text" id="amount" />
+                    <input
+                        type="number"
+                        id="amount"
+                        name="amount"
+                        value={expenseForm.amount}
+                        onChange={handleChange}
+                    />
                 </div>
-                <div className="expense-name">
-                    <label htmlFor="name">Name:</label>
-                    <input type="text" id="name" />
+                <div className="expense-description">
+                    <label htmlFor="description">Description:</label>
+                    {/* maybe change to text area */}
+                    <input
+                        type="text"
+                        id="description"
+                        name="description"
+                        value={expenseForm.description}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="expense-category">
+                    <label htmlFor="category">Category:</label>
+                    <select
+                        id="category"
+                        name="category"
+                        value={expenseForm.category}
+                        onChange={handleChange}
+                    >
+                        {categories.map((category) => {
+                            return (
+                                <option
+                                    value={category.category}
+                                    key={category.category}
+                                >
+                                    {category.category}
+                                </option>
+                            );
+                        })}
+                    </select>
                 </div>
                 <button id="submit">Submit</button>
             </div>
@@ -122,16 +161,7 @@ function AccordionItem({ userData, category, id }) {
     );
 }
 
-function AccordionComponent({ userData }) {
-    const categories = [
-        { id: "s1", category: "Rent & Living Expenses" },
-        { id: "s2", category: "Lifestyle" },
-        { id: "s3", category: "Auto & Transportation" },
-        { id: "s4", category: "Food & Dining" },
-        { id: "s5", category: "Health & Fitness" },
-        { id: "s6", category: "Entertainment" },
-        { id: "s7", category: "Miscellaneous" },
-    ];
+function AccordionComponent({ userData, categories }) {
     return (
         <ul className="accordion">
             {categories.map((category) => {
@@ -140,6 +170,7 @@ function AccordionComponent({ userData }) {
                         userData={userData}
                         category={category.category}
                         id={category.id}
+                        key={category.id}
                     />
                 );
             })}
@@ -148,6 +179,13 @@ function AccordionComponent({ userData }) {
 }
 
 function ExpensesPage() {
+    const [expenseForm, setexpenseForm] = useState({
+        amount: 0,
+        category: "Rent & Living Expenses",
+        description: "",
+        name: "",
+    });
+
     const [expenses, setExpenses] = useState({});
     const { loading, error, data } = useQuery(QUERY_me);
     console.log(data?.me);
@@ -166,10 +204,12 @@ function ExpensesPage() {
         }
     }, [userData]);
 
-    const updateExpenses = (event) => {
+    const updateExpenses = (e) => {
+        e.preventDefault();
         setExpenses({
             ...expenses,
         });
+        console.log(expenses);
     };
 
     // log in check
@@ -185,6 +225,16 @@ function ExpensesPage() {
 
     // insert logic for the total amount
 
+    const categories = [
+        { id: "s1", category: "Rent & Living Expenses" },
+        { id: "s2", category: "Lifestyle" },
+        { id: "s3", category: "Auto & Transportation" },
+        { id: "s4", category: "Food & Dining" },
+        { id: "s5", category: "Health & Fitness" },
+        { id: "s6", category: "Entertainment" },
+        { id: "s7", category: "Miscellaneous" },
+    ];
+
     return (
         <>
             {loading ? (
@@ -196,8 +246,15 @@ function ExpensesPage() {
                     </a>
 
                     {/* form */}
-                    <FormComponent updateExpenses={updateExpenses} />
-                    <AccordionComponent userData={userData} />
+                    <FormComponent
+                        updateExpenses={updateExpenses}
+                        userData={userData}
+                        categories={categories}
+                    />
+                    <AccordionComponent
+                        userData={userData}
+                        categories={categories}
+                    />
 
                     <a href="/home">
                         <button>Back To Home</button>
