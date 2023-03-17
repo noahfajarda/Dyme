@@ -320,14 +320,6 @@ function ExpensesPage() {
         }
     }, [userData]);
 
-    const updateExpenses = (e) => {
-        e.preventDefault();
-        setExpenses({
-            ...expenses,
-        });
-        console.log(expenses);
-    };
-
     // log in check
     if (!Auth.loggedIn()) {
         return <Navigate to="/login" />;
@@ -357,9 +349,12 @@ function ExpensesPage() {
                 <p>LOADING...</p>
             ) : data?.me ? (
                 <div className="expense-page">
-                    <a href="/home">
+                    <header>
+                        <a href="/home">
+                            <button id="home-button">Back To Home</button>
+                        </a>
                         <h1 className="exp-header">Expenses</h1>
-                    </a>
+                    </header>
 
                     {/* form */}
                     <FormComponent
@@ -373,10 +368,6 @@ function ExpensesPage() {
                         categories={categories}
                         DeleteExpenseData={DeleteExpenseData}
                     />
-
-                    <a href="/home">
-                        <button>Back To Home</button>
-                    </a>
                 </div>
             ) : (
                 <Navigate to="/login" />

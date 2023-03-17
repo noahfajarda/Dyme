@@ -19,6 +19,7 @@ body {
     align-items: center;
     height: 100vh;
     overflow-y: auto; /* add this line to allow scrolling */
+    width: 100%;
 }
 
 .hide {
@@ -99,7 +100,6 @@ input[type="checkbox"]:checked ~ .accordion-child {
 
 .exp-header {
     color: white;
-    position: absolute;
     margin-bottom: 5vh;
 }
 
@@ -228,4 +228,14 @@ ul .bullet-point {
 
 #form-status {
     display: none;
+}
+
+#home-button {
+    color: blue;
+}
+
+header {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
 }
