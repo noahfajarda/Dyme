@@ -6,7 +6,11 @@ import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
 
 // mutations
-import { CREATE_EXPENSE, ADD_EXPENSE_TO_USER } from "../utils/mutations";
+import {
+    CREATE_EXPENSE,
+    ADD_EXPENSE_TO_USER,
+    DELETE_EXPENSE,
+} from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 
 function HomePage({ user }) {
@@ -21,6 +25,8 @@ function HomePage({ user }) {
         useMutation(CREATE_EXPENSE);
     const [AddExpenseToUser, { addExpenseToUserError, addExpenseToUserData }] =
         useMutation(ADD_EXPENSE_TO_USER);
+    const [DeleteExpenseData, { deleteExpenseError, deleteExpenseData }] =
+        useMutation(DELETE_EXPENSE);
 
     // submit entered variables in query
     const handleFormSubmit = async (e) => {
@@ -123,6 +129,7 @@ function HomePage({ user }) {
             ""
         );
         if (percentage === "00%") percentage = "0%";
+        if (percentage === "1.00%") percentage = "100%";
         return percentage;
     }
 
@@ -133,8 +140,17 @@ function HomePage({ user }) {
         });
     }
 
-    const deleteExpense = () => {
-        console.log("test");
+    const deleteExpense = async (e) => {
+        const expenseIdToDelete = e.target.parentNode.id;
+
+        // delete expense
+        const deletedExpense = await DeleteExpenseData({
+            variables: {
+                id: expenseIdToDelete,
+            },
+        });
+        console.log(deletedExpense);
+        document.location.reload();
     };
 
     return (
