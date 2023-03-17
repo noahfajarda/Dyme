@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:focus,
+*:active {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* html,
+body {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  place-items: center;
+  background: linear-gradient(315deg, #ffffff, #d7e1ec);
+} */
+
+.wrapperr {
+  display: inline-flex;
+  list-style: none;
+}
+
+.wrapperr .icon {
+  position: relative;
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 15px;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapperr .tooltip {
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  background: #ffffff;
+  color: #ffffff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapperr .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #ffffff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapperr .icon:hover .tooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.wrapperr .icon:hover span,
+.wrapperr .icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.wrapperr .noah:hover,
+.wrapperr .noah:hover .tooltip,
+.wrapperr .noah:hover .tooltip::before {
+  background: #1877f2;
+  color: #ffffff;
+}
+li.icon.noah a {
+  color: inherit;
+}
+
+.wrapperr .anas:hover,
+.wrapperr .anas:hover .tooltip,
+.wrapperr .anas:hover .tooltip::before {
+  background: #0a3f22;
+  color: #ffffff;
+}
+li.icon.anas a {
+  color: inherit;
+}
+
+.wrapperr .amr:hover,
+.wrapperr .amr:hover .tooltip,
+.wrapperr .amr:hover .tooltip::before {
+  background: #e4405f;
+  color: #ffffff;
+}
+li.icon.amr a {
+  color: inherit;
+}
+.wrapperr .diana:hover,
+.wrapperr .diana:hover .tooltip,
+.wrapperr .diana:hover .tooltip::before {
+  background: #333333;
+  color: #ffffff;
+}
+li.icon.diana a {
+  color: inherit;
+}
+.wrapperr .keith:hover,
+.wrapperr .keith:hover .tooltip,
+.wrapperr .keith:hover .tooltip::before {
+  background: #cd201f;
+  color: #ffffff;
+}
+li.icon.keith a {
+  color: inherit;
+}
+
+.icon {
+  display: flex;
+  justify-content: flex-end;
+}

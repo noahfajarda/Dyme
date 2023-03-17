@@ -5,6 +5,9 @@ import Menu from "../components/Menu/Menu";
 import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
 
+import PieChart from "../components/PieChart/PieChart";
+import GithubLinks from "../components/GithubLinks/GithubLinks";
+
 // mutations
 import {
     CREATE_EXPENSE,
@@ -159,156 +162,191 @@ function HomePage({ user }) {
     };
 
     return (
-        <div className="app-container">
-            <div className="app-main">
-                {/* display different elements based on log in status */}
-                {Auth.loggedIn() ? (
-                    <div>
-                        <button onClick={Auth.logout}>Log Out</button>
-                        {/* showing ALL data stored in a user */}
-                        <div className="DB-info-container-1">
-                            <h1>
-                                UserID: <p className="DB-info">{user?._id}</p>
-                            </h1>
-                            <h1>
-                                Budget
-                                <p className="DB-info">{user?.budget}</p>
-                            </h1>
-                            <h1>
-                                Email
-                                <p className="DB-info">{user?.email}</p>
-                            </h1>
-                            <h1>
-                                First Name
-                                <p className="DB-info">{user?.firstName}</p>
-                            </h1>
-                            <h1>
-                                Last Name
-                                <p className="DB-info">{user?.lastName}</p>
-                            </h1>
-                            <h1>
-                                Username
-                                <p className="DB-info">{user?.username}</p>
-                            </h1>
-                        </div>
-                        <div className="DB-info-container-2">
-                            <div className="expenses">
-                                <h1>Expenses</h1>
-                                <table className="expenses-table">
-                                    {/* column names */}
-                                    <thead>
-                                        <tr>
-                                            <th className="field-label">ID</th>
-                                            <th className="field-label">
-                                                Amount
-                                            </th>
-                                            <th className="field-label">
-                                                Category
-                                            </th>
-                                            <th className="field-label">
-                                                Description
-                                            </th>
-                                            <th className="field-label">
-                                                Name
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    {/* data */}
-                                    <tbody className="expenses-info">
-                                        {/* reset counter */}
-                                        <div className="counter">
-                                            {(count = 0)}
-                                        </div>
-                                        {user &&
-                                            user.expenses?.map((expense) => {
-                                                return (
-                                                    <tr
-                                                        key={expense._id}
-                                                        id={expense._id}
+        <>
+            <div className="app-container">
+                <div className="app-main">
+                    <div className="main-header-line">
+                        <h1>Hello, Welcome back</h1>
+
+                        <Menu />
+                    </div>
+                    {Auth.loggedIn() ? (
+                        <div>
+                            <button onClick={Auth.logout}>Log Out</button>
+                            {/* showing ALL data stored in a user */}
+                            <div className="DB-info-container-1">
+                                <h1>
+                                    UserID:{" "}
+                                    <p className="DB-info">{user?._id}</p>
+                                </h1>
+                                <h1>
+                                    Budget
+                                    <p className="DB-info">{user?.budget}</p>
+                                </h1>
+                                <h1>
+                                    Email
+                                    <p className="DB-info">{user?.email}</p>
+                                </h1>
+                                <h1>
+                                    First Name
+                                    <p className="DB-info">{user?.firstName}</p>
+                                </h1>
+                                <h1>
+                                    Last Name
+                                    <p className="DB-info">{user?.lastName}</p>
+                                </h1>
+                                <h1>
+                                    Username
+                                    <p className="DB-info">{user?.username}</p>
+                                </h1>
+                            </div>
+                            <div className="DB-info-container-2">
+                                <div className="expenses">
+                                    <h1>Expenses</h1>
+                                    <table className="expenses-table">
+                                        {/* column names */}
+                                        <thead>
+                                            <tr>
+                                                <th className="field-label">
+                                                    ID
+                                                </th>
+                                                <th className="field-label">
+                                                    Amount
+                                                </th>
+                                                <th className="field-label">
+                                                    Category
+                                                </th>
+                                                <th className="field-label">
+                                                    Description
+                                                </th>
+                                                <th className="field-label">
+                                                    Name
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        {/* data */}
+                                        <tbody className="expenses-info">
+                                            {/* reset counter */}
+                                            <div className="counter">
+                                                {(count = 0)}
+                                            </div>
+                                            {user &&
+                                                user.expenses?.map(
+                                                    (expense) => {
+                                                        return (
+                                                            <tr
+                                                                key={
+                                                                    expense._id
+                                                                }
+                                                                id={expense._id}
+                                                            >
+                                                                {expenseFields.map(
+                                                                    (
+                                                                        expenseField
+                                                                    ) => {
+                                                                        if (
+                                                                            expenseField ===
+                                                                            "amount"
+                                                                        ) {
+                                                                            return (
+                                                                                <td
+                                                                                    key={
+                                                                                        expenseField
+                                                                                    }
+                                                                                >
+                                                                                    <div>
+                                                                                        $
+                                                                                        {
+                                                                                            expense[
+                                                                                                expenseField
+                                                                                            ]
+                                                                                        }
+                                                                                    </div>
+                                                                                </td>
+                                                                            );
+                                                                        }
+                                                                        return (
+                                                                            <td
+                                                                                key={
+                                                                                    expenseField
+                                                                                }
+                                                                            >
+                                                                                <div>
+                                                                                    {
+                                                                                        expense[
+                                                                                            expenseField
+                                                                                        ]
+                                                                                    }
+                                                                                </div>
+                                                                            </td>
+                                                                        );
+                                                                    }
+                                                                )}
+                                                                <div className="counter">
+                                                                    {
+                                                                        (count +=
+                                                                            expense.amount)
+                                                                    }
+                                                                </div>
+                                                                <button
+                                                                    onClick={
+                                                                        deleteExpense
+                                                                    }
+                                                                >
+                                                                    DELETE
+                                                                </button>
+                                                            </tr>
+                                                        );
+                                                    }
+                                                )}
+                                            <tr>
+                                                {/* display total amount */}
+                                                <td>
+                                                    <h1>Total: ${count}</h1>
+                                                </td>
+                                                <td>
+                                                    <input
+                                                        type="number"
+                                                        name="amount"
+                                                        value={
+                                                            expenseForm.amount
+                                                        }
+                                                        onChange={handleChange}
+                                                    />
+                                                </td>
+                                                <td>
+                                                    <select
+                                                        id="category"
+                                                        name="category"
+                                                        value={
+                                                            expenseForm.category
+                                                        }
+                                                        onChange={handleChange}
                                                     >
-                                                        {expenseFields.map(
-                                                            (expenseField) => {
+                                                        {/* go through all categories for the drop down */}
+                                                        {categories.map(
+                                                            (category) => {
                                                                 if (
-                                                                    expenseField ===
-                                                                    "amount"
+                                                                    category ===
+                                                                    "Rent & Living Expenses"
                                                                 ) {
                                                                     return (
-                                                                        <td
+                                                                        <option
                                                                             key={
-                                                                                expenseField
+                                                                                category
                                                                             }
+                                                                            value={
+                                                                                category
+                                                                            }
+                                                                            selected
                                                                         >
-                                                                            <div>
-                                                                                $
-                                                                                {
-                                                                                    expense[
-                                                                                        expenseField
-                                                                                    ]
-                                                                                }
-                                                                            </div>
-                                                                        </td>
+                                                                            Rent
+                                                                            &
+                                                                            Living
+                                                                            Expenses
+                                                                        </option>
                                                                     );
                                                                 }
-                                                                return (
-                                                                    <td
-                                                                        key={
-                                                                            expenseField
-                                                                        }
-                                                                    >
-                                                                        <div>
-                                                                            {
-                                                                                expense[
-                                                                                    expenseField
-                                                                                ]
-                                                                            }
-                                                                        </div>
-                                                                    </td>
-                                                                );
-                                                            }
-                                                        )}
-                                                        <div className="counter">
-                                                            {
-                                                                (count +=
-                                                                    expense.amount)
-                                                            }
-                                                        </div>
-                                                        <button
-                                                            onClick={
-                                                                deleteExpense
-                                                            }
-                                                        >
-                                                            DELETE
-                                                        </button>
-                                                    </tr>
-                                                );
-                                            })}
-                                        <tr>
-                                            {/* display total amount */}
-                                            <td>
-                                                <h1>Total: ${count}</h1>
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="number"
-                                                    name="amount"
-                                                    value={expenseForm.amount}
-                                                    onChange={handleChange}
-                                                />
-                                            </td>
-                                            <td>
-                                                <select
-                                                    id="category"
-                                                    name="category"
-                                                    value={expenseForm.category}
-                                                    onChange={handleChange}
-                                                >
-                                                    {/* go through all categories for the drop down */}
-                                                    {categories.map(
-                                                        (category) => {
-                                                            if (
-                                                                category ===
-                                                                "Rent & Living Expenses"
-                                                            ) {
                                                                 return (
                                                                     <option
                                                                         key={
@@ -317,146 +355,98 @@ function HomePage({ user }) {
                                                                         value={
                                                                             category
                                                                         }
-                                                                        selected
                                                                     >
-                                                                        Rent &
-                                                                        Living
-                                                                        Expenses
+                                                                        {
+                                                                            category
+                                                                        }
                                                                     </option>
                                                                 );
                                                             }
-                                                            return (
-                                                                <option
-                                                                    key={
-                                                                        category
-                                                                    }
-                                                                    value={
-                                                                        category
-                                                                    }
-                                                                >
-                                                                    {category}
-                                                                </option>
-                                                            );
+                                                        )}
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input
+                                                        type="text"
+                                                        name="description"
+                                                        value={
+                                                            expenseForm.description
                                                         }
-                                                    )}
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    name="description"
-                                                    value={
-                                                        expenseForm.description
-                                                    }
-                                                    onChange={handleChange}
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="text"
-                                                    name="name"
-                                                    value={expenseForm.name}
-                                                    onChange={handleChange}
-                                                />
-                                            </td>
-                                            <button onClick={handleFormSubmit}>
-                                                submit
-                                            </button>
+                                                        onChange={handleChange}
+                                                    />
+                                                </td>
+                                                <td>
+                                                    <input
+                                                        type="text"
+                                                        name="name"
+                                                        value={expenseForm.name}
+                                                        onChange={handleChange}
+                                                    />
+                                                </td>
+                                                <button
+                                                    onClick={handleFormSubmit}
+                                                >
+                                                    submit
+                                                </button>
+                                            </tr>
+                                        </tbody>
+                                        {user &&
+                                            user.expenses?.map((expense) => {
+                                                return (
+                                                    <td className="calculate">
+                                                        <div>
+                                                            {expense.name}{" "}
+                                                            {calculateIndividualPercentage(
+                                                                expense.amount,
+                                                                count
+                                                            )}
+                                                        </div>
+                                                    </td>
+                                                );
+                                            })}
+                                    </table>
+                                    <table className="expenses-table">
+                                        <tr>
+                                            {categories.map((category) => {
+                                                return (
+                                                    <th key={category}>
+                                                        {category}
+                                                    </th>
+                                                );
+                                            })}
                                         </tr>
-                                    </tbody>
-                                    {user &&
-                                        user.expenses?.map((expense) => {
-                                            return (
-                                                <td className="calculate">
-                                                    <div>
-                                                        {expense.name}{" "}
-                                                        {calculateIndividualPercentage(
-                                                            expense.amount,
+                                        <tr>
+                                            {categories.map((category) => {
+                                                return (
+                                                    <td key={category}>
+                                                        {calculateCategoryPercentage(
+                                                            totalExpensesByCategory[
+                                                                category
+                                                            ],
                                                             count
                                                         )}
-                                                    </div>
-                                                </td>
-                                            );
-                                        })}
-                                </table>
-                                <table className="expenses-table">
-                                    <tr>
-                                        {categories.map((category) => {
-                                            return (
-                                                <th key={category}>
-                                                    {category}
-                                                </th>
-                                            );
-                                        })}
-                                    </tr>
-                                    <tr>
-                                        {categories.map((category) => {
-                                            return (
-                                                <td key={category}>
-                                                    {calculateCategoryPercentage(
-                                                        totalExpensesByCategory[
-                                                            category
-                                                        ],
-                                                        count
-                                                    )}
-                                                </td>
-                                            );
-                                        })}
-                                    </tr>
-                                </table>
+                                                    </td>
+                                                );
+                                            })}
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                        {/* display the stylized homepage */}
-                        <h1>Hello, Welcome </h1>
-                        <div className="main-header-line">
-                            <Menu />
-
-                            <div className="action-buttons">
-                                <button className="open-right-area">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        className="feather feather-activity"
-                                    >
-                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-                                    </svg>
-                                </button>
-                                <button className="menu-button">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        className="feather feather-menu"
-                                    >
-                                        <line x1="3" y1="12" x2="21" y2="12" />
-                                        <line x1="3" y1="6" x2="21" y2="6" />
-                                        <line x1="3" y1="18" x2="21" y2="18" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div className="chart-row three">
+                    ) : (
+                        <p>Not logged in</p>
+                    )}
+                    <div className="chart-row three">
+                        <div
+                            className="chart-container-wrapper"
+                            id="expense-color"
+                        >
                             <div
-                                className="chart-container-wrapper"
-                                id="expense-color"
+                                className="chart-container"
+                                style={{ flexDirection: "column" }}
                             >
                                 <div className="chart-container-header">
-                                    <a href="/expenses">
-                                        <h2>Expenses</h2>
-                                    </a>
+                                    <h2>Expenses</h2>
                                     <span href="#">This month</span>
                                 </div>
                                 <div className="acquisitions-bar">
@@ -510,16 +500,16 @@ function HomePage({ user }) {
                                     </span>
                                     <span className="progress-amount">8%</span>
                                 </div>
-                                <div id="app"></div>
+                                <PieChart />
                             </div>
-                            <div id="doughnutChart" className="chart"></div>
+                            <div id="app"></div>
                             <div className="chart-container-wrapper">
                                 <div className="chart-container">
                                     <div className="chart-info-wrapper">
-                                        <h2>Income</h2>
+                                        <h2>Balance</h2>
                                     </div>
                                     <div id="root">
-                                        <div class="container pt-5">
+                                        <div class="container-1 pt-5">
                                             <div class="row align-items-stretch">
                                                 <div class="c-dashboardInfo col-lg-3 col-md-6">
                                                     <div class="wrap">
@@ -583,6 +573,10 @@ function HomePage({ user }) {
                                         <h3> 2. Game £22.50 05/02/2016 </h3>
                                         <h3> 3. Tesco £10.00 01/02/2016 </h3>
                                         <h3> 4. Steam £19.99 05/02/2016</h3>
+                                        <h3>
+                                            {" "}
+                                            5. Hydroflask £29.99 06/03/2016
+                                        </h3>
                                     </div>
                                 </div>
                             </div>
@@ -591,7 +585,7 @@ function HomePage({ user }) {
                             <div className="chart-container-wrapper big">
                                 <div className="chart-container">
                                     <div className="chart-container-header">
-                                        <h2>Budgets</h2>
+                                        <h2>Budgets </h2>
                                         <span>Last 30 days</span>
                                     </div>
                                     <div className="line-chart">
@@ -606,7 +600,7 @@ function HomePage({ user }) {
                                 <div className="chart-container">
                                     <div className="chart-container">
                                         <div className="chart-info-wrapper">
-                                            <h2>Goals</h2>
+                                            <h2>Financial Advice</h2>
                                             <span>$600/$1400</span>
                                         </div>
                                         <div className="chart-svg">
@@ -641,15 +635,17 @@ function HomePage({ user }) {
                             </div>
                         </div>
                     </div>
-                ) : (
+
+                    {/* ) : (
                     <div>
                         <Link to="/login">
                             <h1>Log In to see the view! </h1>
                         </Link>
                     </div>
-                )}
+                )} */}
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 
