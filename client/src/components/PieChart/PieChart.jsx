@@ -7,7 +7,7 @@ export default function PieChart() {
     wrap.className = "animated";
   }, 1000);
 
-  const styles = { text: { color: "white" } };
+  const styles = { text: { color: "white!important" } };
   return (
     <div id="wrap" className="animated">
       <svg viewBox="0 0 450 400">

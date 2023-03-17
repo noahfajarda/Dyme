@@ -17,7 +17,10 @@ function HomePage() {
         </div>
         <div className="chart-row three">
           <div className="chart-container-wrapper" id="expense-color">
-            <div className="chart-container-1">
+            <div
+              className="chart-container"
+              style={{ flexDirection: "column" }}
+            >
               <div className="chart-container-header">
                 <h2>Expenses</h2>
                 <span href="#">This month</span>

@@ -144,6 +144,7 @@
 .text-lbl {
   font-size: 12px;
   text-transform: uppercase;
+  color: white;
 }
 
 .animated [class^="data"],
