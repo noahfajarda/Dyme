@@ -1,18 +1,12 @@
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 import "./PieChart.css";
 
 export default function PieChart() {
-  const btnRef = useRef(null);
-  const wrapRef = useRef(null);
-  console.log("btnRef.current");
-  useEffect(() => {
-    const wrapElement = document.getElementById("wrap");
-    console.log(wrapElement);
-    // console.log(btnRef.current);
-    // setTimeout(function () {
-    //   wrapRef.current.classList.add("animated");
-    // }, 1000);
-  }, []);
+  setTimeout(function () {
+    const wrap = document.getElementById("wrap");
+    wrap.className = "animated";
+  }, 1000);
+
   const styles = { text: { color: "white" } };
   return (
     <div id="wrap" className="animated">

@@ -4,6 +4,7 @@ import React from "react";
 import "../styles/Homestyles.css";
 import Menu from "../components/Menu/Menu";
 import PieChart from "../components/PieChart/PieChart";
+import GithubLinks from "../components/GithubLinks/GithubLinks";
 
 function HomePage() {
   return (
@@ -13,43 +14,6 @@ function HomePage() {
           <h1>Hello, Welcome back</h1>
 
           <Menu />
-
-          <div className="action-buttons">
-            <button className="open-right-area">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="feather feather-activity"
-              >
-                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-              </svg>
-            </button>
-            <button className="menu-button">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="feather feather-menu"
-              >
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <line x1="3" y1="18" x2="21" y2="18" />
-              </svg>
-            </button>
-          </div>
         </div>
         <div className="chart-row three">
           <div className="chart-container-wrapper" id="expense-color">
@@ -221,6 +185,7 @@ function HomePage() {
           </div>
         </div>
       </div>
+      <GithubLinks />
     </div>
   );
 }
