@@ -84,27 +84,6 @@ export default function PieChart() {
         <text className="text-8 text-lbl" x="290" y="65">
           Subscriptions
         </text>
-
-        <circle
-          id="helper"
-          //   style="display: none"
-          r="110"
-          cy="200"
-          cx="205"
-          stroke-width="1"
-          stroke="blue"
-          fill="none"
-        />
-        <circle
-          id="helper"
-          //   style="display: none"
-          r="150"
-          cy="200"
-          cx="205"
-          stroke-width="1"
-          stroke="blue"
-          fill="none"
-        />
       </svg>
     </div>
   );
