@@ -77,7 +77,19 @@ const ADD_EXPENSE_TO_USER = gql`
   }
 `
 
+const DELETE_EXPENSE = gql`
+  mutation DeleteExpense($id: ID!) {
+    deleteExpense(_id: $id) {
+      _id
+      name
+      amount
+      category
+      description
+      associatedUser
+    }
+  }
+`
 
 
 
-export { ADD_PROFILE, REMOVE_PROFILE, ADD_USER, LOG_IN, CREATE_EXPENSE, ADD_EXPENSE_TO_USER }
+export { ADD_PROFILE, REMOVE_PROFILE, ADD_USER, LOG_IN, CREATE_EXPENSE, ADD_EXPENSE_TO_USER, DELETE_EXPENSE }

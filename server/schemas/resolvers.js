@@ -1,6 +1,8 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Expense } = require('../models');
 const { signToken } = require('../utils/auth');
+const bcrypt = require('bcrypt');
+
 
 
 const resolvers = {
@@ -23,6 +25,13 @@ const resolvers = {
             } catch (err) {
                 console.log("\n\n\nThere was a server-side error: \n\n\n", err)
             }
+        },
+        // ME
+        me: async (parent, args, context) => {
+            if (context.user) {
+                return User.findOne({ _id: context.user._id }).populate("expenses")
+            }
+            throw new AuthenticationError('You need to be logged in!');
         },
 
         // ---- EXPENSES
@@ -55,8 +64,10 @@ const resolvers = {
             return { user, token }
         },
         // UPDATE
-        updateUser: async (parent, { _id, firstName, lastName, username, password, email, budget, availableBalance }) => {
-            return User.findByIdAndUpdate(_id, { firstName, lastName, username, password, email, budget, availableBalance }, { new: true });
+        updateUser: async (parent, { _id, firstName, lastName, username, newPassword, email, budget, availableBalance }) => {
+            // rehash the updated password
+            newPasswordHashed = await bcrypt.hash(newPassword, 10);
+            return User.findByIdAndUpdate(_id, { firstName, lastName, username, password: newPasswordHashed, email, budget, availableBalance }, { new: true });
         },
         // DELETE
         deleteUser: async (parent, { _id }) => {
