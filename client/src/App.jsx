@@ -19,22 +19,20 @@ import QuestionPage from "./pages/QuestionPage";
 import LoginSignupPage from "./pages/LoginSignupPage";
 import DisplayDataPage from "./pages/DisplayDataPage";
 import ExpensesPage from "./pages/ExpensesPage";
+import Auth from "./utils/auth";
 
 function App() {
     const { loading, error, data } = useQuery(QUERY_me);
     // isolate the DB data you need
-    const user = data?.me;
-    console.log(user);
+
     return (
         <Router>
             {/* wrapper for everything routing related */}
             <div className="App">
                 <header className="App-header">
-                    <Routes>
-                        {/* individual display route */}
-                        {user && (
-                            <>
-                                <Route
+                <Routes>
+                        {/* all other routes */}
+                        <Route
                                     path="/DisplayDataPage"
                                     element={<DisplayDataPage />}
                                 />
@@ -52,13 +50,9 @@ function App() {
                                 />
                                 <Route
                                     path="/home"
-                                    element={<HomePage user={user} />}
+                                    element={<HomePage user={data?.me} />}
                                 />
-                            </>
-                        )}
-                        <Route path="/login" element={<LoginSignupPage />} />
-                        {/* all other routes */}
-                        <Route path="*" element={<Navigate to="/login" />} />
+                        <Route path="*" element={<LoginSignupPage />} />
                     </Routes>
                 </header>
             </div>
