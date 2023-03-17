@@ -62,19 +62,34 @@ function ExpensesPage() {
                     <h1 className="exp-header">Expenses</h1>
                 </a>
             </div>
+            {/* 
+      <div style={{ marginTop: "100px" }}>
+        {expensesData &&
+          expensesData.map((expense) => {
+            return (
+              <div id={expense._id}>
+                <div style={{ marginTop: "10px" }}>{expense.name}</div>
+                <div>{expense.amount}</div>
+                <div>{expense.category}</div>
+              </div>
+            );
+          })}
+      </div>
 
-            <div>
-                {expensesData &&
-                    expensesData.map((expense) => {
-                        return (
-                            <div key={expense._id}>
-                                <div>{expense.name}</div>
-                                <div>{expense.amount}</div>
-                                <div>{expense.category}</div>
-                            </div>
-                        );
-                    })}
-            </div>
+      <div style={{ marginTop: "100px" }}>
+        {expensesData &&
+          expensesData
+            .filter((expense) => expense.category === "Food & Dining")
+            .map((expense) => {
+              return (
+                <div id={expense._id}>
+                  <div style={{ marginTop: "10px" }}>{expense.name}</div>
+                  <div>{expense.amount}</div>
+                  <div>{expense.category}</div>
+                </div>
+              );
+            })}
+      </div> */}
 
             <div class="expense-form">
                 <h2>Add an expense:</h2>
@@ -102,7 +117,7 @@ function ExpensesPage() {
                         <input type="text" id="amount" />
                     </div>
                     <div class="expense-name">
-                        <label for="name">Label:</label>
+                        <label for="name">Name:</label>
                         <input type="text" id="name" />
                     </div>
                     <button id="submit">Submit</button>
@@ -115,49 +130,216 @@ function ExpensesPage() {
                     <label for="s1" className="accordion-label">
                         Rent & Living Expenses
                     </label>
-                    <p className="accordion-child">${expenses.rent}</p>
+                    <p className="accordion-child">
+                        {expensesData && (
+                            <ul className="bullet-point">
+                                {expensesData
+                                    .filter(
+                                        (expense) => expense.category === "Rent"
+                                    )
+                                    .map((expense) => {
+                                        return expense.amount !== 0 ? (
+                                            <li key={expense._id}>
+                                                <div>{expense.name}</div>
+                                                <div>${expense.amount}</div>
+                                                <div>{expense.category}</div>
+                                            </li>
+                                        ) : (
+                                            <li key={expense._id}>
+                                                No data added!
+                                            </li>
+                                        );
+                                    })}
+                            </ul>
+                        )}
+                    </p>
                 </li>
                 <li className="accordion-item">
                     <input id="s2" className="hide" type="checkbox" />
                     <label for="s2" className="accordion-label">
                         Lifestyle
                     </label>
-                    <p className="accordion-child">${expenses.lifestyle}</p>
+                    <p className="accordion-child">
+                        {expensesData && (
+                            <ul className="bullet-point">
+                                {expensesData
+                                    .filter(
+                                        (expense) =>
+                                            expense.category === "Lifestyle"
+                                    )
+                                    .map((expense) => {
+                                        return expense.amount !== 0 ? (
+                                            <li key={expense._id}>
+                                                <div>{expense.name}</div>
+                                                <div>${expense.amount}</div>
+                                                <div>{expense.category}</div>
+                                            </li>
+                                        ) : (
+                                            <li key={expense._id}>
+                                                No data added!
+                                            </li>
+                                        );
+                                    })}
+                            </ul>
+                        )}
+                    </p>
                 </li>
                 <li className="accordion-item">
                     <input id="s3" className="hide" type="checkbox" />
                     <label for="s3" className="accordion-label">
                         Auto & Transportation
                     </label>
-                    <p className="accordion-child">${expenses.auto}</p>
+                    <p className="accordion-child">
+                        {" "}
+                        {expensesData && (
+                            <ul className="bullet-point">
+                                {expensesData
+                                    .filter(
+                                        (expense) =>
+                                            expense.category ===
+                                            "Auto & Transportation"
+                                    )
+                                    .map((expense) => {
+                                        return expense.amount !== 0 ? (
+                                            <li key={expense._id}>
+                                                <div>{expense.name}</div>
+                                                <div>${expense.amount}</div>
+                                                <div>{expense.category}</div>
+                                            </li>
+                                        ) : (
+                                            <li key={expense._id}>
+                                                No data added!
+                                            </li>
+                                        );
+                                    })}
+                            </ul>
+                        )}
+                    </p>
                 </li>
                 <li className="accordion-item">
                     <input id="s4" className="hide" type="checkbox" />
                     <label for="s4" className="accordion-label">
                         Food & Dining
                     </label>
-                    <p className="accordion-child">${expenses.food}</p>
+                    <p className="accordion-child">
+                        {" "}
+                        {expensesData && (
+                            <ul className="bullet-point">
+                                {expensesData
+                                    .filter(
+                                        (expense) =>
+                                            expense.category === "Food & Dining"
+                                    )
+                                    .map((expense) => {
+                                        return expense.amount !== 0 ? (
+                                            <li key={expense._id}>
+                                                <div>{expense.name}</div>
+                                                <div>${expense.amount}</div>
+                                                <div>{expense.category}</div>
+                                            </li>
+                                        ) : (
+                                            <li key={expense._id}>
+                                                No data added!
+                                            </li>
+                                        );
+                                    })}
+                            </ul>
+                        )}
+                    </p>
                 </li>
                 <li className="accordion-item">
                     <input id="s5" className="hide" type="checkbox" />
                     <label for="s5" className="accordion-label">
                         Health & Fitness
                     </label>
-                    <p className="accordion-child">${expenses.health}</p>
+                    <p className="accordion-child">
+                        {" "}
+                        {expensesData && (
+                            <ul className="bullet-point">
+                                {expensesData
+                                    .filter(
+                                        (expense) =>
+                                            expense.category ===
+                                            "Health & Fitness"
+                                    )
+                                    .map((expense) => {
+                                        return expense.amount !== 0 ? (
+                                            <li key={expense._id}>
+                                                <div>{expense.name}</div>
+                                                <div>${expense.amount}</div>
+                                                <div>{expense.category}</div>
+                                            </li>
+                                        ) : (
+                                            <li key={expense._id}>
+                                                No data added!
+                                            </li>
+                                        );
+                                    })}
+                            </ul>
+                        )}
+                    </p>
                 </li>
                 <li className="accordion-item">
                     <input id="s6" className="hide" type="checkbox" />
                     <label for="s6" className="accordion-label">
                         Entertainment
                     </label>
-                    <p className="accordion-child">${expenses.entertainment}</p>
+                    <p className="accordion-child">
+                        {" "}
+                        {expensesData && (
+                            <ul className="bullet-point">
+                                {expensesData
+                                    .filter(
+                                        (expense) =>
+                                            expense.category === "Entertainment"
+                                    )
+                                    .map((expense) => {
+                                        return expense.amount !== 0 ? (
+                                            <li key={expense._id}>
+                                                <div>{expense.name}</div>
+                                                <div>${expense.amount}</div>
+                                                <div>{expense.category}</div>
+                                            </li>
+                                        ) : (
+                                            <li key={expense._id}>
+                                                No data added!
+                                            </li>
+                                        );
+                                    })}
+                            </ul>
+                        )}
+                    </p>
                 </li>
                 <li className="accordion-item">
                     <input id="s7" className="hide" type="checkbox" />
                     <label for="s7" className="accordion-label">
                         Miscellaneous
                     </label>
-                    <p className="accordion-child">${expenses.misc}</p>
+                    <p className="accordion-child">
+                        {" "}
+                        {expensesData && (
+                            <ul className="bullet-point">
+                                {expensesData
+                                    .filter(
+                                        (expense) =>
+                                            expense.category === "Miscellaneous"
+                                    )
+                                    .map((expense) => {
+                                        return expense.amount !== 0 ? (
+                                            <li key={expense._id}>
+                                                <div>{expense.name}</div>
+                                                <div>${expense.amount}</div>
+                                                <div>{expense.category}</div>
+                                            </li>
+                                        ) : (
+                                            <li key={expense._id}>
+                                                No data added!
+                                            </li>
+                                        );
+                                    })}
+                            </ul>
+                        )}
+                    </p>
                 </li>
             </ul>
             <a href="/home">

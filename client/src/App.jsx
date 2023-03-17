@@ -24,6 +24,7 @@ function App() {
     const { loading, error, data } = useQuery(QUERY_me);
     // isolate the DB data you need
     const user = data?.me;
+    console.log(user);
     return (
         <Router>
             {/* wrapper for everything routing related */}
