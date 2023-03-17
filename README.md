@@ -46,3 +46,9 @@ Use [Apollo](https://studio.apollographql.com/sandbox/explorer) to run queries i
 [Diana Nguyen](https://github.com/dianaanguyen)
 [Anas Qazza](https://github.com/aqazza)
 [Keith Ly](https://github.com/keithly009)
+
+Priorities:
+
+-   Initialize and finalize backend
+
+-   ideally finish by demo day

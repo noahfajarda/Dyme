@@ -1,0 +1,93 @@
+[
+    {
+        "name": "Safeway",
+        "amount": 105.99,
+        "category": "Food & Dining",
+        "description": "I bought from Safeway",
+        "associatedUser": "johnDoe23"
+    },
+    {
+        "name": "Nike",
+        "amount": 220,
+        "category": "Lifestyle",
+        "description": "I bought some shoes",
+        "associatedUser": "BrysonTiller235"
+    },
+    {
+        "name": "Metalic Utensils",
+        "amount": 20,
+        "category": "Food & Dining",
+        "description": "Just some silverware from Ikea",
+        "associatedUser": "StephCurry"
+    },
+    {
+        "name": "Rent",
+        "amount": 1080,
+        "category": "Rent & Living Expenses",
+        "description": "This is just my rent for the month",
+        "associatedUser": "JheneAiko10k"
+    },
+    {
+        "name": "IPhone",
+        "amount": 1200,
+        "category": "Miscellaneous",
+        "description": "Bought for my kid",
+        "associatedUser": "PaakMan24"
+    },
+    {
+        "name": "Detergent",
+        "amount": 23,
+        "category": "Lifestyle",
+        "description": "Just bought for my laundry",
+        "associatedUser": "JheneAiko10k"
+    },
+    {
+        "name": "Wireless Charger",
+        "amount": 15,
+        "category": "Miscellaneous",
+        "description": "Needed to replace previous because it broke",
+        "associatedUser": "StephCurry"
+    },
+    {
+        "name": "Game-worn jersey",
+        "amount": 80,
+        "category": "Health & Fitness",
+        "description": "Needed to replace previous because it broke",
+        "associatedUser": "StephCurry"
+    },
+    {
+        "name": "Water Bottle",
+        "amount": 6,
+        "category": "Health & Fitness",
+        "description": "Needed to replace previous because it broke",
+        "associatedUser": "StephCurry"
+    },
+    {
+        "name": "Netflix",
+        "amount": 10,
+        "category": "Entertainment",
+        "description": "Needed to replace previous because it broke",
+        "associatedUser": "StephCurry"
+    },
+    {
+        "name": "Car Phone Holder",
+        "amount": 18,
+        "category": "Auto & Transportation",
+        "description": "Bought for my B-day. Need reimbursement from my boss",
+        "associatedUser": "StephCurry"
+    },
+    {
+        "name": "Skillet",
+        "amount": 33,
+        "category": "Food & Dining",
+        "description": "Bought for my B-day. Need reimbursement from my boss",
+        "associatedUser": "johnDoe23"
+    },
+    {
+        "name": "Home Movie",
+        "amount": 7,
+        "category": "Entertainment",
+        "description": "My old shoes were broken.",
+        "associatedUser": "StephCurry"
+    }
+]

@@ -1,54 +1,62 @@
 // React Boilerplate
 import React, { useEffect, useState } from "react";
-// import "./App.css";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import {
+    ApolloClient,
+    InMemoryCache,
+    ApolloProvider,
+    createHttpLink,
+    useQuery,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { QUERY_ONE_USER, QUERY_me } from "./utils/queries";
 
 // pages
-import MainPage from "./pages/MainPage";
 import UserAmount from "./pages/UserAmount";
-import TestPage from "./pages/TestPage";
 import HomePage from "./pages/HomePage";
 import QuestionPage from "./pages/QuestionPage";
-import LoginPage1 from "./pages/LoginPage1";
+import LoginSignupPage from "./pages/LoginSignupPage";
 import DisplayDataPage from "./pages/DisplayDataPage";
-
-const client = new ApolloClient({
-    uri: "/graphql",
-    cache: new InMemoryCache(),
-});
+import ExpensesPage from "./pages/ExpensesPage";
+import Auth from "./utils/auth";
 
 function App() {
+    const { loading, error, data } = useQuery(QUERY_me);
+    // isolate the DB data you need
+
     return (
-        <ApolloProvider client={client}>
+        <Router>
             {/* wrapper for everything routing related */}
-            <Router>
-                <div className="App">
-                    <header className="App-header">
-                        <Routes>
-                            {/* individual display route */}
-                            <Route path="/test" element={<TestPage />} />
-                            <Route
-                                path="/DisplayDataPage"
-                                element={<DisplayDataPage />}
-                            />
-                            <Route
-                                path="/question"
-                                element={<QuestionPage />}
-                            />
-                            <Route path="/login" element={<LoginPage1 />} />
-                            <Route
-                                path="/useramount"
-                                element={<UserAmount />}
-                            />
-                            <Route path="/home" element={<HomePage />} />
-                            {/* all other routes */}
-                            <Route path="*" element={<MainPage />} />
-                        </Routes>
-                    </header>
-                </div>
-            </Router>
-        </ApolloProvider>
+            <div className="App">
+                <header className="App-header">
+                <Routes>
+                        {/* all other routes */}
+                        <Route
+                                    path="/DisplayDataPage"
+                                    element={<DisplayDataPage />}
+                                />
+                                <Route
+                                    path="/question"
+                                    element={<QuestionPage />}
+                                />
+                                <Route
+                                    path="/useramount"
+                                    element={<UserAmount />}
+                                />
+                                <Route
+                                    path="/expenses"
+                                    element={<ExpensesPage />}
+                                />
+                                <Route
+                                    path="/home"
+                                    element={<HomePage user={data?.me} />}
+                                />
+                        <Route path="*" element={<LoginSignupPage />} />
+                    </Routes>
+                </header>
+            </div>
+        </Router>
     );
 }
 

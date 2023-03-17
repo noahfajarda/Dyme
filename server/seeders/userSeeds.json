@@ -1,0 +1,43 @@
+[
+    {
+        "firstName": "Anderson",
+        "lastName": ".Paak",
+        "username": "PaakMan24",
+        "email": "PaakMan24@gmail.com",
+        "password": "password4Paak",
+        "budget": 91851957019587
+    },
+    {
+        "firstName": "Jhene",
+        "lastName": "Aiko",
+        "username": "JheneAiko10k",
+        "email": "JheneAiko10k@gmail.com",
+        "password": "ChilomboTheBest342",
+        "budget": 100000
+    },
+    {
+        "firstName": "Stephen",
+        "lastName": "Curry",
+        "username": "StephCurry",
+        "email": "StephCurry30@gmail.com",
+        "password": "StephDubz30",
+        "budget": 90000
+    },
+    {
+        "firstName": "Bryson",
+        "lastName": "Tiller",
+        "username": "BrysonTiller235",
+        "email": "BrysonTiller235@gmail.com",
+        "password": "BrysonTiller235ddd",
+        "budget": 100124000
+    },
+    {
+        "_id": "6411eae880b364fb3ae38bc0",
+        "firstName": "John",
+        "lastName": "Doe",
+        "username": "johnDoe23",
+        "email": "johnDoe23@gmail.com",
+        "password": "JohnDoe1455",
+        "budget": 500
+    }
+]
