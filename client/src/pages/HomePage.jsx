@@ -5,6 +5,7 @@ import "../styles/Homestyles.css";
 import Menu from "../components/Menu/Menu";
 import PieChart from "../components/PieChart/PieChart";
 import GithubLinks from "../components/GithubLinks/GithubLinks";
+import ToDoList from "../components/ToDoList/ToDoList";
 
 function HomePage() {
   return (
@@ -148,9 +149,7 @@ function HomePage() {
                 <h2>Budgets </h2>
                 <span>Last 30 days</span>
               </div>
-              <div className="line-chart">
-                <canvas id="chart"></canvas>
-              </div>
+
               <div className="chart-data-details">
                 <div className="chart-details-header"></div>
               </div>
@@ -159,30 +158,8 @@ function HomePage() {
           <div className="chart-container-wrapper small">
             <div className="chart-container">
               <div className="chart-container">
-                <div className="chart-info-wrapper">
-                  <h2>Financial Advice</h2>
-                  <span>$600/$1400</span>
-                </div>
-                <div className="chart-svg">
-                  <svg viewBox="0 0 36 36" className="circular-chart pink">
-                    <path
-                      className="circle-bg"
-                      d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-                    ></path>
-                    <path
-                      className="circle"
-                      stroke-dasharray="30, 100"
-                      d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-                    ></path>
-                    <text x="18" y="20.35" className="percentage">
-                      30%
-                    </text>
-                  </svg>
-                </div>
+                <div className="chart-info-wrapper"></div>
+                <div className="chart-svg"></div>
               </div>
             </div>
           </div>
