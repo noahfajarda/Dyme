@@ -1,15 +1,22 @@
 // React Boilerplate
 import React, { useEffect, useState } from "react";
-// import "./App.css";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import {
+    ApolloClient,
+    InMemoryCache,
+    ApolloProvider,
+    createHttpLink,
+    useQuery,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { QUERY_ONE_USER, QUERY_me } from "./utils/queries";
 
 // pages
-import MainPage from "./pages/MainPage";
 import UserAmount from "./pages/UserAmount";
-import TestPage from "./pages/TestPage";
 import HomePage from "./pages/HomePage";
 import QuestionPage from "./pages/QuestionPage";
+<<<<<<< HEAD
 import LoginPage1 from "./pages/LoginPage1";
 import DisplayDataPage from "./pages/DisplayDataPage";
 
@@ -41,6 +48,55 @@ function App() {
       </Router>
     </ApolloProvider>
   );
+=======
+import LoginSignupPage from "./pages/LoginSignupPage";
+import DisplayDataPage from "./pages/DisplayDataPage";
+import ExpensesPage from "./pages/ExpensesPage";
+
+function App() {
+    const { loading, error, data } = useQuery(QUERY_me);
+    // isolate the DB data you need
+    const user = data?.me;
+    return (
+        <Router>
+            {/* wrapper for everything routing related */}
+            <div className="App">
+                <header className="App-header">
+                    <Routes>
+                        {/* individual display route */}
+                        {user && (
+                            <>
+                                <Route
+                                    path="/DisplayDataPage"
+                                    element={<DisplayDataPage />}
+                                />
+                                <Route
+                                    path="/question"
+                                    element={<QuestionPage />}
+                                />
+                                <Route
+                                    path="/useramount"
+                                    element={<UserAmount />}
+                                />
+                                <Route
+                                    path="/expenses"
+                                    element={<ExpensesPage />}
+                                />
+                                <Route
+                                    path="/home"
+                                    element={<HomePage user={user} />}
+                                />
+                            </>
+                        )}
+                        <Route path="/login" element={<LoginSignupPage />} />
+                        {/* all other routes */}
+                        <Route path="*" element={<Navigate to="/login" />} />
+                    </Routes>
+                </header>
+            </div>
+        </Router>
+    );
+>>>>>>> a17a459117907d58977105f89be175e20b0e950a
 }
 
 export default App;
