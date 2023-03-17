@@ -123,31 +123,48 @@ function ExpensesPage() {
       </div>
 
       <ul className="accordion">
-        <li className="accordion-item">
-          <input id="s1" className="hide" type="checkbox" />
-          <label for="s1" className="accordion-label">
-            Rent & Living Expenses
-          </label>
-          <p className="accordion-child">
-          {expensesData && (
-  <ul className="bullet-point">
-    {expensesData
-      .filter((expense) => expense.category === "Rent")
-      .map((expense) => {
-        return expense.amount !== 0 ? (
-          <li key={expense._id}>
-            <div>{expense.name}</div>
-            <div>${expense.amount}</div>
-            <div>{expense.category}</div>
-          </li>
-        ) : (
-          <li key={expense._id}>No data added!</li>
-        );
-      })}
-  </ul>
-)}
-          </p>
-        </li>
+
+
+
+<li className="accordion-item">
+  <input id="s1" className="hide" type="checkbox" />
+  <label for="s1" className="accordion-label">
+    Rent & Living Expenses
+  </label>
+  <p className="accordion-child">
+    {expensesData && (
+      <table className="expense-table">
+        <thead>
+          <tr>
+            <th><h3 className="expenses-h3 exp-border" id="h3name">Name:</h3></th>
+            <th><h3 className="expenses-h3 exp-border" id="h3description">Description:</h3></th>
+            <th><h3 className="expenses-h3" id="h3amount">Amount:</h3></th>
+          </tr>
+        </thead>
+        <tbody>
+          {expensesData
+            .filter((expense) => expense.category === "Rent")
+            .map((expense) => {
+              return expense.amount !== 0 ? (
+                <tr key={expense._id} className="expense-row">
+                  <td><div>{expense.name}</div></td>
+                  <td><div>{expense.description}</div></td>
+                  <td><div>${expense.amount}</div></td>
+                </tr>
+              ) : (
+                <tr key={expense._id} className="expense-row">
+                  <td colSpan="3"><div>No data added!</div></td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
+    )}
+  </p>
+</li>
+
+
+
         <li className="accordion-item">
           <input id="s2" className="hide" type="checkbox" />
           <label for="s2" className="accordion-label">
@@ -155,22 +172,33 @@ function ExpensesPage() {
           </label>
           <p className="accordion-child">
           {expensesData && (
-  <ul className="bullet-point">
-    {expensesData
-      .filter((expense) => expense.category === "Lifestyle")
-      .map((expense) => {
-        return expense.amount !== 0 ? (
-          <li key={expense._id}>
-            <div>{expense.name}</div>
-            <div>${expense.amount}</div>
-            <div>{expense.category}</div>
-          </li>
-        ) : (
-          <li key={expense._id}>No data added!</li>
-        );
-      })}
-  </ul>
-)}
+      <table className="expense-table">
+        <thead>
+          <tr>
+            <th><h3 className="expenses-h3 exp-border" id="h3name">Name:</h3></th>
+            <th><h3 className="expenses-h3 exp-border" id="h3description">Description:</h3></th>
+            <th><h3 className="expenses-h3" id="h3amount">Amount:</h3></th>
+          </tr>
+        </thead>
+        <tbody>
+          {expensesData
+            .filter((expense) => expense.category === "Lifestyle")
+            .map((expense) => {
+              return expense.amount !== 0 ? (
+                <tr key={expense._id} className="expense-row">
+                  <td><div>{expense.name}</div></td>
+                  <td><div>{expense.description}</div></td>
+                  <td><div>${expense.amount}</div></td>
+                </tr>
+              ) : (
+                <tr key={expense._id} className="expense-row">
+                  <td colSpan="3"><div>No data added!</div></td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
+    )}
           </p>
         </li>
         <li className="accordion-item">
@@ -181,22 +209,33 @@ function ExpensesPage() {
           <p className="accordion-child">
             {" "}
             {expensesData && (
-  <ul className="bullet-point">
-    {expensesData
-      .filter((expense) => expense.category === "Auto & Transportation")
-      .map((expense) => {
-        return expense.amount !== 0 ? (
-          <li key={expense._id}>
-            <div>{expense.name}</div>
-            <div>${expense.amount}</div>
-            <div>{expense.category}</div>
-          </li>
-        ) : (
-          <li key={expense._id}>No data added!</li>
-        );
-      })}
-  </ul>
-)}
+      <table className="expense-table">
+        <thead>
+          <tr>
+            <th><h3 className="expenses-h3 exp-border" id="h3name">Name:</h3></th>
+            <th><h3 className="expenses-h3 exp-border" id="h3description">Description:</h3></th>
+            <th><h3 className="expenses-h3" id="h3amount">Amount:</h3></th>
+          </tr>
+        </thead>
+        <tbody>
+          {expensesData
+            .filter((expense) => expense.category === "Auto & Transportation")
+            .map((expense) => {
+              return expense.amount !== 0 ? (
+                <tr key={expense._id} className="expense-row">
+                  <td><div>{expense.name}</div></td>
+                  <td><div>{expense.description}</div></td>
+                  <td><div>${expense.amount}</div></td>
+                </tr>
+              ) : (
+                <tr key={expense._id} className="expense-row">
+                  <td colSpan="3"><div>No data added!</div></td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
+    )}
           </p>
         </li>
         <li className="accordion-item">
@@ -207,22 +246,33 @@ function ExpensesPage() {
           <p className="accordion-child">
             {" "}
             {expensesData && (
-  <ul className="bullet-point">
-    {expensesData
-      .filter((expense) => expense.category === "Food & Dining")
-      .map((expense) => {
-        return expense.amount !== 0 ? (
-          <li key={expense._id}>
-            <div>{expense.name}</div>
-            <div>${expense.amount}</div>
-            <div>{expense.category}</div>
-          </li>
-        ) : (
-          <li key={expense._id}>No data added!</li>
-        );
-      })}
-  </ul>
-)}
+      <table className="expense-table">
+        <thead>
+          <tr>
+            <th><h3 className="expenses-h3 exp-border" id="h3name">Name:</h3></th>
+            <th><h3 className="expenses-h3 exp-border" id="h3description">Description:</h3></th>
+            <th><h3 className="expenses-h3" id="h3amount">Amount:</h3></th>
+          </tr>
+        </thead>
+        <tbody>
+          {expensesData
+            .filter((expense) => expense.category === "Food & Dining")
+            .map((expense) => {
+              return expense.amount !== 0 ? (
+                <tr key={expense._id} className="expense-row">
+                  <td><div>{expense.name}</div></td>
+                  <td><div>{expense.description}</div></td>
+                  <td><div>${expense.amount}</div></td>
+                </tr>
+              ) : (
+                <tr key={expense._id} className="expense-row">
+                  <td colSpan="3"><div>No data added!</div></td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
+    )}
           </p>
         </li>
         <li className="accordion-item">
@@ -233,22 +283,33 @@ function ExpensesPage() {
           <p className="accordion-child">
             {" "}
             {expensesData && (
-  <ul className="bullet-point">
-    {expensesData
-      .filter((expense) => expense.category === "Health & Fitness")
-      .map((expense) => {
-        return expense.amount !== 0 ? (
-          <li key={expense._id}>
-            <div>{expense.name}</div>
-            <div>${expense.amount}</div>
-            <div>{expense.category}</div>
-          </li>
-        ) : (
-          <li key={expense._id}>No data added!</li>
-        );
-      })}
-  </ul>
-)}
+      <table className="expense-table">
+        <thead>
+          <tr>
+            <th><h3 className="expenses-h3 exp-border" id="h3name">Name:</h3></th>
+            <th><h3 className="expenses-h3 exp-border" id="h3description">Description:</h3></th>
+            <th><h3 className="expenses-h3" id="h3amount">Amount:</h3></th>
+          </tr>
+        </thead>
+        <tbody>
+          {expensesData
+            .filter((expense) => expense.category === "Health & Fitness")
+            .map((expense) => {
+              return expense.amount !== 0 ? (
+                <tr key={expense._id} className="expense-row">
+                  <td><div>{expense.name}</div></td>
+                  <td><div>{expense.description}</div></td>
+                  <td><div>${expense.amount}</div></td>
+                </tr>
+              ) : (
+                <tr key={expense._id} className="expense-row">
+                  <td colSpan="3"><div>No data added!</div></td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
+    )}
           </p>
         </li>
         <li className="accordion-item">
@@ -259,22 +320,33 @@ function ExpensesPage() {
           <p className="accordion-child">
             {" "}
             {expensesData && (
-  <ul className="bullet-point">
-    {expensesData
-      .filter((expense) => expense.category === "Entertainment")
-      .map((expense) => {
-        return expense.amount !== 0 ? (
-          <li key={expense._id}>
-            <div>{expense.name}</div>
-            <div>${expense.amount}</div>
-            <div>{expense.category}</div>
-          </li>
-        ) : (
-          <li key={expense._id}>No data added!</li>
-        );
-      })}
-  </ul>
-)}
+      <table className="expense-table">
+        <thead>
+          <tr>
+            <th><h3 className="expenses-h3 exp-border" id="h3name">Name:</h3></th>
+            <th><h3 className="expenses-h3 exp-border" id="h3description">Description:</h3></th>
+            <th><h3 className="expenses-h3" id="h3amount">Amount:</h3></th>
+          </tr>
+        </thead>
+        <tbody>
+          {expensesData
+            .filter((expense) => expense.category === "Entertainment")
+            .map((expense) => {
+              return expense.amount !== 0 ? (
+                <tr key={expense._id} className="expense-row">
+                  <td><div>{expense.name}</div></td>
+                  <td><div>{expense.description}</div></td>
+                  <td><div>${expense.amount}</div></td>
+                </tr>
+              ) : (
+                <tr key={expense._id} className="expense-row">
+                  <td colSpan="3"><div>No data added!</div></td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
+    )}
           </p>
         </li>
         <li className="accordion-item">
@@ -285,22 +357,33 @@ function ExpensesPage() {
           <p className="accordion-child">
             {" "}
             {expensesData && (
-  <ul className="bullet-point">
-    {expensesData
-      .filter((expense) => expense.category === "Miscellaneous")
-      .map((expense) => {
-        return expense.amount !== 0 ? (
-          <li key={expense._id}>
-            <div>{expense.name}</div>
-            <div>${expense.amount}</div>
-            <div>{expense.category}</div>
-          </li>
-        ) : (
-          <li key={expense._id}>No data added!</li>
-        );
-      })}
-  </ul>
-)}
+      <table className="expense-table">
+        <thead>
+          <tr>
+            <th><h3 className="expenses-h3 exp-border" id="h3name">Name:</h3></th>
+            <th><h3 className="expenses-h3 exp-border" id="h3description">Description:</h3></th>
+            <th><h3 className="expenses-h3" id="h3amount">Amount:</h3></th>
+          </tr>
+        </thead>
+        <tbody>
+          {expensesData
+            .filter((expense) => expense.category === "Miscellaneous")
+            .map((expense) => {
+              return expense.amount !== 0 ? (
+                <tr key={expense._id} className="expense-row">
+                  <td><div>{expense.name}</div></td>
+                  <td><div>{expense.description}</div></td>
+                  <td><div>${expense.amount}</div></td>
+                </tr>
+              ) : (
+                <tr key={expense._id} className="expense-row">
+                  <td colSpan="3"><div>No data added!</div></td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
+    )}
           </p>
         </li>
       </ul>
