@@ -124,12 +124,17 @@ function HomePage({ user }) {
 
     // calculate percentage of each category based on the total
     function calculateCategoryPercentage(categoryAmount, total) {
+        if (categoryAmount === 0) {
+            return "0%";
+        }
         let percentage = ((categoryAmount / total).toFixed(2) + "%").replace(
             "0.",
             ""
         );
         if (percentage === "00%") percentage = "0%";
         if (percentage === "1.00%") percentage = "100%";
+        if (percentage[0] === "0") percentage = percentage.substring(1);
+
         return percentage;
     }
 
