@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
-import "../App.css";
+import { Link, Navigate } from "react-router-dom";
+import Auth from "../utils/auth";
 
 function QuestionPage() {
     const [answerArray, setAnswerArray] = useState([]);
     const [answer, setAnswer] = useState("");
+
+    if (!Auth.loggedIn()) {
+        return <Navigate to="/login" />;
+    }
 
     const submitAnswer = async (event) => {
         event.preventDefault();
