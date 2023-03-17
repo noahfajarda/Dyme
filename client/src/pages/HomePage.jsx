@@ -446,7 +446,7 @@ function HomePage({ user }) {
                                 style={{ flexDirection: "column" }}
                             >
                                 <div className="chart-container-header">
-                                    <h2>Expenses</h2>
+                                    <a href="/expenses">Expenses</a>
                                     <span href="#">This month</span>
                                 </div>
                                 <div className="acquisitions-bar">
