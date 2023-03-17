@@ -13,6 +13,7 @@ import AccordionComponent from "../components/EXPENSE_PAGE_COMPONENTS/AccordionC
 
 function ExpensesPage() {
     const [expenses, setExpenses] = useState({});
+    const [total, setTotal] = useState(0);
     const { loading, error, data } = useQuery(QUERY_me);
     // uncomment to see the user data
     // console.log(data?.me);
@@ -28,6 +29,13 @@ function ExpensesPage() {
     useEffect(() => {
         if (userData) {
             setExpenses(userData?.user?.expenses);
+
+            // TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
+            // insert logic for the total amount
+            setTotal(0);
+            userData?.user?.expenses.forEach((expense) => {
+                setTotal((prev) => prev + expense.amount);
+            });
         }
     }, [userData]);
 
@@ -35,9 +43,7 @@ function ExpensesPage() {
     if (!Auth.loggedIn()) {
         return <Navigate to="/login" />;
     }
-
-    // TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
-    // insert logic for the total amount
+    console.log(total);
 
     const categories = [
         { id: "s1", category: "Rent & Living Expenses" },
@@ -56,12 +62,14 @@ function ExpensesPage() {
             ) : data?.me ? (
                 <div className="expense-page">
                     <header>
+                        <h1 className="exp-header">Expenses</h1>
+                        <h1 className="exp-header">
+                            Total: ${total.toLocaleString("en-US")}
+                        </h1>
                         <a href="/home">
                             <button id="home-button">Back To Home</button>
                         </a>
-                        <h1 className="exp-header">Expenses</h1>
                     </header>
-
                     {/* form */}
                     <FormComponent
                         userData={userData}

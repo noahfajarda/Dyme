@@ -236,6 +236,6 @@ ul .bullet-point {
 
 header {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
 }

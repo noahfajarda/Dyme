@@ -17,6 +17,15 @@ export default function AccordionItem({ userData, category, id }) {
         });
         document.location.reload();
     };
+
+    useEffect(() => {
+        console.log(
+            userData?.user?.expenses.filter(
+                (expense) => expense.category === category
+            )
+        );
+    }, [userData]);
+
     return (
         <li className="accordion-item">
             <input id={id} className="hide" type="checkbox" />
