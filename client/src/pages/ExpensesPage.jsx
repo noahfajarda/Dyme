@@ -29,8 +29,6 @@ function ExpensesPage() {
     useEffect(() => {
         if (userData) {
             setExpenses(userData?.user?.expenses);
-
-            // TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
             // insert logic for the total amount
             setTotal(0);
             userData?.user?.expenses.forEach((expense) => {

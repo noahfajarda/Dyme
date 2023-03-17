@@ -8,158 +8,64 @@ import Auth from "../utils/auth";
 import PieChart from "../components/PieChart/PieChart";
 import GithubLinks from "../components/GithubLinks/GithubLinks";
 
-// mutations
-import {
-    CREATE_EXPENSE,
-    ADD_EXPENSE_TO_USER,
-    DELETE_EXPENSE,
-} from "../utils/mutations";
-import { useMutation } from "@apollo/client";
-
 function HomePage({ user }) {
-    const [expenseForm, setexpenseForm] = useState({
-        amount: 0,
-        associatedUser: "",
-        category: "Rent & Living Expenses",
-        description: "",
-        name: "",
-    });
-    const [CreateExpense, { createExpenseError, createExpenseData }] =
-        useMutation(CREATE_EXPENSE);
-    const [AddExpenseToUser, { addExpenseToUserError, addExpenseToUserData }] =
-        useMutation(ADD_EXPENSE_TO_USER);
-    const [DeleteExpenseData, { deleteExpenseError, deleteExpenseData }] =
-        useMutation(DELETE_EXPENSE);
-
-    // submit entered variables in query
-    const handleFormSubmit = async (e) => {
-        e.preventDefault();
-        console.log(expenseForm);
-
-        if (
-            !expenseForm.name ||
-            !expenseForm.description ||
-            !expenseForm.category ||
-            !expenseForm.amount
-        ) {
-            console.log(
-                "One Or More Fields Were Not Entered. Please Try Again."
-            );
-            return;
-        }
-
-        try {
-            // create the expense
-            const newExpense = await CreateExpense({
-                variables: {
-                    ...expenseForm,
-                    amount: Number(expenseForm.amount),
-                    associatedUser: user.username,
-                },
+    const [total, setTotal] = useState(0);
+    const [totalExpensesByCategory, setTotalExpensesByCategory] = useState({});
+    // use effect for the total, so it only updates when the total updates
+    useEffect(() => {
+        // calculate total again
+        setTotal(0);
+        if (user?.expenses !== undefined && user?.expenses?.length !== 0) {
+            user.expenses.forEach((expense) => {
+                setTotal((prev) => prev + expense.amount);
             });
-            console.log(newExpense.data);
-
-            // associate new created expense with user
-            const associateUserAndExpense = await AddExpenseToUser({
-                variables: {
-                    userId: user._id,
-                    expenseId: newExpense.data.addExpense._id,
-                },
-            });
-            console.log(associateUserAndExpense.data);
-
-            setexpenseForm({
-                amount: 0,
-                associatedUser: "",
-                category: "Rent & Living Expenses",
-                description: "",
-                name: "",
-            });
-
-            // document.location.href = "/home";
-        } catch (e) {
-            console.log("There Was An Error Signing Up. Please Try Again.");
-            console.error(e);
         }
-    };
+    }, [user]);
 
-    // change form state
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setexpenseForm({
-            ...expenseForm,
-            [name]: value,
-        });
-    };
+    // use effect for calculating category $ totals & %
+    useEffect(() => {
+        const categoryTotalsPercentage = {
+            "Rent & Living Expenses": [0, 0.0],
+            Lifestyle: [0, 0.0],
+            "Auto & Transportation": [0, 0.0],
+            "Food & Dining": [0, 0.0],
+            "Health & Fitness": [0, 0.0],
+            Entertainment: [0, 0.0],
+            Miscellaneous: [0, 0.0],
+        };
 
-    // EXPENSES MATH LOGIC
+        // EXPENSES MATH LOGIC TODO:
+        console.log("ALL: ", user?.expenses);
+        // calculate total based on category
+        if (user?.expenses !== undefined && user?.expenses?.length !== 0) {
+            for (const category in categoryTotalsPercentage) {
+                // filteredExpense is the array of expenses in ONE category
+                const filteredExpense = user?.expenses.filter(
+                    (expense) => expense.category === category
+                );
 
-    // function to calculate percentages of total expenses
-    let count = 0;
-    function calculateIndividualPercentage(expenseAmount, total) {
-        let percentage = (expenseAmount / total).toFixed(2) + "%";
-        percentage = percentage.replace("0.", "");
-        return percentage;
-    }
+                if (filteredExpense.length > 0) {
+                    // add all expense amounts in a category
+                    const categoryTotal = filteredExpense.reduce(
+                        (accumulator, currentValue) =>
+                            accumulator + currentValue.amount,
+                        0
+                    );
+                    // get percentage of it
+                    const categoryPercentage = parseFloat(
+                        ((categoryTotal / total) * 100).toFixed(1)
+                    );
 
-    // totals of expenses separated by category
-    const totalExpensesByCategory = {
-        "Rent & Living Expenses": 0,
-        Lifestyle: 0,
-        "Auto & Transportation": 0,
-        "Food & Dining": 0,
-        "Health & Fitness": 0,
-        Entertainment: 0,
-        Miscellaneous: 0,
-    };
-
-    const expenseFields = ["_id", "amount", "category", "description", "name"];
-
-    const categories = [
-        "Rent & Living Expenses",
-        "Lifestyle",
-        "Auto & Transportation",
-        "Food & Dining",
-        "Health & Fitness",
-        "Entertainment",
-        "Miscellaneous",
-    ];
-
-    // calculate percentage of each category based on the total
-    function calculateCategoryPercentage(categoryAmount, total) {
-        if (categoryAmount === 0) {
-            return "0%";
+                    categoryTotalsPercentage[category] = [
+                        categoryTotal,
+                        categoryPercentage,
+                    ];
+                }
+            }
+            setTotalExpensesByCategory(categoryTotalsPercentage);
         }
-        let percentage = ((categoryAmount / total).toFixed(2) + "%").replace(
-            "0.",
-            ""
-        );
-        if (percentage === "00%") percentage = "0%";
-        if (percentage === "1.00%") percentage = "100%";
-        if (percentage[0] === "0") percentage = percentage.substring(1);
-
-        return percentage;
-    }
-
-    // account for error if user doesn't have expenses
-    if (user) {
-        user.expenses?.forEach((user) => {
-            totalExpensesByCategory[user.category] += user.amount;
-        });
-    }
-
-    const deleteExpense = async (e) => {
-        const expenseIdToDelete = e.target.parentNode.id;
-
-        // delete expense
-        const deletedExpense = await DeleteExpenseData({
-            variables: {
-                id: expenseIdToDelete,
-            },
-        });
-        console.log(deletedExpense);
-        document.location.reload();
-    };
+    }, [total, user?.expenses]);
+    console.log(totalExpensesByCategory);
 
     return (
         <>
@@ -167,7 +73,10 @@ function HomePage({ user }) {
                 <div className="app-main">
                     <div className="main-header-line">
                         <h1>Hello, Welcome back</h1>
-
+                        <h1>
+                            This is the total amount for expenses var you can
+                            use: ${total}
+                        </h1>
                         <Menu />
                     </div>
                     {Auth.loggedIn() ? (
@@ -199,6 +108,31 @@ function HomePage({ user }) {
                                     Username
                                     <p className="DB-info">{user?.username}</p>
                                 </h1>
+                            </div>
+                            <div className="expenses-data">
+                                {Object.keys(totalExpensesByCategory).map(
+                                    (key, index) => {
+                                        return (
+                                            <div key={index}>
+                                                <h2>
+                                                    {key}: Total:{" "}
+                                                    {
+                                                        totalExpensesByCategory[
+                                                            key
+                                                        ][0]
+                                                    }{" "}
+                                                    Percentage:{" "}
+                                                    {
+                                                        totalExpensesByCategory[
+                                                            key
+                                                        ][1]
+                                                    }
+                                                </h2>
+                                                <hr />
+                                            </div>
+                                        );
+                                    }
+                                )}
                             </div>
                         </div>
                     ) : (
@@ -277,14 +211,14 @@ function HomePage({ user }) {
                                         <h2>Balance</h2>
                                     </div>
                                     <div id="root">
-                                        <div class="container-1 pt-5">
-                                            <div class="row align-items-stretch">
-                                                <div class="c-dashboardInfo col-lg-3 col-md-6">
-                                                    <div class="wrap">
-                                                        <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">
+                                        <div className="container-1 pt-5">
+                                            <div className="row align-items-stretch">
+                                                <div className="c-dashboardInfo col-lg-3 col-md-6">
+                                                    <div className="wrap">
+                                                        <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">
                                                             Portfolio Balance
                                                             <svg
-                                                                class="MuiSvgIcon-root-19"
+                                                                className="MuiSvgIcon-root-19"
                                                                 focusable="false"
                                                                 viewBox="0 0 24 24"
                                                                 aria-hidden="true"
@@ -297,17 +231,17 @@ function HomePage({ user }) {
                                                                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path>
                                                             </svg>
                                                         </h4>
-                                                        <span class="hind-font caption-12 c-dashboardInfo__count">
+                                                        <span className="hind-font caption-12 c-dashboardInfo__count">
                                                             $10,500
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <div class="c-dashboardInfo col-lg-3 col-md-6">
-                                                    <div class="wrap">
-                                                        <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">
+                                                <div className="c-dashboardInfo col-lg-3 col-md-6">
+                                                    <div className="wrap">
+                                                        <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">
                                                             Total Expenses
                                                             <svg
-                                                                class="MuiSvgIcon-root-19"
+                                                                className="MuiSvgIcon-root-19"
                                                                 focusable="false"
                                                                 viewBox="0 0 24 24"
                                                                 aria-hidden="true"
@@ -320,10 +254,10 @@ function HomePage({ user }) {
                                                                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path>
                                                             </svg>
                                                         </h4>
-                                                        <span class="hind-font caption-12 c-dashboardInfo__count">
+                                                        <span className="hind-font caption-12 c-dashboardInfo__count">
                                                             $1,900
                                                         </span>
-                                                        <span class="hind-font-1 caption-12 c-dashboardInfo__subInfo">
+                                                        <span className="hind-font-1 caption-12 c-dashboardInfo__subInfo">
                                                             Last month: $1,630
                                                         </span>
                                                     </div>
@@ -384,7 +318,7 @@ function HomePage({ user }) {
                                                 ></path>
                                                 <path
                                                     className="circle"
-                                                    stroke-dasharray="30, 100"
+                                                    strokeDasharray="30, 100"
                                                     d="M18 2.0845
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831"
