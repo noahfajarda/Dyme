@@ -39,6 +39,7 @@ function App() {
                         <Route path="/question" element={<QuestionPage />} />
                         <Route path="/useramount" element={<UserAmount />} />
                         <Route path="/expenses" element={<ExpensesPage />} />
+                        <Route path="/expense" element={<ExpensesPage />} />
                         <Route
                             path="/home"
                             element={<HomePage user={data?.me} />}
