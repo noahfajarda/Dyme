@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/QuestionPage.css';
+// import { AnimatePresence, motion } from 'framer-motion';
 
 function QuestionPage() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -8,71 +9,66 @@ function QuestionPage() {
     
     {
       id: 1,
-      text: 'What is your monthly Income?',
+      text: 'Please input your monthly Income?',
       answer: '',
     },
     {
       id: 2,
-      text: 'Do you pay rent?',
-      choices: ["yes", "no"], 
+      text: 'Please put down how much you pay for rent?',
       answer: '',
     },
     {
       id: 3,
-      text: 'Do you have any monthly expenses such as subscriptions?',
-      choices: ["yes", "no"], 
+      text: 'Please provide an estimate for your monthly expenses such as subscriptions?', 
       answer: '',
     },
     {
       id: 4,
-      text: 'Do you have a phone plan?',
-      choices: ["yes", "no"], 
+      text: 'Please put down how much you pay for your phone plan?', 
       answer: '',
     },
     {
       id: 5,
       text: 'Please provide an estimate on how much you spend on food monthly?',
-      choices: ["yes", "no", "unsure"],
       answer: '',
     },
     {
       id: 6,
-      text: 'Do you have a Health Insurnace payment plan?',
-      choices: ["yes", "no"], 
+      text: 'Please input how much you pay for your Health Insurance payment plan?',
       answer: '',
     },
     {
       id: 7,
-      text: 'Can you input a budget that you have in mind?',
-      choices: ["yes", "no", "unsure"],
+      text: 'Please provide a budget that you have in mind?',
       answer: '',
     },
   ]);
 
   // Calls for Id/Answer and maps out the question to be declared in later functions 
   const handleAnswerSubmit = (id, answer) => {
-    const updatedQuestions = questions.map((question) =>
-      question.id === id ? { ...question, answer } : question
-    );
-    setQuestions(updatedQuestions);
-  
-    const currentQuestion = updatedQuestions[currentQuestionIndex];
-    // If answer = "yes" then prompt "please enter a value" triggers -> Currently not working, need help brain hurty
-    if (currentQuestion.choices && answer.toLowerCase() === "yes") {
-      let value;
-      do {
-        value = prompt("Please enter a value:");
-      } while (value === null);
-      const updatedQuestionsWithChoiceAnswer = updatedQuestions.map((question) =>
-        question.id === id ? { ...question, answer: value } : question
-      );
-      setQuestions(updatedQuestionsWithChoiceAnswer);
+  const updatedQuestions = questions.map((question) =>
+    question.id === id ? { ...question, answer } : question
+  );
+  setQuestions(updatedQuestions);
 
-      return; 
+  const currentQuestion = updatedQuestions[currentQuestionIndex];
+
+  if (currentQuestion && answer.toLowerCase() === "yes") {
+    let value;
+    do {
+      value = prompt("Please enter a value:");
+    } while (value === null);
+    const updatedQuestionsWithChoiceAnswer = updatedQuestions.map((question) =>
+      question.id === id ? { ...question, answer: value } : question
+    );
+    setQuestions(updatedQuestionsWithChoiceAnswer);
+
+    // Exit the function here, since we don't want to continue to the next question automatically
+    return;
   }
-  // Moves user to next question after answering current question 
-  setHasAnswered(true); 
-}; 
+
+  setHasAnswered(true);
+};
 
 // Moves to next question 
   const handleNextQuestion = () => {
@@ -106,6 +102,12 @@ function QuestionPage() {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
+    // <motion.div 
+    // key={currentQuestionIndex}
+    // initial={{opacity: 0, y: 25}}
+    // animate={{opacity:1, y: 0}}
+    // exit={{ opacity: 0, y: -25}}
+    // transition={{duration:0.5}}> 
     <div className="question-page">
       <h1>Questions {currentQuestionIndex + 1}</h1>
       <p>{currentQuestion.text}</p>
@@ -143,6 +145,7 @@ function QuestionPage() {
         </button>
 )}
     </div>
+    // </motion.div>
   );
 }
 
