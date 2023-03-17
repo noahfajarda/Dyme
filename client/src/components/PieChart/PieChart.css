@@ -1,188 +1,188 @@
 [class^="pie"] {
-  stroke-width: 58;
-  fill: none;
-  transition: all ease 450ms;
+    stroke-width: 58;
+    fill: none;
+    transition: all ease 450ms;
 }
 
 [class^="pie"]:hover {
-  stroke-width: 70;
-  border-radius: 4px;
+    stroke-width: 70;
+    border-radius: 4px;
 }
 
 /* Change text color here */
 [class^="text-"] {
-  fill: white;
+    fill: white;
 }
 
 [class^="line-"] {
-  stroke-width: 1;
-  stroke: #ffffff;
-  transform-origin: center;
-  transform: scale(0);
-  opacity: 0;
-  transition: all ease 450ms 1500ms;
+    stroke-width: 1;
+    stroke: #ffffff;
+    transform-origin: center;
+    transform: scale(0);
+    opacity: 0;
+    transition: all ease 450ms 1500ms;
 }
 [class^="line-"].line-1 {
-  transition-delay: 800ms;
+    transition-delay: 800ms;
 }
 [class^="line-"].line-2 {
-  transition-delay: 850ms;
+    transition-delay: 850ms;
 }
 [class^="line-"].line-3 {
-  transition-delay: 900ms;
+    transition-delay: 900ms;
 }
 [class^="line-"].line-4 {
-  transition-delay: 950ms;
+    transition-delay: 950ms;
 }
 [class^="line-"].line-5 {
-  transition-delay: 1000ms;
+    transition-delay: 1000ms;
 }
 [class^="line-"].line-6 {
-  transition-delay: 1050ms;
+    transition-delay: 1050ms;
 }
 [class^="line-"].line-7 {
-  transition-delay: 1100ms;
+    transition-delay: 1100ms;
 }
 [class^="line-"].line-8 {
-  transition-delay: 1150ms;
+    transition-delay: 1150ms;
 }
 
 [class^="text-"] {
-  font-family: "Gotham", "Gotham A", "Gotham B", sans-serif;
-  opacity: 0;
-  transition: opacity ease 1450ms;
+    font-family: "Gotham", "Gotham A", "Gotham B", sans-serif;
+    opacity: 0;
+    transition: opacity ease 1450ms;
 }
 [class^="text-"].text-1 {
-  transition-delay: 800ms;
+    transition-delay: 800ms;
 }
 [class^="text-"].text-2 {
-  transition-delay: 850ms;
+    transition-delay: 850ms;
 }
 [class^="text-"].text-3 {
-  transition-delay: 900ms;
+    transition-delay: 900ms;
 }
 [class^="text-"].text-4 {
-  transition-delay: 950ms;
+    transition-delay: 950ms;
 }
 [class^="text-"].text-5 {
-  transition-delay: 1000ms;
+    transition-delay: 1000ms;
 }
 [class^="text-"].text-6 {
-  transition-delay: 1050ms;
+    transition-delay: 1050ms;
 }
 [class^="text-"].text-7 {
-  transition-delay: 1100ms;
+    transition-delay: 1100ms;
 }
 [class^="text-"].text-8 {
-  transition-delay: 1150ms;
+    transition-delay: 1150ms;
 }
 
 .outline {
-  stroke-width: 68;
-  stroke: #fff;
-  fill: none;
-  opacity: 0;
-  transition: all ease 450ms 1000ms;
+    stroke-width: 68;
+    stroke: #fff;
+    fill: none;
+    opacity: 0;
+    transition: all ease 450ms 1000ms;
 }
 
 .pie-1 {
-  stroke-dasharray: 0 628.32;
-  stroke-dashoffset: 498;
-  stroke: #e44345;
-  transition-delay: 25ms;
+    stroke-dasharray: 0 628.32;
+    stroke-dashoffset: 498;
+    stroke: #e44345;
+    transition-delay: 25ms;
 }
 
 .pie-2 {
-  stroke-dasharray: 0 628.32;
-  stroke-dashoffset: 490;
-  stroke: #f7941e;
-  transition-delay: 50ms;
+    stroke-dasharray: 0 628.32;
+    stroke-dashoffset: 490;
+    stroke: #f7941e;
+    transition-delay: 50ms;
 }
 
 .pie-3 {
-  stroke-dasharray: 0 628.32;
-  stroke-dashoffset: 560;
-  stroke: #ffde16;
-  transition-delay: 75ms;
+    stroke-dasharray: 0 628.32;
+    stroke-dashoffset: 560;
+    stroke: #ffde16;
+    transition-delay: 75ms;
 }
 
 .pie-4 {
-  stroke-dasharray: 0 628.32;
-  stroke-dashoffset: -69;
-  stroke: #0ba14b;
-  transition-delay: 100ms;
+    stroke-dasharray: 0 628.32;
+    stroke-dashoffset: -69;
+    stroke: #0ba14b;
+    transition-delay: 100ms;
 }
 
 .pie-5 {
-  stroke-dasharray: 0 628.32;
-  stroke-dashoffset: 10;
-  stroke: #13a89e;
-  transition-delay: 125ms;
+    stroke-dasharray: 0 628.32;
+    stroke-dashoffset: 10;
+    stroke: #13a89e;
+    transition-delay: 125ms;
 }
 
 .pie-6 {
-  stroke-dasharray: 0 628.32;
-  stroke-dashoffset: 81;
-  stroke: #1563a1;
-  transition-delay: 150ms;
+    stroke-dasharray: 0 628.32;
+    stroke-dashoffset: 81;
+    stroke: #1563a1;
+    transition-delay: 150ms;
 }
 
 .pie-7 {
-  stroke-dasharray: 0 628.32;
-  stroke-dashoffset: 111;
-  stroke: #7f3f98;
-  transition-delay: 200ms;
+    stroke-dasharray: 0 628.32;
+    stroke-dashoffset: 111;
+    stroke: #7f3f98;
+    transition-delay: 200ms;
 }
 
 .pie-8 {
-  stroke-dasharray: 0 628.32;
-  stroke-dashoffset: 90;
-  stroke: #d399c5;
-  transition-delay: 250ms;
+    stroke-dasharray: 0 628.32;
+    stroke-dashoffset: 90;
+    stroke: #d399c5;
+    transition-delay: 250ms;
 }
 
 .text-head {
-  font-size: 30px;
-  font-weight: 600;
+    font-size: 30px;
+    font-weight: 600;
 }
 
 .text-lbl {
-  font-size: 12px;
-  text-transform: uppercase;
+    font-size: 12px;
+    text-transform: uppercase;
 }
 
 .animated [class^="data"],
 .animated [class^="line-"],
 .animated [class^="text-"],
 .animated .outline {
-  opacity: 1;
+    opacity: 1;
 }
 .animated [class^="line-"] {
-  transform: scale(1);
+    transform: scale(1);
 }
 .animated .pie-1 {
-  stroke-dasharray: 208 628.32;
+    stroke-dasharray: 208 628.32;
 }
 .animated .pie-2 {
-  stroke-dasharray: 100 628.32;
+    stroke-dasharray: 100 628.32;
 }
 .animated .pie-3 {
-  stroke-dasharray: 85 628.32;
+    stroke-dasharray: 85 628.32;
 }
 .animated .pie-4 {
-  stroke-dasharray: 85 628.32;
+    stroke-dasharray: 85 628.32;
 }
 .animated .pie-5 {
-  stroke-dasharray: 80 628.32;
+    stroke-dasharray: 80 628.32;
 }
 .animated .pie-6 {
-  stroke-dasharray: 40 628.32;
+    stroke-dasharray: 40 628.32;
 }
 .animated .pie-7 {
-  stroke-dasharray: 36 628.32;
+    stroke-dasharray: 36 628.32;
 }
 .animated .pie-8 {
-  stroke-dasharray: 8 628.32;
+    stroke-dasharray: 8 628.32;
 }
 
 /* body {
@@ -190,20 +190,20 @@
 } */
 
 #wrap {
-  position: relative;
-  width: 50%;
-  color: #ffffff;
+    position: relative;
+    width: 50%;
+    color: #ffffff;
 }
 
 #about {
-  position: fixed;
-  bottom: 1em;
-  right: 1em;
-  font-family: monospace;
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    font-family: monospace;
 }
 
 button {
-  position: fixed;
-  bottom: 1em;
-  left: 1em;
+    /* position: fixed; */
+    bottom: 1em;
+    left: 1em;
 }

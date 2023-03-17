@@ -30,28 +30,19 @@ function App() {
             {/* wrapper for everything routing related */}
             <div className="App">
                 <header className="App-header">
-                <Routes>
+                    <Routes>
                         {/* all other routes */}
                         <Route
-                                    path="/DisplayDataPage"
-                                    element={<DisplayDataPage />}
-                                />
-                                <Route
-                                    path="/question"
-                                    element={<QuestionPage />}
-                                />
-                                <Route
-                                    path="/useramount"
-                                    element={<UserAmount />}
-                                />
-                                <Route
-                                    path="/expenses"
-                                    element={<ExpensesPage />}
-                                />
-                                <Route
-                                    path="/home"
-                                    element={<HomePage user={data?.me} />}
-                                />
+                            path="/DisplayDataPage"
+                            element={<DisplayDataPage />}
+                        />
+                        <Route path="/question" element={<QuestionPage />} />
+                        <Route path="/useramount" element={<UserAmount />} />
+                        <Route path="/expenses" element={<ExpensesPage />} />
+                        <Route
+                            path="/home"
+                            element={<HomePage user={data?.me} />}
+                        />
                         <Route path="*" element={<LoginSignupPage />} />
                     </Routes>
                 </header>
