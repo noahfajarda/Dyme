@@ -1,114 +1,84 @@
 import React from "react";
 // import "../App.css";
-import SavingsGoal from "../components/SavingsGoal";
+// import SavingsGoal from "../components/SavingsGoal/SavingsGoal";
 import "../styles/Homestyles.css";
 import Menu from "../components/Menu/Menu";
+import PieChart from "../components/PieChart/PieChart";
+import GithubLinks from "../components/GithubLinks/GithubLinks";
 
 function HomePage() {
   return (
     <div className="app-container">
       <div className="app-main">
         <div className="main-header-line">
-          <h1>Hello, Welcome back </h1>
+          <h1>Hello, Welcome back</h1>
 
-          <Menu/>
-
-          <div className="action-buttons">
-            <button className="open-right-area">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="feather feather-activity"
-              >
-                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-              </svg>
-            </button>
-            <button className="menu-button">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="feather feather-menu"
-              >
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <line x1="3" y1="18" x2="21" y2="18" />
-              </svg>
-            </button>
-          </div>
+          <Menu />
         </div>
         <div className="chart-row three">
           <div className="chart-container-wrapper" id="expense-color">
-            <div className="chart-container-header">
-              <h2>Expenses</h2>
-              <span href="#">This month</span>
-            </div>
-            <div className="acquisitions-bar">
-              <span
-                className="bar-progress rejected"
-                style={{ width: "8%" }}
-              ></span>
-              <span
-                className="bar-progress on-hold"
-                style={{ width: "10%" }}
-              ></span>
-              <span
-                className="bar-progress shortlisted"
-                style={{ width: "18%" }}
-              ></span>
-              <span
-                className="bar-progress applications"
-                style={{ width: "64%" }}
-              ></span>
-            </div>
-            <div className="progress-bar-info">
-              <span className="progress-color applications"></span>
-              <span className="progress-type">Food & Dining</span>
-              <span className="progress-amount">56%</span>
-            </div>
-            <div className="progress-bar-info">
-              <span className="progress-color shortlisted"></span>
-              <span className="progress-type">Entertainment</span>
-              <span className="progress-amount">18%</span>
-            </div>
-            <div className="progress-bar-info">
-              <span className="progress-color on-hold"></span>
-              <span className="progress-type">Auto Expenses</span>
-              <span className="progress-amount">10%</span>
-            </div>
-            <div className="progress-bar-info">
-              <span className="progress-color rejected"></span>
-              <span className="progress-type">Bills</span>
-              <span className="progress-amount">8%</span>
-            </div>
-            <div className="progress-bar-info">
-              <span className="progress-color blue "></span>
-              <span className="progress-type">Miscellaneous Expenses</span>
-              <span className="progress-amount">8%</span>
+            <div
+              className="chart-container"
+              style={{ flexDirection: "column" }}
+            >
+              <div className="chart-container-header">
+                <h2>Expenses</h2>
+                <span href="#">This month</span>
+              </div>
+              <div className="acquisitions-bar">
+                <span
+                  className="bar-progress rejected"
+                  style={{ width: "8%" }}
+                ></span>
+                <span
+                  className="bar-progress on-hold"
+                  style={{ width: "10%" }}
+                ></span>
+                <span
+                  className="bar-progress shortlisted"
+                  style={{ width: "18%" }}
+                ></span>
+                <span
+                  className="bar-progress applications"
+                  style={{ width: "64%" }}
+                ></span>
+              </div>
+              <div className="progress-bar-info">
+                <span className="progress-color applications"></span>
+                <span className="progress-type">Food & Dining</span>
+                <span className="progress-amount">56%</span>
+              </div>
+              <div className="progress-bar-info">
+                <span className="progress-color shortlisted"></span>
+                <span className="progress-type">Entertainment</span>
+                <span className="progress-amount">18%</span>
+              </div>
+              <div className="progress-bar-info">
+                <span className="progress-color on-hold"></span>
+                <span className="progress-type">Auto Expenses</span>
+                <span className="progress-amount">10%</span>
+              </div>
+              <div className="progress-bar-info">
+                <span className="progress-color rejected"></span>
+                <span className="progress-type">Bills</span>
+                <span className="progress-amount">8%</span>
+              </div>
+              <div className="progress-bar-info">
+                <span className="progress-color blue "></span>
+                <span className="progress-type">Miscellaneous Expenses</span>
+                <span className="progress-amount">8%</span>
+              </div>
+              <PieChart />
             </div>
             <div id="app"></div>
           </div>
-          <div id="doughnutChart" className="chart"></div>
           <div className="chart-container-wrapper">
             <div className="chart-container">
               <div className="chart-info-wrapper">
-                <h2>Income</h2>
+                <h2>Balance</h2>
               </div>
               <div id="root">
-                <div class="container pt-5">
+                <div class="container-1 pt-5">
                   <div class="row align-items-stretch">
                     <div class="c-dashboardInfo col-lg-3 col-md-6">
                       <div class="wrap">
@@ -166,6 +136,7 @@ function HomePage() {
                 <h3> 2. Game £22.50 05/02/2016 </h3>
                 <h3> 3. Tesco £10.00 01/02/2016 </h3>
                 <h3> 4. Steam £19.99 05/02/2016</h3>
+                <h3> 5. Hydroflask £29.99 06/03/2016</h3>
               </div>
             </div>
           </div>
@@ -174,7 +145,7 @@ function HomePage() {
           <div className="chart-container-wrapper big">
             <div className="chart-container">
               <div className="chart-container-header">
-                <h2>Budgets</h2>
+                <h2>Budgets </h2>
                 <span>Last 30 days</span>
               </div>
               <div className="line-chart">
@@ -189,7 +160,7 @@ function HomePage() {
             <div className="chart-container">
               <div className="chart-container">
                 <div className="chart-info-wrapper">
-                  <h2>Goals</h2>
+                  <h2>Financial Advice</h2>
                   <span>$600/$1400</span>
                 </div>
                 <div className="chart-svg">
@@ -217,6 +188,7 @@ function HomePage() {
           </div>
         </div>
       </div>
+      <GithubLinks />
     </div>
   );
 }
