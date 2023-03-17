@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/ExpenseStyles.css";
 import Auth from "../utils/auth";
 import { Link, Navigate } from "react-router-dom";
@@ -8,15 +8,7 @@ import { QUERY_ONE_USER, QUERY_me } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 
 function ExpensesPage() {
-    const [expenses, setExpenses] = useState({
-        rent: 0,
-        lifestyle: 0,
-        auto: 0,
-        food: 0,
-        health: 0,
-        entertainment: 0,
-        Miscellaneous: 0,
-    });
+    const [expenses, setExpenses] = useState({});
     const { loading, error, data } = useQuery(QUERY_me);
     console.log(data?.me);
     // retrieve the id from token to get specific user data
@@ -27,6 +19,19 @@ function ExpensesPage() {
         variables: { id: data?.me._id },
     });
 
+    useEffect(() => {
+      if (userData) {
+        setExpenses(userData?.user?.expenses);
+      }
+    }, [userData])
+
+    const updateExpenses = (event) => {
+      setExpenses({
+        ...expenses,
+      })
+      // useMutation here has well
+    }
+
     // isolate the DB data you need
     // const user = data?.user || [];
 
@@ -34,6 +39,8 @@ function ExpensesPage() {
     if (!Auth.loggedIn()) {
         return <Navigate to="/login" />;
     }
+
+    //const [userData?.user?.expenses, set]
 
     // const userData?.user?.expenses = user.expenses;
     // console.log(userData?.user?.expenses);
@@ -93,7 +100,7 @@ function ExpensesPage() {
         })}
   </div> */}
 
-        <div class="expense-form">
+        <form class="expense-form" onSubmit={(event) => updateExpenses(event)}>
             <h2>Add an expense:</h2>
             <div class="expense-inputs">
                 <div class="expense-category">
@@ -124,7 +131,7 @@ function ExpensesPage() {
                 </div>
                 <button id="submit">Submit</button>
             </div>
-        </div>
+        </form>
 
   <ul className="accordion">
 
