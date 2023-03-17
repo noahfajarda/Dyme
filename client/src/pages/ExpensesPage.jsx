@@ -151,9 +151,6 @@ function ExpensesPage() {
     const [expenses, setExpenses] = useState({});
     const { loading, error, data } = useQuery(QUERY_me);
     console.log(data?.me);
-    // retrieve the id from token to get specific user data
-    // const token = Auth.getProfile();
-    // const id = token.data._id;
 
     const {
         loading: userLoading,
@@ -173,39 +170,20 @@ function ExpensesPage() {
         setExpenses({
             ...expenses,
         });
-        // useMutation here has well
     };
-
-    // isolate the DB data you need
-    // const user = data?.user || [];
 
     // log in check
     if (!Auth.loggedIn()) {
         return <Navigate to="/login" />;
     }
 
-    //const [userData?.user?.expenses, set]
+    // TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
+    // able to submit form
+    // CREATE to the db
 
-    // const userData?.user?.expenses = user.expenses;
-    // console.log(userData?.user?.expenses);
+    // DELETE functionality for each expense
 
-    //     const submitButton = document.getElementById("submit");
-
-    // submitButton.addEventListener("click", (event) => {
-    //   event.preventDefault(); // prevent the form from submitting and reloading the page
-
-    //   const category = document.getElementById("category").value;
-    //   const amount = document.getElementById("amount").value;
-    //   const name = document.getElementById("name").value;
-
-    //   // do something with the form data, for example:
-    //   console.log(`Category: ${category}, Amount: ${amount}, Name: ${name}`);
-
-    //   // clear the form fields
-    //   document.getElementById("category").value = "rent";
-    //   document.getElementById("amount").value = "";
-    //   document.getElementById("name").value = "";
-    // });
+    // insert logic for the total amount
 
     return (
         <>
