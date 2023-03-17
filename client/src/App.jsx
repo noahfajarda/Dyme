@@ -11,7 +11,6 @@ import TestPage from "./pages/TestPage";
 import HomePage from "./pages/HomePage";
 import QuestionPage from "./pages/QuestionPage";
 import LoginPage1 from "./pages/LoginPage1";
-import LoginPage from "./pages/LoginPage";
 import DisplayDataPage from "./pages/DisplayDataPage";
 
 const client = new ApolloClient({
@@ -41,11 +40,6 @@ function App() {
                             <Route
                                 path="/useramount"
                                 element={<UserAmount />}
-                            />
-
-                            <Route
-                                path="/loginDeprecated"
-                                element={<LoginPage />}
                             />
                             <Route path="/home" element={<HomePage />} />
                             {/* all other routes */}
