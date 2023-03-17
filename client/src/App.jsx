@@ -13,11 +13,9 @@ import { Link, Navigate } from "react-router-dom";
 import { QUERY_ONE_USER, QUERY_me } from "./utils/queries";
 
 // pages
-import UserAmount from "./pages/UserAmount";
 import HomePage from "./pages/HomePage";
 import QuestionPage from "./pages/QuestionPage";
 import LoginSignupPage from "./pages/LoginSignupPage";
-import DisplayDataPage from "./pages/DisplayDataPage";
 import ExpensesPage from "./pages/ExpensesPage";
 import Auth from "./utils/auth";
 
@@ -32,12 +30,8 @@ function App() {
                 <header className="App-header">
                     <Routes>
                         {/* all other routes */}
-                        <Route
-                            path="/DisplayDataPage"
-                            element={<DisplayDataPage />}
-                        />
                         <Route path="/question" element={<QuestionPage />} />
-                        <Route path="/useramount" element={<UserAmount />} />
+                        {/* needs below */}
                         <Route path="/expenses" element={<ExpensesPage />} />
                         <Route path="/expense" element={<ExpensesPage />} />
                         <Route

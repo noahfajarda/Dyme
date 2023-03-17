@@ -18,21 +18,13 @@ export default function AccordionItem({ userData, category, id }) {
         document.location.reload();
     };
 
-    useEffect(() => {
-        console.log(
-            userData?.user?.expenses.filter(
-                (expense) => expense.category === category
-            )
-        );
-    }, [userData]);
-
     return (
         <li className="accordion-item">
             <input id={id} className="hide" type="checkbox" />
             <label htmlFor={id} className="accordion-label">
                 {category}
             </label>
-            <p className="accordion-child">
+            <div className="accordion-child">
                 {userData?.user?.expenses && (
                     <table className="expense-table">
                         <thead>
@@ -81,9 +73,11 @@ export default function AccordionItem({ userData, category, id }) {
                                             <td>
                                                 <div>${expense.amount}</div>
                                             </td>
-                                            <button onClick={deleteExpense}>
-                                                DELETE
-                                            </button>
+                                            <td className="delete-expense">
+                                                <button onClick={deleteExpense}>
+                                                    DELETE
+                                                </button>
+                                            </td>
                                         </tr>
                                     ) : (
                                         <tr
@@ -99,7 +93,7 @@ export default function AccordionItem({ userData, category, id }) {
                         </tbody>
                     </table>
                 )}
-            </p>
+            </div>
         </li>
     );
 }
