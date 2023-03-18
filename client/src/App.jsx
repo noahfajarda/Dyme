@@ -1,11 +1,11 @@
 // React Boilerplate
 import React, { useEffect, useState } from "react";
 import {
-    ApolloClient,
-    InMemoryCache,
-    ApolloProvider,
-    createHttpLink,
-    useQuery,
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+  useQuery,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -17,33 +17,32 @@ import HomePage from "./pages/HomePage";
 import QuestionPage from "./pages/QuestionPage";
 import LoginSignupPage from "./pages/LoginSignupPage";
 import ExpensesPage from "./pages/ExpensesPage";
+import TESTINGPage from "./pages/TESTINGPage";
 import Auth from "./utils/auth";
 
 function App() {
-    const { loading, error, data } = useQuery(QUERY_me);
-    // isolate the DB data you need
+  const { loading, error, data } = useQuery(QUERY_me);
+  // isolate the DB data you need
 
-    return (
-        <Router>
-            {/* wrapper for everything routing related */}
-            <div className="App">
-                <header className="App-header">
-                    <Routes>
-                        {/* all other routes */}
-                        <Route path="/question" element={<QuestionPage />} />
-                        {/* needs below */}
-                        <Route path="/expenses" element={<ExpensesPage />} />
-                        <Route path="/expense" element={<ExpensesPage />} />
-                        <Route
-                            path="/home"
-                            element={<HomePage user={data?.me} />}
-                        />
-                        <Route path="*" element={<LoginSignupPage />} />
-                    </Routes>
-                </header>
-            </div>
-        </Router>
-    );
+  return (
+    <Router>
+      {/* wrapper for everything routing related */}
+      <div className="App">
+        <header className="App-header">
+          <Routes>
+            {/* all other routes */}
+            <Route path="/question" element={<QuestionPage />} />
+            {/* needs below */}
+            <Route path="/expenses" element={<ExpensesPage />} />
+            <Route path="/expense" element={<ExpensesPage />} />
+            <Route path="/testing" element={<TESTINGPage />} />
+            <Route path="/home" element={<HomePage user={data?.me} />} />
+            <Route path="*" element={<LoginSignupPage />} />
+          </Routes>
+        </header>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
