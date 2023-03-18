@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import SavingsGoal from "../components/SavingsGoal";
-import Menu from "../components/Menu/Menu";
 import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
+
 // styling
 import "../styles/HomePage.css";
 
 // components
-import PieChart from "../components/PieChart/PieChart";
+import Menu from "../components/HOME_PAGE_COMPONENTS/Menu/Menu";
+import PieChart from "../components/HOME_PAGE_COMPONENTS/PieChart/PieChart";
 import UserAmount from "../components/HOME_PAGE_COMPONENTS/UserAmount/UserAmount";
 import GithubLinks from "../components/HOME_PAGE_COMPONENTS/GithubLinks/GithubLinks";
 
@@ -47,6 +47,8 @@ function HomePage({ user }) {
         <div className="app-main">
           <div className="main-header-line">
             <h1>Hello, Welcome back</h1>
+            <h1>This is the year: {new Date().getFullYear()}</h1>
+
             <h1>
               This is the total amount for expenses var you can use: ${total}
             </h1>
