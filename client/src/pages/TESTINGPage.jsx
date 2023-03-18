@@ -6,6 +6,7 @@ import GithubLinks from "../components/TESTING_PAGE_COMPONENTS/GithubLinks/Githu
 import Menu from "../components/TESTING_PAGE_COMPONENTS/Menu/Menu";
 import PieChart from "../components/TESTING_PAGE_COMPONENTS/PieChart/PieChart";
 import TodoList from "../components/TESTING_PAGE_COMPONENTS/TodoList/TodoList";
+import BarGraph from "../components/TESTING_PAGE_COMPONENTS/BarGraph/BarGraph";
 
 function TESTINGPage() {
   return (
@@ -146,6 +147,7 @@ function TESTINGPage() {
                 <h2>Budgets </h2>
                 <span>Last 30 days</span>
               </div>
+              <BarGraph />
               <div className="chart-data-details">
                 <div className="chart-details-header"></div>
               </div>
