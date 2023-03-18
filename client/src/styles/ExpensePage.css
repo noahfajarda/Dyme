@@ -1,0 +1,245 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+/* html,
+body {
+  height: 100%;
+} */
+
+.expense-page {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: roboto, helvetica, arial, san-serif;
+    color: #666;
+    background-color: #050e2d;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: auto; /* add this line to allow scrolling */
+    width: 100%;
+}
+
+.hide {
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.accordion {
+    background: #fff;
+    width: 100%;
+    background-color: #01081f;
+    color: white;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+.accordion-item {
+    position: relative;
+    width: 100%;
+}
+
+.accordion-item:last-child {
+    border-bottom: none;
+}
+
+.accordion-label {
+    padding: 20px 0 20px 30px;
+    width: 100%;
+    display: block;
+    font-size: 18px;
+}
+
+.accordion-label:hover {
+    cursor: pointer;
+}
+
+.accordion-label:before {
+    content: "";
+    position: absolute;
+    height: 5px;
+    width: 5px;
+    top: 22px;
+    left: 12px;
+    display: inline-block;
+    border-left: 5px solid #999;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+input[type="checkbox"]:checked ~ .accordion-label:before {
+    transform: rotate(90deg);
+}
+
+.accordion-child {
+    margin: 0;
+    transition: all 0.3s ease;
+    opacity: 0;
+    height: 0;
+    transform: scale(1, 0);
+    transform-origin: center top;
+    background-color: pink;
+    color: black;
+}
+
+input[type="checkbox"]:checked ~ .accordion-child {
+    /* border: 1px solid #e0e0e0; */
+    margin: 0 -20px 15px -20px;
+    box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.16);
+    padding: 30px;
+    height: auto;
+    opacity: 1;
+    transform: scale(1, 1);
+}
+
+.exp-header {
+    color: white;
+    margin-bottom: 5vh;
+}
+
+.expense-form {
+    margin-top: 8vh;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: white;
+}
+
+.expense-form h2 {
+    margin-bottom: 1vh;
+}
+
+.expense-inputs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1vh;
+}
+
+.expense-inputs label {
+    margin-right: 1vw;
+}
+
+.expense-inputs select,
+.expense-inputs input[type="text"] {
+    padding: 0.5vh;
+    border-radius: 4px;
+    border: none;
+    margin-right: 1vw;
+}
+
+.expense-inputs select {
+    width: 15vw;
+}
+
+#submit {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 1vh 2vw;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    height: 26px;
+}
+
+ul .bullet-point {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bullet-point li {
+    /* display: inline-block; */
+    margin-right: 10px;
+    border-right: #01081f 1px solid;
+}
+
+.bullet-point li div {
+    margin: 0 5px;
+}
+
+.expenses-h3 {
+    color: black;
+}
+
+.expense-table {
+    margin-top: 3vh;
+    display: table;
+    border-collapse: collapse;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+.expense-table th,
+.expense-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+.expense-table th {
+    background-color: #4caf50;
+    color: white;
+}
+
+.expense-table td {
+    background-color: white;
+    color: black;
+}
+
+#h3name,
+#h3description,
+#h3amount {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.heading-container {
+    display: flex;
+    align-items: center;
+}
+
+#h3name {
+    margin-right: 10vw;
+    text-align: center;
+}
+
+#h3description {
+    margin-right: 30vw;
+    text-align: center;
+}
+
+#h3amount {
+    text-align: center;
+}
+
+#form-status {
+    display: none;
+}
+
+#home-button {
+    color: blue;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.expenses-data {
+    color: white;
+}

@@ -39,21 +39,21 @@ export default function Menu() {
         }
     };
     return (
-        <nav class="navbar">
-            <ul class="navbar-list">
-                <li class="navbar-item">
-                    <a class="navbar-link" href="www.google.com">
-                        <i class="bi bi-house navbar-link-icon"></i>
+        <nav className="navbar">
+            <ul className="navbar-list">
+                <li className="navbar-item">
+                    <a className="navbar-link" href="www.google.com">
+                        <i className="bi bi-house navbar-link-icon"></i>
                     </a>
                 </li>
 
-                <li class="navbar-item">
-                    <a class="navbar-link" href="www.google.com">
-                        <i class="bi bi-person navbar-link-icon"></i>
+                <li className="navbar-item">
+                    <a className="navbar-link" href="www.google.com">
+                        <i className="bi bi-person navbar-link-icon"></i>
                     </a>
                 </li>
 
-                <div class="navbar-underscore"></div>
+                <div className="navbar-underscore"></div>
             </ul>
         </nav>
     );
