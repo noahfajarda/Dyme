@@ -6,6 +6,7 @@ import Menu from "../components/Menu/Menu";
 import PieChart from "../components/PieChart/PieChart";
 import GithubLinks from "../components/GithubLinks/GithubLinks";
 import ToDoList from "../components/ToDoList/ToDoList";
+import ChartExpenses from "../components/ChartExpenses/ChartExpenses";
 
 function HomePage() {
   return (
@@ -69,7 +70,7 @@ function HomePage() {
                 <span className="progress-type">Miscellaneous Expenses</span>
                 <span className="progress-amount">8%</span>
               </div>
-              <PieChart />
+              <PieChart food="1%" />
             </div>
             <div id="app"></div>
           </div>
@@ -143,15 +144,17 @@ function HomePage() {
           </div>
         </div>
         <div className="chart-row two">
-          <div className="chart-container-wrapper big">
-            <div className="chart-container">
-              <div className="chart-container-header">
-                <h2>Budgets </h2>
+          <div class="chart-container-wrapper big">
+            <div class="chart-container">
+              <div class="chart-container-header">
+                <h2>Top Active Jobs</h2>
                 <span>Last 30 days</span>
               </div>
-
-              <div className="chart-data-details">
-                <div className="chart-details-header"></div>
+              <div class="line-chart">
+                <canvas id="chart"></canvas>
+              </div>
+              <div class="chart-data-details">
+                <div class="chart-details-header"></div>
               </div>
             </div>
           </div>
