@@ -1,7 +1,7 @@
 import React from "react";
 import "./PieChart.css";
 
-export default function PieChart() {
+export default function PieChart(props) {
   setTimeout(function () {
     const wrap = document.getElementById("wrap");
     wrap.className = "animated";
@@ -16,7 +16,7 @@ export default function PieChart() {
         <circle className="pie-1" r="100" cx="210" cy="200" />
         <line className="line-1" x1="165" y1="100" x2="144" y2="65" />
         <text style={styles.text} className="text-1 text-head" x="110" y="40">
-          35%
+          {props.food}
         </text>
         <text className="text-1 text-lbl" x="115" y="60">
           Food & Dining
