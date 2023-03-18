@@ -1,12 +1,14 @@
 import React from "react";
-// import "../App.css";
-// import SavingsGoal from "../components/SavingsGoal/SavingsGoal";
+import { Link } from "react-router-dom";
+// styles
 import "../styles/TESTINGPage.css";
+// components
 import GithubLinks from "../components/TESTING_PAGE_COMPONENTS/GithubLinks/GithubLinks";
 import Menu from "../components/TESTING_PAGE_COMPONENTS/Menu/Menu";
-import PieChart from "../components/TESTING_PAGE_COMPONENTS/PieChart/PieChart";
-import TodoList from "../components/TESTING_PAGE_COMPONENTS/TodoList/TodoList";
+// import PieChart from "../components/TESTING_PAGE_COMPONENTS/PieChart/PieChart";
+// import TodoList from "../components/TESTING_PAGE_COMPONENTS/TodoList/TodoList";
 import BarGraph from "../components/TESTING_PAGE_COMPONENTS/BarGraph/BarGraph";
+import ProgressBar from "../components/TESTING_PAGE_COMPONENTS/ProgressBar/ProgressBar";
 
 function TESTINGPage() {
   return (
@@ -18,59 +20,8 @@ function TESTINGPage() {
         </div>
         <div className="chart-row three">
           <div className="chart-container-wrapper" id="expense-color">
-            <div
-              className="chart-container"
-              style={{ flexDirection: "column" }}
-            >
-              <div className="chart-container-header">
-                <h2>Expenses</h2>
-                <span href="#">This month</span>
-              </div>
-              <div className="acquisitions-bar">
-                <span
-                  className="bar-progress rejected"
-                  style={{ width: "8%" }}
-                ></span>
-                <span
-                  className="bar-progress on-hold"
-                  style={{ width: "10%" }}
-                ></span>
-                <span
-                  className="bar-progress shortlisted"
-                  style={{ width: "18%" }}
-                ></span>
-                <span
-                  className="bar-progress applications"
-                  style={{ width: "64%" }}
-                ></span>
-              </div>
-              <div className="progress-bar-info">
-                <span className="progress-color applications"></span>
-                <span className="progress-type">Food & Dining</span>
-                <span className="progress-amount">56%</span>
-              </div>
-              <div className="progress-bar-info">
-                <span className="progress-color shortlisted"></span>
-                <span className="progress-type">Entertainment</span>
-                <span className="progress-amount">18%</span>
-              </div>
-              <div className="progress-bar-info">
-                <span className="progress-color on-hold"></span>
-                <span className="progress-type">Auto Expenses</span>
-                <span className="progress-amount">10%</span>
-              </div>
-              <div className="progress-bar-info">
-                <span className="progress-color rejected"></span>
-                <span className="progress-type">Bills</span>
-                <span className="progress-amount">8%</span>
-              </div>
-              <div className="progress-bar-info">
-                <span className="progress-color blue "></span>
-                <span className="progress-type">Miscellaneous Expenses</span>
-                <span className="progress-amount">8%</span>
-              </div>
-              <PieChart />
-            </div>
+            <ProgressBar />
+
             <div id="app"></div>
           </div>
           <div className="chart-container-wrapper">
