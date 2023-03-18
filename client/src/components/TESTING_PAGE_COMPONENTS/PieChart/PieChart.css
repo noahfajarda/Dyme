@@ -3,17 +3,14 @@
   fill: none;
   transition: all ease 450ms;
 }
-
 [class^="pie"]:hover {
   stroke-width: 70;
   border-radius: 4px;
 }
-
 /* Change text color here */
 [class^="text-"] {
   fill: white;
 }
-
 [class^="line-"] {
   stroke-width: 1;
   stroke: #ffffff;
@@ -46,7 +43,6 @@
 [class^="line-"].line-8 {
   transition-delay: 1150ms;
 }
-
 [class^="text-"] {
   font-family: "Gotham", "Gotham A", "Gotham B", sans-serif;
   opacity: 0;
@@ -76,7 +72,6 @@
 [class^="text-"].text-8 {
   transition-delay: 1150ms;
 }
-
 .outline {
   stroke-width: 68;
   stroke: #fff;
@@ -84,73 +79,62 @@
   opacity: 0;
   transition: all ease 450ms 1000ms;
 }
-
 .pie-1 {
   stroke-dasharray: 0 628.32;
   stroke-dashoffset: 498;
   stroke: #e44345;
   transition-delay: 25ms;
 }
-
 .pie-2 {
   stroke-dasharray: 0 628.32;
   stroke-dashoffset: 490;
   stroke: #f7941e;
   transition-delay: 50ms;
 }
-
 .pie-3 {
   stroke-dasharray: 0 628.32;
   stroke-dashoffset: 560;
   stroke: #ffde16;
   transition-delay: 75ms;
 }
-
 .pie-4 {
   stroke-dasharray: 0 628.32;
   stroke-dashoffset: -69;
   stroke: #0ba14b;
   transition-delay: 100ms;
 }
-
 .pie-5 {
   stroke-dasharray: 0 628.32;
   stroke-dashoffset: 10;
   stroke: #13a89e;
   transition-delay: 125ms;
 }
-
 .pie-6 {
   stroke-dasharray: 0 628.32;
   stroke-dashoffset: 81;
   stroke: #1563a1;
   transition-delay: 150ms;
 }
-
 .pie-7 {
   stroke-dasharray: 0 628.32;
   stroke-dashoffset: 111;
   stroke: #7f3f98;
   transition-delay: 200ms;
 }
-
 .pie-8 {
   stroke-dasharray: 0 628.32;
   stroke-dashoffset: 90;
   stroke: #d399c5;
   transition-delay: 250ms;
 }
-
 .text-head {
   font-size: 30px;
   font-weight: 600;
 }
-
 .text-lbl {
   font-size: 12px;
   text-transform: uppercase;
 }
-
 .animated [class^="data"],
 .animated [class^="line-"],
 .animated [class^="text-"],
@@ -184,26 +168,21 @@
 .animated .pie-8 {
   stroke-dasharray: 8 628.32;
 }
-
 /* body {
   background: lightgray;
 } */
-
 #wrap {
   position: relative;
   width: 50%;
   color: #ffffff;
 }
-
 #about {
   position: fixed;
   bottom: 1em;
   right: 1em;
   font-family: monospace;
 }
-
 button {
-  position: fixed;
   bottom: 1em;
   left: 1em;
 }

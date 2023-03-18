@@ -19,6 +19,7 @@ body {
     align-items: center;
     height: 100vh;
     overflow-y: auto; /* add this line to allow scrolling */
+    width: 100%;
 }
 
 .hide {
@@ -78,13 +79,13 @@ input[type="checkbox"]:checked ~ .accordion-label:before {
 
 .accordion-child {
     margin: 0;
-    overflow: hidden;
     transition: all 0.3s ease;
     opacity: 0;
     height: 0;
     transform: scale(1, 0);
     transform-origin: center top;
     background-color: pink;
+    color: black;
 }
 
 input[type="checkbox"]:checked ~ .accordion-child {
@@ -99,9 +100,6 @@ input[type="checkbox"]:checked ~ .accordion-child {
 
 .exp-header {
     color: white;
-    position: absolute;
-    top: 20px;
-    left: 20px;
     margin-bottom: 5vh;
 }
 
@@ -153,4 +151,95 @@ input[type="checkbox"]:checked ~ .accordion-child {
     cursor: pointer;
     border-radius: 4px;
     height: 26px;
+}
+
+ul .bullet-point {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bullet-point li {
+    /* display: inline-block; */
+    margin-right: 10px;
+    border-right: #01081f 1px solid;
+}
+
+.bullet-point li div {
+    margin: 0 5px;
+}
+
+.expenses-h3 {
+    color: black;
+}
+
+.expense-table {
+    margin-top: 3vh;
+    display: table;
+    border-collapse: collapse;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+.expense-table th,
+.expense-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+.expense-table th {
+    background-color: #4caf50;
+    color: white;
+}
+
+.expense-table td {
+    background-color: white;
+    color: black;
+}
+
+#h3name,
+#h3description,
+#h3amount {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.heading-container {
+    display: flex;
+    align-items: center;
+}
+
+#h3name {
+    margin-right: 10vw;
+    text-align: center;
+}
+
+#h3description {
+    margin-right: 30vw;
+    text-align: center;
+}
+
+#h3amount {
+    text-align: center;
+}
+
+#form-status {
+    display: none;
+}
+
+#home-button {
+    color: blue;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.expenses-data {
+    color: white;
 }
