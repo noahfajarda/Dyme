@@ -51,6 +51,9 @@ body {
 
 .accordion-label {
     padding: 20px 0 20px 30px;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
     width: 100%;
     display: block;
     font-size: 18px;
@@ -91,7 +94,7 @@ input[type="checkbox"]:checked ~ .accordion-label:before {
 input[type="checkbox"]:checked ~ .accordion-child {
     /* border: 1px solid #e0e0e0; */
     margin: 0 -20px 15px -20px;
-    box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 3px 6px 1px rgba(255, 255, 255, 0.859);
     padding: 30px;
     height: auto;
     opacity: 1;
@@ -99,8 +102,11 @@ input[type="checkbox"]:checked ~ .accordion-child {
 }
 
 .exp-header {
-    color: white;
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+    letter-spacing: 0.1em;
     margin-bottom: 5vh;
+    text-shadow: 4px 4px 0px rgba(40, 240, 177, 0.37);
 }
 
 .expense-form {
@@ -114,13 +120,19 @@ input[type="checkbox"]:checked ~ .accordion-child {
 
 .expense-form h2 {
     margin-bottom: 1vh;
+    font-size: 26px;
+    text-shadow: 4px 4px 0px rgba(40, 240, 177, 0.37);
+    padding-bottom: 20px;
 }
 
 .expense-inputs {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-bottom: 1vh;
+    padding-left: 125px;
 }
 
 .expense-inputs label {
@@ -140,17 +152,25 @@ input[type="checkbox"]:checked ~ .accordion-child {
 }
 
 #submit {
-    background-color: #4caf50;
-    border: none;
+    background-color: #1ba8cc;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    border: white;
     color: white;
-    padding: 1vh 2vw;
+    padding: 0.5vh 2vw;
     text-align: center;
-    text-decoration: none;
+    text-decoration: white;
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
     border-radius: 4px;
     height: 26px;
+    transition: box-shadow 0.3s ease-in-out; /* add transition property */
+}
+
+#submit:hover {
+    box-shadow: 0 0 8px 4px #d9d9da; /* add box-shadow property */
 }
 
 ul .bullet-point {
@@ -191,7 +211,7 @@ ul .bullet-point {
 }
 
 .expense-table th {
-    background-color: #4caf50;
+    background-color: #d9e7f6;
     color: white;
 }
 
@@ -205,6 +225,7 @@ ul .bullet-point {
 #h3amount {
     font-size: 14px;
     font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .heading-container {
@@ -231,8 +252,35 @@ ul .bullet-point {
 }
 
 #home-button {
-    color: blue;
-}
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    background-color: #000;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  #home-button:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #ff69b4;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+  
+  #home-button:hover:before {
+    opacity: 1;
+  }
+  
 
 header {
     display: flex;

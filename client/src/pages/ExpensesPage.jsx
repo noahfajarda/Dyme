@@ -64,7 +64,7 @@ function ExpensesPage() {
               Total: ${total.toLocaleString("en-US")}
             </h1>
             <a href="/home">
-              <button id="home-button">Back To Home</button>
+              <button id="home-button">Back to Home</button>
             </a>
           </header>
           {/* form */}
