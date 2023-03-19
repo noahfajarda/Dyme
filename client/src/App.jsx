@@ -15,10 +15,10 @@ import { QUERY_ONE_USER, QUERY_me } from "./utils/queries";
 // pages
 import UserAmount from "./pages/UserAmount";
 import HomePage from "./pages/HomePage";
-import QuestionPage from "./pages/QuestionPage";
+// import QuestionPage from "./pages/QuestionPage";
 import LoginSignupPage from "./pages/LoginSignupPage";
-import QuestionPage from "./pages/QuestionPage.tsx";
-import LoginPage1 from "./pages/LoginPage1";
+import QuestionPage from "./pages/QuestionPage1.tsx";
+// import LoginPage1 from "./pages/LoginPage1";
 import DisplayDataPage from "./pages/DisplayDataPage";
 import ExpensesPage from "./pages/ExpensesPage";
 import Auth from "./utils/auth";

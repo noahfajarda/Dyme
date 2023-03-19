@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/QuestionPage.css';
+import { AnimatePresence, motion} from 'framer-motion'
 // import { AnimatePresence, motion } from 'framer-motion';
 
 function QuestionPage() {
@@ -46,29 +47,26 @@ function QuestionPage() {
 
   // Calls for Id/Answer and maps out the question to be declared in later functions 
   const handleAnswerSubmit = (id, answer) => {
-  const updatedQuestions = questions.map((question) =>
-    question.id === id ? { ...question, answer } : question
-  );
-  setQuestions(updatedQuestions);
-
-  const currentQuestion = updatedQuestions[currentQuestionIndex];
-
-  if (currentQuestion && answer.toLowerCase() === "yes") {
-    let value;
-    do {
-      value = prompt("Please enter a value:");
-    } while (value === null);
-    const updatedQuestionsWithChoiceAnswer = updatedQuestions.map((question) =>
-      question.id === id ? { ...question, answer: value } : question
+    const updatedQuestions = questions.map((question) =>
+      question.id === id ? { ...question, answer } : question
     );
-    setQuestions(updatedQuestionsWithChoiceAnswer);
+    setQuestions(updatedQuestions);
+  
+    const currentQuestion = updatedQuestions[currentQuestionIndex];
 
-    // Exit the function here, since we don't want to continue to the next question automatically
-    return;
-  }
+    if (currentQuestion && answer.toLowerCase() === 'yes') {
+      let value;
+      do {
+        value = prompt('Please enter a value:');
+      } while (value === null);
+      const updatedQuestionsWithChoiceAnswer = updatedQuestions.map((question) =>
+        question.id === id ? { ...question, answer: value } : question
+      );
+      setQuestions(updatedQuestionsWithChoiceAnswer);
+    }
 
-  setHasAnswered(true);
-};
+    setHasAnswered(true);
+  };
 
 // Moves to next question 
   const handleNextQuestion = () => {
@@ -77,21 +75,20 @@ function QuestionPage() {
   };
 
   // Function for submitting a choice for multiple choice questions 
-  const handleChoiceSubmit = (choice: string) => {
-    const currentQuestion = questions[currentQuestionIndex];
-    // Creates new array of questions with updated submitted choices 
-    const updatedQuestions = questions.map((question) =>
-      question.id === currentQuestion.id ? { ...question, answer: choice } : question
-    );
-    // sets to updated array 
-    setQuestions(updatedQuestions);
-    setHasAnswered(true);
-  
-    // Moves from one question to next so long as there are more 
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-    }
-  };
+  // const handleChoiceSubmit = (choice: any) => {
+  //   const currentQuestion = questions[currentQuestionIndex];
+  //   // Creates new array of questions with updated submitted choices
+  //   const updatedQuestions = questions.map((question) =>
+  //     question.id === currentQuestion.id ? { ...question, answer: choice } : question
+  //   );
+  //   // sets to updated array
+  //   setQuestions(updatedQuestions);
+  //   setHasAnswered(true);
+
+  //   if (currentQuestionIndex < questions.length - 1) {
+  //     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+  //   }
+  // };
 
   // Previous question function 
   const handlePreviousQuestion = () => {
@@ -109,44 +106,48 @@ function QuestionPage() {
     // exit={{ opacity: 0, y: -25}}
     // transition={{duration:0.5}}> 
     <div className="question-page">
-      <h1>Questions {currentQuestionIndex + 1}</h1>
-      <p>{currentQuestion.text}</p>
-      {currentQuestion.choices ? (
-        <div className="choices-container">
-          {currentQuestion.choices.map((choice, index) => (
-            <button
-              key={index}
-              onClick={() => handleChoiceSubmit(choice)}
-            >
-              {choice}
-            </button>
-          ))}
-        </div>
-      ) : (
-        <input
-          type="text"
-          value={currentQuestion.answer}
-          onChange={(event) =>
-            handleAnswerSubmit(currentQuestion.id, event.target.value)
-          }
-        />
-      )}
-      {/* Adds prev button for all questions after ID:1 */}
+    <h1>Questions {currentQuestionIndex + 1}</h1>
+    <AnimatePresence exitBeforeEnter>
+      <motion.p
+        key={currentQuestion.id}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.2 }}
+      >
+        {currentQuestion.text}
+      </motion.p>
+    </AnimatePresence>
+    <input
+      type="text"
+      value={currentQuestion.answer}
+      onChange={(event) =>
+        handleAnswerSubmit(currentQuestion.id, event.target.value)
+      }
+    />
+    <div className="button-container">
       {currentQuestionIndex > 0 && (
         <button className="previous-button" onClick={handlePreviousQuestion}>
           Previous
         </button>
       )}
-      {!currentQuestion.choices && hasAnswered && (
-        <button 
-        className="next-button"
-        onClick={handleNextQuestion}>
-          Next
-        </button>
-)}
+      <AnimatePresence>
+        {!hasAnswered && (
+          <motion.button
+            className="next-button"
+            onClick={handleNextQuestion}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            Next
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
-    // </motion.div>
-  );
+  </div>
+);
 }
 
-export default QuestionPage; 
+export default QuestionPage;
