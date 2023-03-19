@@ -59,7 +59,7 @@ function ExpensesPage() {
       ) : data?.me ? (
         <div className="expense-page">
           <header>
-            <h1 className="exp-header">Expenses</h1>
+            <h1 id="exp-header-1" className="exp-header">Expenses</h1>
             <h1 className="exp-header">
               Total: ${total.toLocaleString("en-US")}
             </h1>
