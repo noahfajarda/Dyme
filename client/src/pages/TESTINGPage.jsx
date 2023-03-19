@@ -43,7 +43,7 @@ function TESTINGPage({ user }) {
     <div className="app-container">
       <div className="app-main">
         <div className="main-header-line">
-          <h1 id="welcome">Hello, Welcome back {user.firstName}</h1>
+          <h1 id="welcome">Hello, Welcome back {user?.firstName}</h1>
           <Menu />
         </div>
         <div className="chart-row three">
@@ -76,7 +76,7 @@ function TESTINGPage({ user }) {
                           </svg>
                         </h4>
                         <span className="hind-font caption-12 c-dashboardInfo__count">
-                          $10,500
+                          <p className="budget-balance"> ${user?.budget}</p>
                         </span>
                       </div>
                     </div>
@@ -101,7 +101,7 @@ function TESTINGPage({ user }) {
                           </svg>
                         </h4>
                         <span className="hind-font caption-12 c-dashboardInfo__count">
-                          $1,900
+                          <p className="total-expenses"> ${total}</p>
                         </span>
                       </div>
                     </div>
@@ -114,11 +114,11 @@ function TESTINGPage({ user }) {
             <div className="chart-container">
               <div className="chart-info-wrapper">
                 <h2>Recent Transactions</h2>
-                <h3> 1. Tesco £122.50 05/02/2016</h3>
-                <h3> 2. Game £22.50 05/02/2016 </h3>
-                <h3> 3. Tesco £10.00 01/02/2016 </h3>
-                <h3> 4. Steam £19.99 05/02/2016</h3>
-                <h3> 5. Hydroflask £29.99 06/03/2016</h3>
+                <h3> 1. Tesco $122.50 05/02/2023</h3>
+                <h3> 2. Game $22.50 05/02/2023 </h3>
+                <h3> 3. Tesco $10.00 01/02/2023 </h3>
+                <h3> 4. Steam $19.99 05/02/2023</h3>
+                <h3> 5. Hydroflask $29.99 06/03/2023</h3>
               </div>
             </div>
           </div>

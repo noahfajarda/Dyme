@@ -17,11 +17,11 @@ function BarGraph({ totalExpensesByCategory }) {
     <table className="c-bar-graph">
       <tfoot className="c-bar-graph__footer">
         <tr>
-          <td>Rent & Living</td>
-          <td>LifeStyle</td>
-          <td>Auto & Transportation</td>
+          <td>Rent/Living</td>
+          <td>Lifestyle</td>
+          <td>Auto & Trans.</td>
           <td>Food & Dining</td>
-          <td>Health & Fitness</td>
+          <td>Health & Fit</td>
           <td>Entertainment</td>
           <td>Miscellaneous</td>
         </tr>

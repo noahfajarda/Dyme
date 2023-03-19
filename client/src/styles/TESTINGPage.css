@@ -285,7 +285,7 @@ button {
 
 .chart-info-wrapper {
   flex-shrink: 0;
-  flex-basis: 120px;
+  flex-basis: 320px;
   display: flex;
   flex-direction: column;
   justify-content: center;
