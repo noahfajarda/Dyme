@@ -14,7 +14,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-family: roboto, helvetica, arial, san-serif;
     color: #666;
-    background-color: #050e2d;
+    background: linear-gradient(179.4deg, rgb(12, 20, 69) -16.9%, rgb(71, 30, 84) 119.9%);
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -34,7 +34,7 @@ body {
 .accordion {
     background: #fff;
     width: 100%;
-    background-color: #01081f;
+    background-color: #01081f3e;
     color: white;
     margin-top: 10vh;
     margin-bottom: 10vh;
@@ -57,9 +57,11 @@ body {
     width: 100%;
     display: block;
     font-size: 18px;
-}
-
-.accordion-label:hover {
+    transition: all 0.2s ease-in-out; /* add transition for smooth effect */
+  }
+  
+  .accordion-label:hover {
+    padding-left: 50px; /* adjust this value to increase or decrease the slide distance */
     cursor: pointer;
 }
 
@@ -87,7 +89,7 @@ input[type="checkbox"]:checked ~ .accordion-label:before {
     height: 0;
     transform: scale(1, 0);
     transform-origin: center top;
-    background-color: pink;
+    background-color: rgba(81, 59, 171, 0.923);
     color: black;
 }
 
@@ -152,7 +154,7 @@ input[type="checkbox"]:checked ~ .accordion-child {
 }
 
 #submit {
-    background-color: #1ba8cc;
+    background-color: #347ecd;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     letter-spacing: 0.1em;
     font-weight: bold;
@@ -239,6 +241,7 @@ ul .bullet-point {
 }
 
 #h3description {
+    
     margin-right: 30vw;
     text-align: center;
 }
