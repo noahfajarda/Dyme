@@ -90,7 +90,7 @@ export default function AccordionItem({ userData, category, id }) {
                         <div>${expense.amount}</div>
                       </td>
                       <td className="delete-expense">
-                        <button onClick={deleteExpense}>DELETE</button>
+                      <button id="delete-btn" onClick={deleteExpense}>DELETE</button>
                       </td>
                     </tr>
                   ) : (

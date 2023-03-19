@@ -113,7 +113,7 @@ input[type="checkbox"]:checked ~ .accordion-child {
 
 .expense-form {
     margin-top: 8vh;
-    margin-left: 20px;
+    margin-left: 60px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -219,8 +219,26 @@ ul .bullet-point {
 
 .expense-table td {
     background-color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: smaller;
+    font-weight: bold;
     color: black;
 }
+
+#delete-btn {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    font-weight: bold;
+    background-color: #080000;
+    align-items: center;
+    padding: 0px 10px 0px 10px;
+    border-radius: 4px;
+  }
+  
+  #delete-btn:hover {
+    box-shadow: 0 0 6px 4px #fe3a3a; /* add box-shadow property */
+  }
+  
 
 #h3name,
 #h3description,
