@@ -43,7 +43,7 @@ function TESTINGPage({ user }) {
     <div className="app-container">
       <div className="app-main">
         <div className="main-header-line">
-          <h1 id="welcome">Hello, Welcome back [username]</h1>
+          <h1 id="welcome">Hello, Welcome back {user.firstName}</h1>
           <Menu />
         </div>
         <div className="chart-row three">
@@ -54,44 +54,53 @@ function TESTINGPage({ user }) {
           <div className="chart-container-wrapper">
             <div id="total-budget" className="chart-container">
               <div id="root">
-                <div class="container-1 pt-5">
-                  <div class="row align-items-stretch">
-                    <div class="c-dashboardInfo col-lg-3 col-md-6">
-                      <div class="wrap">
-                        <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">
+                <div className="container-1 pt-5">
+                  <div className="row align-items-stretch">
+                    <div className="c-dashboardInfo col-lg-3 col-md-6">
+                      <div className="wrap">
+                        <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">
                           Budget Balance
                           <svg
-                            class="MuiSvgIcon-root-19"
+                            className="MuiSvgIcon-root-19"
                             focusable="false"
                             viewBox="0 0 24 24"
                             aria-hidden="true"
                             role="presentation"
                           >
+                            <title>
+                              A budget balance is the difference between the
+                              total income and the total expenses in a budget.
+                            </title>
                             <path fill="none" d="M0 0h24v24H0z"></path>
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path>
                           </svg>
                         </h4>
-                        <span class="hind-font caption-12 c-dashboardInfo__count">
+                        <span className="hind-font caption-12 c-dashboardInfo__count">
                           $10,500
                         </span>
                       </div>
                     </div>
-                    <div class="c-dashboardInfo col-lg-3 col-md-6">
-                      <div class="wrap">
-                        <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">
+                    <div className="c-dashboardInfo col-lg-3 col-md-6">
+                      <div className="wrap">
+                        <h4 className="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">
                           Total Expenses
                           <svg
-                            class="MuiSvgIcon-root-19"
+                            className="MuiSvgIcon-root-19"
                             focusable="false"
                             viewBox="0 0 24 24"
                             aria-hidden="true"
                             role="presentation"
                           >
+                            <title>
+                              Total expenses refer to the sum of all the
+                              expenses through rent, lifestyle, Food & Dining
+                              etc.
+                            </title>
                             <path fill="none" d="M0 0h24v24H0z"></path>
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path>
                           </svg>
                         </h4>
-                        <span class="hind-font caption-12 c-dashboardInfo__count">
+                        <span className="hind-font caption-12 c-dashboardInfo__count">
                           $1,900
                         </span>
                       </div>
@@ -118,7 +127,7 @@ function TESTINGPage({ user }) {
           <div className="chart-container-wrapper big">
             <div className="chart-container">
               <div className="chart-container-header">
-                <a href="/expenses">Budgets </a>
+                <a href="/expenses">Expenses </a>
               </div>
               <BarGraph totalExpensesByCategory={totalExpensesByCategory} />
               <div className="chart-data-details">

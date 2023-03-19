@@ -1,8 +1,3 @@
-/* table {
-  background-color: rgb(68, 45, 151);
-  color: white;
-} */
-
 .c-bar-graph {
   text-align: center;
   color: rgb(255, 255, 255);
@@ -10,6 +5,8 @@
   width: 100%;
   border-bottom: 1px solid rgb(0, 0, 0);
   margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  font-family: "Roboto", sans-serif;
 }
 @media (min-width: 45em) {
   .c-bar-graph {
@@ -34,14 +31,27 @@
 }
 .c-bar-graph__data {
   height: 30px;
+  /* width: 100%; */
   line-height: 30px;
   font-size: 0.9rem;
   display: block;
   margin: 0 10%;
-  background: salmon linear-gradient(salmon 10px, tomato 100%);
+  background: linear-gradient(to bottom, #3654ffd5 0%, #420f0f7c 100%);
   position: relative;
-  transition: height 1s ease-out;
-  transition-delay: 1s;
+  animation-name: gradient-animation;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  border-radius: 3px;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
 }
 .c-bar-graph__helper {
   font-weight: 400;

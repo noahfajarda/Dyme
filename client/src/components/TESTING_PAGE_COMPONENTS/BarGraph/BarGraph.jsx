@@ -32,6 +32,8 @@ function BarGraph({ totalExpensesByCategory }) {
             className="c-bar-graph__cell "
             data-graph={totalExpensesByCategory["Rent & Living"]}
           >
+            {totalExpensesByCategory["Rent & Living Expenses"][0]}
+
             <span
               className="c-bar-graph__data"
               style={{
@@ -41,14 +43,13 @@ function BarGraph({ totalExpensesByCategory }) {
                   maxHeight
                 }px`,
               }}
-            >
-              {totalExpensesByCategory["Rent & Living Expenses"][0]}
-            </span>
+            ></span>
           </td>
           <td
             className="c-bar-graph__cell"
             data-graph={totalExpensesByCategory["Lifestyle"]}
           >
+            {totalExpensesByCategory["Lifestyle"][0]}
             <span
               className="c-bar-graph__data"
               style={{
@@ -57,14 +58,14 @@ function BarGraph({ totalExpensesByCategory }) {
                   maxHeight
                 }px`,
               }}
-            >
-              {totalExpensesByCategory["Lifestyle"][0]}
-            </span>
+            ></span>
           </td>
           <td
             className="c-bar-graph__cell"
             data-graph={totalExpensesByCategory["Auto & Transportation"]}
           >
+            {totalExpensesByCategory["Auto & Transportation"][0]}
+
             <span
               className="c-bar-graph__data"
               style={{
@@ -74,14 +75,14 @@ function BarGraph({ totalExpensesByCategory }) {
                   maxHeight
                 }px`,
               }}
-            >
-              {totalExpensesByCategory["Auto & Transportation"][0]}
-            </span>
+            ></span>
           </td>
           <td
             className="c-bar-graph__cell"
             data-graph={totalExpensesByCategory["Food & Dining"]}
           >
+            {totalExpensesByCategory["Food & Dining"][0]}
+
             <span
               className="c-bar-graph__data"
               style={{
@@ -90,14 +91,14 @@ function BarGraph({ totalExpensesByCategory }) {
                   maxHeight
                 }px`,
               }}
-            >
-              {totalExpensesByCategory["Food & Dining"][0]}
-            </span>
+            ></span>
           </td>
           <td
             className="c-bar-graph__cell"
             data-graph={totalExpensesByCategory["Health & Fitness"]}
           >
+            {totalExpensesByCategory["Health & Fitness"][0]}
+
             <span
               className="c-bar-graph__data"
               style={{
@@ -106,14 +107,14 @@ function BarGraph({ totalExpensesByCategory }) {
                   maxHeight
                 }px`,
               }}
-            >
-              {totalExpensesByCategory["Health & Fitness"][0]}
-            </span>
+            ></span>
           </td>
           <td
             className="c-bar-graph__cell"
             data-graph={totalExpensesByCategory["Entertainment"]}
           >
+            {totalExpensesByCategory["Entertainment"][0]}
+
             <span
               className="c-bar-graph__data"
               style={{
@@ -122,14 +123,14 @@ function BarGraph({ totalExpensesByCategory }) {
                   maxHeight
                 }px`,
               }}
-            >
-              {totalExpensesByCategory["Entertainment"][0]}
-            </span>
+            ></span>
           </td>
           <td
             className="c-bar-graph__cell"
             data-graph={totalExpensesByCategory["Miscellaneous"]}
           >
+            {totalExpensesByCategory["Miscellaneous"][0]}
+
             <span
               className="c-bar-graph__data"
               style={{
@@ -138,9 +139,7 @@ function BarGraph({ totalExpensesByCategory }) {
                   maxHeight
                 }px`,
               }}
-            >
-              {totalExpensesByCategory["Miscellaneous"][0]}
-            </span>
+            ></span>
           </td>
         </tr>
       </tbody>
