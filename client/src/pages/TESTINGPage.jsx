@@ -15,18 +15,16 @@ function TESTINGPage() {
     <div className="app-container">
       <div className="app-main">
         <div className="main-header-line">
-          <h1>Hello, Welcome back</h1>
+          <h1 id="welcome">Hello, Welcome back [username]</h1>
           <Menu />
         </div>
         <div className="chart-row three">
           <div className="chart-container-wrapper" id="expense-color">
             <ProgressBar />
-
             <div id="app"></div>
           </div>
           <div className="chart-container-wrapper">
-            <div className="chart-container">
-              <div className="chart-info-wrapper"></div>
+            <div id="total-budget" className="chart-container">
               <div id="root">
                 <div class="container-1 pt-5">
                   <div class="row align-items-stretch">
@@ -68,9 +66,6 @@ function TESTINGPage() {
                         <span class="hind-font caption-12 c-dashboardInfo__count">
                           $1,900
                         </span>
-                        <span class="hind-font-1 caption-12 c-dashboardInfo__subInfo">
-                          Last month: $1,630
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -95,7 +90,7 @@ function TESTINGPage() {
           <div className="chart-container-wrapper big">
             <div className="chart-container">
               <div className="chart-container-header">
-                <h2>Budgets </h2>
+                <a href="/expenses">Budgets </a>
                 <span>Last 30 days</span>
               </div>
               <BarGraph />

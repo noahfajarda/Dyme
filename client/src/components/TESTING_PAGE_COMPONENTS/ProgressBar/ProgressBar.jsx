@@ -4,8 +4,7 @@ function ProgressBar() {
   return (
     <div className="chart-container" style={{ flexDirection: "column" }}>
       <div className="chart-container-header">
-        <h2>Expenses</h2>
-        <span href="#">This month</span>
+        <h2 id="expenses-title">Expenses</h2>
       </div>
       <div className="acquisitions-bar">
         <span className="bar-progress rejected" style={{ width: "10%" }}></span>
