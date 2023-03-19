@@ -1,23 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./BarGraph.css";
 
 function BarGraph({ totalExpensesByCategory }) {
-  console.log(totalExpensesByCategory);
-  let months = document.querySelectorAll("td");
-  const max = 5000;
-
-  months.forEach((month) => {
-    if (month.dataset.graph) {
-      const value = month.dataset.graph;
-      const bar = month.querySelector("span");
-      const barHeight = (value / max) * 100;
-      bar.style.height = `${barHeight}%`;
-    }
-  });
-
+  if (
+    Object.keys(totalExpensesByCategory).length === 0 ||
+    totalExpensesByCategory.Entertainment[1] === Infinity
+  ) {
+    return <div></div>;
+  }
   return (
-    <table class="c-bar-graph">
-      <tfoot class="c-bar-graph__footer">
+    <table className="c-bar-graph">
+      <tfoot className="c-bar-graph__footer">
         <tr>
           <td>Rent & Living</td>
           <td>LifeStyle</td>
@@ -30,26 +23,61 @@ function BarGraph({ totalExpensesByCategory }) {
       </tfoot>
       <tbody>
         <tr>
-          <td class="c-bar-graph__cell" data-graph="{Replace_Me}">
-            <span class="c-bar-graph__data">Replace_Me</span>
+          <td
+            className="c-bar-graph__cell"
+            data-graph={totalExpensesByCategory["Rent & Living"]}
+          >
+            <span className="c-bar-graph__data">
+              {totalExpensesByCategory["Rent & Living Expenses"][0]}
+            </span>
           </td>
-          <td class="c-bar-graph__cell" data-graph="{Replace_Me}">
-            <span class="c-bar-graph__data">Replace_Me</span>
+          <td
+            className="c-bar-graph__cell"
+            data-graph={totalExpensesByCategory["Lifestyle"]}
+          >
+            <span className="c-bar-graph__data">
+              {totalExpensesByCategory["Lifestyle"][0]}
+            </span>
           </td>
-          <td class="c-bar-graph__cell" data-graph="{Replace_Me}">
-            <span class="c-bar-graph__data">Replace_Me</span>
+          <td
+            className="c-bar-graph__cell"
+            data-graph={totalExpensesByCategory["Auto & Transportation"]}
+          >
+            <span className="c-bar-graph__data">
+              {totalExpensesByCategory["Auto & Transportation"][0]}
+            </span>
           </td>
-          <td class="c-bar-graph__cell" data-graph="{Replace_Me}">
-            <span class="c-bar-graph__data">Replace_Me</span>
+          <td
+            className="c-bar-graph__cell"
+            data-graph={totalExpensesByCategory["Food & Dining"]}
+          >
+            <span className="c-bar-graph__data">
+              {totalExpensesByCategory["Food & Dining"][0]}
+            </span>
           </td>
-          <td class="c-bar-graph__cell" data-graph="{Replace_Me}">
-            <span class="c-bar-graph__data">Replace_Me</span>
+          <td
+            className="c-bar-graph__cell"
+            data-graph={totalExpensesByCategory["Health & Fitness"]}
+          >
+            <span className="c-bar-graph__data">
+              {totalExpensesByCategory["Health & Fitness"][0]}
+            </span>
           </td>
-          <td class="c-bar-graph__cell" data-graph="{Replace_Me}">
-            <span class="c-bar-graph__data">Replace_Me</span>
+          <td
+            className="c-bar-graph__cell"
+            data-graph={totalExpensesByCategory["Entertainment"]}
+          >
+            <span className="c-bar-graph__data">
+              {totalExpensesByCategory["Entertainment"][0]}
+            </span>
           </td>
-          <td class="c-bar-graph__cell" data-graph="{Replace_Me}">
-            <span class="c-bar-graph__data">Replace_Me</span>
+          <td
+            className="c-bar-graph__cell"
+            data-graph={totalExpensesByCategory["Miscellaneous"]}
+          >
+            <span className="c-bar-graph__data">
+              {totalExpensesByCategory["Miscellaneous"][0]}
+            </span>
           </td>
         </tr>
       </tbody>

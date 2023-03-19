@@ -1,26 +1,58 @@
 import React from "react";
 import "./ProgressBar.css";
 function ProgressBar({ totalExpensesByCategory }) {
+  if (
+    Object.keys(totalExpensesByCategory).length === 0 ||
+    totalExpensesByCategory.Entertainment[1] === Infinity
+  ) {
+    return <div></div>;
+  }
   console.log(totalExpensesByCategory);
+  const barWidths = {
+    "Rent & Living Expenses":
+      totalExpensesByCategory["Rent & Living Expenses"][1],
+    Lifestyle: totalExpensesByCategory.Lifestyle[1],
+    "Auto & Transportation":
+      totalExpensesByCategory["Auto & Transportation"][1],
+    "Food & Dining": totalExpensesByCategory["Food & Dining"][1],
+    "Health & Fitness": totalExpensesByCategory["Health & Fitness"][1],
+    Entertainment: totalExpensesByCategory.Entertainment[1],
+    Miscellaneous: totalExpensesByCategory.Miscellaneous[1],
+  };
   return (
     <div className="chart-container" style={{ flexDirection: "column" }}>
       <div className="chart-container-header">
         <h2>Expenses</h2>
       </div>
       <div className="acquisitions-bar">
-        <span className="bar-progress rejected" style={{ width: "10%" }}></span>
-        <span className="bar-progress on-hold" style={{ width: "20%" }}></span>
+        <span
+          className="bar-progress rejected"
+          style={{ width: `${barWidths["Food & Dining"]}%` }}
+        ></span>
+        <span
+          className="bar-progress on-hold"
+          style={{ width: `${barWidths["Auto & Transportation"]}%` }}
+        ></span>
         <span
           className="bar-progress shortlisted"
-          style={{ width: "20%" }}
+          style={{ width: `${barWidths["Lifestyle"]}%` }}
         ></span>
         <span
           className="bar-progress applications"
-          style={{ width: "20%" }}
+          style={{ width: `${barWidths["Rent & Living Expenses"]}%` }}
         ></span>
-        <span className="bar-progress green" style={{ width: "10%" }}></span>
-        <span className="bar-progress purple" style={{ width: "10%" }}></span>
-        <span className="bar-progress yellow" style={{ width: "10%" }}></span>
+        <span
+          className="bar-progress green"
+          style={{ width: `${barWidths["Health & Fitness"]}%` }}
+        ></span>
+        <span
+          className="bar-progress purple"
+          style={{ width: `${barWidths.Entertainment}%` }}
+        ></span>
+        <span
+          className="bar-progress yellow"
+          style={{ width: `${barWidths.Miscellaneous}%` }}
+        ></span>
       </div>
       <div className="progress-bar-info">
         <span className="progress-color applications"></span>
