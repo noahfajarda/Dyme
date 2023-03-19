@@ -35,7 +35,7 @@ function App() {
             {/* needs below */}
             <Route path="/expenses" element={<ExpensesPage />} />
             <Route path="/expense" element={<ExpensesPage />} />
-            <Route path="/testing" element={<TESTINGPage />} />
+            <Route path="/testing" element={<TESTINGPage user={data?.me} />} />
             <Route path="/home" element={<HomePage user={data?.me} />} />
             <Route path="*" element={<LoginSignupPage />} />
           </Routes>

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
 // styles
 import "../styles/TESTINGPage.css";
@@ -10,23 +11,48 @@ import Menu from "../components/TESTING_PAGE_COMPONENTS/Menu/Menu";
 import BarGraph from "../components/TESTING_PAGE_COMPONENTS/BarGraph/BarGraph";
 import ProgressBar from "../components/TESTING_PAGE_COMPONENTS/ProgressBar/ProgressBar";
 
-function TESTINGPage() {
+import getTotalExpensesByCategory from "../utils/calculations";
+
+function TESTINGPage({ user }) {
+  const [total, setTotal] = useState(0);
+  const [totalExpensesByCategory, setTotalExpensesByCategory] = useState({});
+  // use effect for the total, so it only updates when the total updates
+  useEffect(() => {
+    // calculate total again
+    setTotal(0);
+    if (user?.expenses !== undefined && user?.expenses?.length !== 0) {
+      user.expenses.forEach((expense) => {
+        setTotal((prev) => prev + expense.amount);
+      });
+    }
+  }, [user]);
+
+  // use effect for calculating category $ totals & %
+  useEffect(() => {
+    getTotalExpensesByCategory(user, total, setTotalExpensesByCategory);
+  }, [total, user?.expenses, user]);
+
+  // show data
+  if (
+    Object.keys(totalExpensesByCategory).length !== 0 &&
+    totalExpensesByCategory.Entertainment[1] !== Infinity
+  ) {
+    console.log(totalExpensesByCategory);
+  }
   return (
     <div className="app-container">
       <div className="app-main">
         <div className="main-header-line">
-          <h1>Hello, Welcome back</h1>
+          <h1 id="welcome">Hello, Welcome back [username]</h1>
           <Menu />
         </div>
         <div className="chart-row three">
           <div className="chart-container-wrapper" id="expense-color">
-            <ProgressBar />
-
+            <ProgressBar totalExpensesByCategory={totalExpensesByCategory} />
             <div id="app"></div>
           </div>
           <div className="chart-container-wrapper">
-            <div className="chart-container">
-              <div className="chart-info-wrapper"></div>
+            <div id="total-budget" className="chart-container">
               <div id="root">
                 <div class="container-1 pt-5">
                   <div class="row align-items-stretch">
@@ -68,9 +94,6 @@ function TESTINGPage() {
                         <span class="hind-font caption-12 c-dashboardInfo__count">
                           $1,900
                         </span>
-                        <span class="hind-font-1 caption-12 c-dashboardInfo__subInfo">
-                          Last month: $1,630
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -95,10 +118,9 @@ function TESTINGPage() {
           <div className="chart-container-wrapper big">
             <div className="chart-container">
               <div className="chart-container-header">
-                <h2>Budgets </h2>
-                <span>Last 30 days</span>
+                <a href="/expenses">Budgets </a>
               </div>
-              <BarGraph />
+              <BarGraph totalExpensesByCategory={totalExpensesByCategory} />
               <div className="chart-data-details">
                 <div className="chart-details-header"></div>
               </div>

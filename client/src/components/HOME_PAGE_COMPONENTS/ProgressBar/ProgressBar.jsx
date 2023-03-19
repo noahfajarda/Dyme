@@ -6,6 +6,7 @@ function ProgressBar({ totalExpensesByCategory }) {
     <div className="chart-container" style={{ flexDirection: "column" }}>
       <div className="chart-container-header">
         <h2>Expenses</h2>
+        <span href="#">This month</span>
       </div>
       <div className="acquisitions-bar">
         <span className="bar-progress rejected" style={{ width: "10%" }}></span>
@@ -26,50 +27,38 @@ function ProgressBar({ totalExpensesByCategory }) {
         <span className="progress-color applications"></span>
         <span className="progress-type">Rent & Living Expenses</span>
         <span className="progress-amount">
-          {totalExpensesByCategory["Rent & Living Expenses"][1]}%
+          {/* {totalExpensesByCategory["Rent & Living Expenses"][0]} */}
         </span>
       </div>
       <div className="progress-bar-info">
         <span className="progress-color shortlisted"></span>
         <span className="progress-type">LifeStyle</span>
-        <span className="progress-amount">
-          {totalExpensesByCategory["Lifestyle"][1]}%
-        </span>
+        <span className="progress-amount">20%</span>
       </div>
       <div className="progress-bar-info">
         <span className="progress-color on-hold"></span>
         <span className="progress-type">Auto & Transportation</span>
-        <span className="progress-amount">
-          {totalExpensesByCategory["Auto & Transportation"][1]}%
-        </span>
+        <span className="progress-amount">20%</span>
       </div>
       <div className="progress-bar-info">
         <span className="progress-color rejected"></span>
         <span className="progress-type">Food & Dining</span>
-        <span className="progress-amount">
-          {totalExpensesByCategory["Food & Dining"][1]}%
-        </span>
+        <span className="progress-amount">10%</span>
       </div>
       <div className="progress-bar-info">
         <span className="progress-color green"></span>
         <span className="progress-type">Health & Fitness</span>
-        <span className="progress-amount">
-          {totalExpensesByCategory["Health & Fitness"][1]}%
-        </span>
+        <span className="progress-amount">10%</span>
       </div>
       <div className="progress-bar-info">
         <span className="progress-color purple"></span>
         <span className="progress-type">Entertainment</span>
-        <span className="progress-amount">
-          {totalExpensesByCategory["Entertainment"][1]}%
-        </span>
+        <span className="progress-amount">10%</span>
       </div>
       <div className="progress-bar-info">
         <span className="progress-color yellow"></span>
         <span className="progress-type">Miscellaneous</span>
-        <span className="progress-amount">
-          {totalExpensesByCategory["Miscellaneous"][1]}%
-        </span>
+        <span className="progress-amount">10%</span>
       </div>
     </div>
   );

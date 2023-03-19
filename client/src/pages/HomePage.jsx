@@ -7,9 +7,11 @@ import "../styles/HomePage.css";
 
 // components
 import Menu from "../components/HOME_PAGE_COMPONENTS/Menu/Menu";
-import PieChart from "../components/HOME_PAGE_COMPONENTS/PieChart/PieChart";
+// import PieChart from "../components/HOME_PAGE_COMPONENTS/PieChart/PieChart";
 import UserAmount from "../components/HOME_PAGE_COMPONENTS/UserAmount/UserAmount";
 import GithubLinks from "../components/HOME_PAGE_COMPONENTS/GithubLinks/GithubLinks";
+import ProgressBar from "../components/HOME_PAGE_COMPONENTS/ProgressBar/ProgressBar";
+import BarGraph from "../components/HOME_PAGE_COMPONENTS/BarGraph/BarGraph";
 
 // calculation functions
 import getTotalExpensesByCategory from "../utils/calculations";
@@ -47,12 +49,12 @@ function HomePage({ user }) {
         <div className="app-main">
           <div className="main-header-line">
             <h1>Hello, Welcome back</h1>
+            <Menu />
             <h1>This is the year: {new Date().getFullYear()}</h1>
 
             <h1>
               This is the total amount for expenses var you can use: ${total}
             </h1>
-            <Menu />
           </div>
           {Auth.loggedIn() ? (
             <div>
@@ -83,6 +85,15 @@ function HomePage({ user }) {
                   <p className="DB-info">{user?.username}</p>
                 </h1>
               </div>
+              <div className="expenses-data">test</div>
+              <UserAmount />
+            </div>
+          ) : (
+            <p>Not logged in</p>
+          )}
+          <div className="chart-row three">
+            <div className="chart-container-wrapper" id="expense-color">
+              <ProgressBar />
               <div className="expenses-data">
                 {Object.keys(totalExpensesByCategory).map((key, index) => {
                   return (
@@ -95,67 +106,6 @@ function HomePage({ user }) {
                     </div>
                   );
                 })}
-              </div>
-              <div className="expenses-data">test</div>
-              <UserAmount />
-            </div>
-          ) : (
-            <p>Not logged in</p>
-          )}
-          <div className="chart-row three">
-            <div className="chart-container-wrapper" id="expense-color">
-              <div
-                className="chart-container"
-                style={{ flexDirection: "column" }}
-              >
-                <div className="chart-container-header">
-                  <a href="/expenses">Expenses</a>
-                  <span href="#">This month</span>
-                </div>
-                <div className="acquisitions-bar">
-                  <span
-                    className="bar-progress rejected"
-                    style={{ width: "8%" }}
-                  ></span>
-                  <span
-                    className="bar-progress on-hold"
-                    style={{ width: "10%" }}
-                  ></span>
-                  <span
-                    className="bar-progress shortlisted"
-                    style={{ width: "18%" }}
-                  ></span>
-                  <span
-                    className="bar-progress applications"
-                    style={{ width: "64%" }}
-                  ></span>
-                </div>
-                <div className="progress-bar-info">
-                  <span className="progress-color applications"></span>
-                  <span className="progress-type">Food & Dining</span>
-                  <span className="progress-amount">56%</span>
-                </div>
-                <div className="progress-bar-info">
-                  <span className="progress-color shortlisted"></span>
-                  <span className="progress-type">Entertainment</span>
-                  <span className="progress-amount">18%</span>
-                </div>
-                <div className="progress-bar-info">
-                  <span className="progress-color on-hold"></span>
-                  <span className="progress-type">Auto Expenses</span>
-                  <span className="progress-amount">10%</span>
-                </div>
-                <div className="progress-bar-info">
-                  <span className="progress-color rejected"></span>
-                  <span className="progress-type">Bills</span>
-                  <span className="progress-amount">8%</span>
-                </div>
-                <div className="progress-bar-info">
-                  <span className="progress-color blue "></span>
-                  <span className="progress-type">Miscellaneous Expenses</span>
-                  <span className="progress-amount">8%</span>
-                </div>
-                <PieChart />
               </div>
               <div id="app"></div>
               <div className="chart-container-wrapper">
@@ -234,9 +184,7 @@ function HomePage({ user }) {
                     <h2>Budgets </h2>
                     <span>Last 30 days</span>
                   </div>
-                  <div className="line-chart">
-                    <canvas id="chart"></canvas>
-                  </div>
+                  {/* <BarGraph /> */}
                   <div className="chart-data-details">
                     <div className="chart-details-header"></div>
                   </div>
@@ -245,36 +193,14 @@ function HomePage({ user }) {
               <div className="chart-container-wrapper small">
                 <div className="chart-container">
                   <div className="chart-container">
-                    <div className="chart-info-wrapper">
-                      <h2>Financial Advice</h2>
-                      <span>$600/$1400</span>
-                    </div>
-                    <div className="chart-svg">
-                      <svg viewBox="0 0 36 36" className="circular-chart pink">
-                        <path
-                          className="circle-bg"
-                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-                        ></path>
-                        <path
-                          className="circle"
-                          strokeDasharray="30, 100"
-                          d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-                        ></path>
-                        <text x="18" y="20.35" className="percentage">
-                          30%
-                        </text>
-                      </svg>
-                    </div>
+                    <div className="chart-info-wrapper"></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <GithubLinks />
       </div>
     </>
   );
