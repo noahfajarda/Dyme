@@ -1,3 +1,15 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  background: #151515;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .question-page {
   box-sizing: border-box;
   border: 2px solid white;
@@ -12,7 +24,46 @@
   animation: fade-in 0.5s ease-in-out;
 }
 
-@keyframes fade-in {
+.question-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.question-page h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.question-page p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .question-page {
+    margin-top: 20px;
+  }
+
+  .question-page h1 {
+    font-size: 20px;
+  }
+
+  .question-page p {
+    font-size: 16px;
+  }
+
+  .input-container input {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+/* @keyframes fade-in {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -21,7 +72,7 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */
 
 .next,
 .prev {
@@ -52,7 +103,7 @@ input[type="text"] {
   box-sizing: border-box; 
   padding: 10px 15px; 
   border-radius: 60px; 
-  color: red; 
+  color: black; 
   font-weight: 100;
   letter-spacing: 0.01em;  
   z-index: 1;
@@ -68,25 +119,6 @@ input[type="text"] {
   transform: scale(-1);
 }
 
-.question-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
-}
-
-.question-page h1 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: white;
-}
-
-.question-page p {
-  font-size: 18px;
-  margin-bottom: 20px;
-  color: white;
-}
 
 .button-container {
   display: flex;
@@ -120,48 +152,21 @@ input[type="text"] {
   border: 1px solid #aaa;
 }
 
-@media (max-width: 768px) {
-  .question-page {
-    margin-top: 20px;
-  }
-
-  .question-page h1 {
-    font-size: 20px;
-  }
-
-  .question-page p {
-    font-size: 16px;
-  }
-
-  .input-container input {
-    font-size: 14px;
-    padding: 8px;
-  }
-}
-
-body {
-  width: 100vw;
-  height: 100vh;
-  background: #151515;
-  overflow: hidden;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.refresh {
-  padding: 10px;
-  position: absolute;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
-  width: 20px;
-  height: 20px;
-  top: 10px;
-  right: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.income-button {
+  background-color: #aaa;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.income-button:hover { 
+  background-color: #aaa; 
 }

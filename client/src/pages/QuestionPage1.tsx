@@ -4,8 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import '../styles/QuestionPage.css';
 
-
-
 function QuestionPage()  {
   const [[page, direction], setPage] = useState([0, 0]);
   const [questions, setQuestions] = useState([
@@ -14,39 +12,43 @@ function QuestionPage()  {
       id: 1,
       text: 'Please input your monthly Income?',
       answer: '',
+      type: 'number', 
     },
     {
       id: 2,
       text: 'Please put down how much you pay for rent?',
       answer: '',
+      type: 'number', 
     },
     {
       id: 3,
       text: 'Please provide an estimate for your monthly expenses such as subscriptions?', 
       answer: '',
+      type: 'number', 
     },
-    {
-      id: 4,
-      text: 'Please put down how much you pay for your phone plan?', 
-      answer: '',
-    },
-    {
-      id: 5,
-      text: 'Please provide an estimate on how much you spend on food monthly?',
-      answer: '',
-    },
-    {
-      id: 6,
-      text: 'Please input how much you pay for your Health Insurance payment plan?',
-      answer: '',
-    },
-    {
-      id: 7,
-      text: 'Please provide a budget that you have in mind?',
-      answer: '',
-    },
+    // {
+    //   id: 4,
+    //   text: 'Please put down how much you pay for your phone plan?', 
+    //   answer: '',
+    // },
+    // {
+    //   id: 5,
+    //   text: 'Please provide an estimate on how much you spend on food monthly?',
+    //   answer: '',
+    // },
+    // {
+    //   id: 6,
+    //   text: 'Please input how much you pay for your Health Insurance payment plan?',
+    //   answer: '',
+    // },
+    // {
+    //   id: 7,
+    //   text: 'Please provide a budget that you have in mind?',
+    //   answer: '',
+    // },
   ]);
 
+  // MAKE SEPARATE FORM REQUEST FOR USER TO CHOOSE BUDGET -> TRIGGERS AFTER "SUBMIT" BUTTON 
 
   const QuestionIndex = wrap(0, questions.length, page);
 
@@ -77,6 +79,7 @@ function QuestionPage()  {
  * Should accomodate longer swipes and short flicks without having binary checks on
  * just distance thresholds and velocity > 0.
  */
+
 const swipeConfidenceThreshold = 10000;
 const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity;
@@ -94,6 +97,26 @@ const swipePower = (offset: number, velocity: number) => {
         return question;
       }));
     };
+    
+    // Sets Total to the input of the first Question 
+    let total = parseFloat(questions[0].answer);
+    // Loops through questions to add up all questions to the total Will later be subtracted from "Monthly Income"
+    for (let i = 1; i < questions.length; i++) { 
+      const answer = parseFloat(questions[i].answer); 
+      if(!isNaN(answer)) { 
+        total -= answer;
+      }
+    }
+
+    const hundleFormSubmit = () => { 
+      // console.log(remainingBalance);
+      questions.forEach((question) => {
+        console.log(Number (question.answer)) 
+      })
+
+      // VALUE PUT IN DATABASE lOOK HERE
+      console.log(total); 
+    }
 
   // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
   // then wrap that within 0-2 to find our image ID in the array below. By passing an
@@ -101,6 +124,20 @@ const swipePower = (offset: number, velocity: number) => {
   // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
 
 
+  // (x) = 2 / 3 / 4 / 5 
+  // Option 1: Offers a budget based off of income and compares that to the expenses 
+    // Income / (x) = PartialIncome 
+    // PartialIncome - Expenses = BudgetTotal 
+    // console.log( {BudgetTotal} "Here is the amount of money leftover from your budget when expenses are accounted for, how would you like to adjust this?")
+    // Button to change / alter the budget into a variable they choose
+
+  // Option 2: Offers a budget based off of their spending rather than their income 
+    // Income - Expenses = Total
+    // Total / (x) = BudgetTotal 
+    // console.log(BudgetTotal: "Here is the amount of money leftover from your budget when expenses are accounted for, how would you like to adjust this?")
+
+  // Default: 
+    // Universal Budget: 80% of Income 
 
 
   return (
@@ -133,7 +170,7 @@ const swipePower = (offset: number, velocity: number) => {
             <h1>Question {QuestionIndex + 1}</h1>
             <h3>{questions[QuestionIndex].text}</h3>
             <input
-              type="text"
+              type="number"
               value={questions[QuestionIndex].answer}
               onChange={(event) =>
                 handleAnswerSubmit(questions[QuestionIndex].id, event.target.value)
@@ -150,10 +187,25 @@ const swipePower = (offset: number, velocity: number) => {
                   Next
                 </button>
               )}
-            </div>
-        </motion.div>
-      </AnimatePresence>
-  </div>
+              {QuestionIndex === questions.length - 1 && (
+                <button className="next-button" onClick={hundleFormSubmit}>
+                  Submit
+                </button>
+              )}
+              {/* Submit -> Total: {total} & Having user Choose their own Budget populates */}
+                </div>
+                <div> 
+                </div>
+              </motion.div>
+              </AnimatePresence>
+              {/* After all Questions have been answered - Budget will be displayed  */}
+              {QuestionIndex === questions.length[0] && ( 
+                <button className = "income-button">
+                  Total: {total}
+                </button>
+              )}
+                </div>
+                // Continue Button -> Href"Homepage"
   );
 };
   
