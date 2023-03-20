@@ -64,6 +64,13 @@ a {
 button {
   cursor: pointer;
 }
+#TransactionsTitle {
+  font-size: 3vw;
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
 .c-dashboardInfo {
   margin-bottom: 15px;
 }
@@ -309,13 +316,16 @@ button {
   display: flex;
   align-items: center;
 } */
-
+#ExpensiveTransactions {
+  display: flex;
+  justify-content: center;
+}
 .chart-info-wrapper {
   flex-shrink: 0;
   flex-basis: 320px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: flex-start;
   padding: 0 16px;
   height: 100%;

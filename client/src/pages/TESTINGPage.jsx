@@ -17,6 +17,7 @@ import getTotalExpensesByCategory from "../utils/calculations";
 function TESTINGPage({ user }) {
   const [total, setTotal] = useState(0);
   const [totalExpensesByCategory, setTotalExpensesByCategory] = useState({});
+  const [sortedExpenses, setSortedExpenses] = useState([{}]);
   // use effect for the total, so it only updates when the total updates
   useEffect(() => {
     // calculate total again
@@ -41,22 +42,25 @@ function TESTINGPage({ user }) {
     console.log(totalExpensesByCategory);
   }
   console.log(user?.expenses);
-  let sortedExpenses = [];
-  useEffect(() => {
+  // let sortedExpenses = [];
+  function sortExpenses() {
     if (user?.expenses !== undefined && user?.expenses?.length !== 0) {
-      sortedExpenses = [...user.expenses].sort((a, b) => b.amount - a.amount);
+      let expenseSort = [...user.expenses].sort((a, b) => b.amount - a.amount);
 
-      if (sortedExpenses.length > 5) {
-        sortedExpenses = [
-          sortedExpenses[0],
-          sortedExpenses[1],
-          sortedExpenses[2],
-          sortedExpenses[3],
-          sortedExpenses[4],
-        ];
+      if (expenseSort.length > 5) {
+        setSortedExpenses([
+          expenseSort[0],
+          expenseSort[1],
+          expenseSort[2],
+          expenseSort[3],
+          expenseSort[4],
+        ]);
         console.log(sortedExpenses);
       }
     }
+  }
+  useEffect(() => {
+    sortExpenses();
   }, [user]);
   return (
     <div className="app-container">
@@ -133,12 +137,27 @@ function TESTINGPage({ user }) {
             </div>
           </div>
           <div className="chart-container-wrapper">
-            <div className="chart-container">
+            <div id="ExpensiveTransactions" className="chart-container">
               <div className="chart-info-wrapper">
-                <h2>Most Expensive Transactions</h2>
-                {sortedExpenses?.map((expenses) => {
-                  return <h3>{user.expenses.title}</h3>;
-                })}
+                <div>
+                  {" "}
+                  <h2 id="TransactionsTitle">Most Expensive Transactions</h2>
+                </div>
+                <div>
+                  {" "}
+                  {sortedExpenses.length ? (
+                    sortedExpenses.map((expense) => {
+                      return (
+                        <h3>
+                          {expense.category} - {expense.name} - $
+                          {expense.amount}
+                        </h3>
+                      );
+                    })
+                  ) : (
+                    <h3>No expenses yet</h3>
+                  )}
+                </div>
               </div>
             </div>
           </div>

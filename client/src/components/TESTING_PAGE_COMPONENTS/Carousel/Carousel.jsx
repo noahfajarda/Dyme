@@ -85,7 +85,7 @@ function Carousel() {
 
   return (
     <div id="carousel-wrapper">
-      <div id="menu1">
+      <div id="menu1" style={{ opacity: 0.8 }}>
         <div id="current-option">
           <span
             id="current-option-text1"
