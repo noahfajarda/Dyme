@@ -6,7 +6,7 @@
   border-bottom: 1px solid rgb(0, 0, 0);
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  font-family: "Roboto", sans-serif;
+  font-family: "Caudex", sans-serif;
 }
 @media (min-width: 45em) {
   .c-bar-graph {
@@ -16,6 +16,7 @@
 .c-bar-graph__footer {
   border-top: 1px solid rgb(172, 94, 94);
 }
+
 .c-bar-graph__footer td {
   line-height: 1.3em;
   font-size: 1.25rem;

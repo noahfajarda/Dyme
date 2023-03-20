@@ -22,7 +22,9 @@ function ProgressBar({ totalExpensesByCategory }) {
   return (
     <div className="chart-container" style={{ flexDirection: "column" }}>
       <div className="chart-container-header">
-        <h2>Expenses</h2>
+        <a href="/expenses">
+          <h2> Expenses</h2>
+        </a>
       </div>
       <div className="acquisitions-bar">
         <span

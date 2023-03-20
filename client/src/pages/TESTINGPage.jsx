@@ -10,6 +10,7 @@ import Menu from "../components/TESTING_PAGE_COMPONENTS/Menu/Menu";
 // import TodoList from "../components/TESTING_PAGE_COMPONENTS/TodoList/TodoList";
 import BarGraph from "../components/TESTING_PAGE_COMPONENTS/BarGraph/BarGraph";
 import ProgressBar from "../components/TESTING_PAGE_COMPONENTS/ProgressBar/ProgressBar";
+import Carousel from "../components/TESTING_PAGE_COMPONENTS/Carousel/Carousel";
 
 import getTotalExpensesByCategory from "../utils/calculations";
 
@@ -39,11 +40,32 @@ function TESTINGPage({ user }) {
   ) {
     console.log(totalExpensesByCategory);
   }
+  console.log(user?.expenses);
+  let sortedExpenses = [];
+  useEffect(() => {
+    if (user?.expenses !== undefined && user?.expenses?.length !== 0) {
+      sortedExpenses = [...user.expenses].sort((a, b) => b.amount - a.amount);
+
+      if (sortedExpenses.length > 5) {
+        sortedExpenses = [
+          sortedExpenses[0],
+          sortedExpenses[1],
+          sortedExpenses[2],
+          sortedExpenses[3],
+          sortedExpenses[4],
+        ];
+        console.log(sortedExpenses);
+      }
+    }
+  }, [user]);
   return (
     <div className="app-container">
       <div className="app-main">
         <div className="main-header-line">
-          <h1 id="welcome">Hello, Welcome back {user?.firstName}</h1>
+          <h1 id="welcome">
+            Hello, Welcome back{" "}
+            <span className="first-name">{user?.firstName}</span>
+          </h1>
           <Menu />
         </div>
         <div className="chart-row three">
@@ -113,12 +135,10 @@ function TESTINGPage({ user }) {
           <div className="chart-container-wrapper">
             <div className="chart-container">
               <div className="chart-info-wrapper">
-                <h2>Recent Transactions</h2>
-                <h3> 1. Tesco $122.50 05/02/2023</h3>
-                <h3> 2. Game $22.50 05/02/2023 </h3>
-                <h3> 3. Tesco $10.00 01/02/2023 </h3>
-                <h3> 4. Steam $19.99 05/02/2023</h3>
-                <h3> 5. Hydroflask $29.99 06/03/2023</h3>
+                <h2>Most Expensive Transactions</h2>
+                {sortedExpenses?.map((expenses) => {
+                  return <h3>{user.expenses.title}</h3>;
+                })}
               </div>
             </div>
           </div>
@@ -130,6 +150,7 @@ function TESTINGPage({ user }) {
                 <a href="/expenses">Expenses </a>
               </div>
               <BarGraph totalExpensesByCategory={totalExpensesByCategory} />
+
               <div className="chart-data-details">
                 <div className="chart-details-header"></div>
               </div>
@@ -138,7 +159,9 @@ function TESTINGPage({ user }) {
           <div className="chart-container-wrapper small">
             <div className="chart-container">
               <div className="chart-container">
-                <div className="chart-info-wrapper"></div>
+                <div className="chart-info-wrapper">
+                  <Carousel />
+                </div>
                 <div className="chart-svg"></div>
               </div>
             </div>

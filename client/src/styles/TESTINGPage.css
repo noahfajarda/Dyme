@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caudex&display=swap");
 * {
   box-sizing: border-box;
 }
@@ -41,7 +41,7 @@ body {
   height: 100vh;
   width: 100%;
   justify-content: center;
-  font-family: "Poppins", sans-serif;
+  font-family: "Caudex", sans-serif;
   background-color: #050e2d;
 }
 h2 {
@@ -105,6 +105,33 @@ button {
 }
 .c-dashboardInfo:nth-child(2) .wrap:after {
   background: linear-gradient(81.67deg, #ff647c 0%, #1f5dc5 100%);
+}
+.first-name {
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #c2b9e4 0%,
+    #995dda 29%,
+    #c2b9e4 67%,
+    #995dda 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  /* display: inline-block; */
+  font-size: 50px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
 }
 
 .c-dashboardInfo__title svg {
@@ -289,6 +316,10 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  padding: 0 16px;
+  height: 100%;
+  width: 100%;
 }
 .chart-info-wrapper h2 {
   color: var(--secondary-color);
@@ -371,6 +402,12 @@ button {
   color: var(--app-logo);
   font-size: 12px;
   line-height: 16px;
+}
+.chart-container-header a {
+  color: #dfcfcfbd;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .acquisitions-bar {

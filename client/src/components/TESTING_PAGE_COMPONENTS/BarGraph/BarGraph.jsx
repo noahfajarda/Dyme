@@ -32,8 +32,7 @@ function BarGraph({ totalExpensesByCategory }) {
             className="c-bar-graph__cell "
             data-graph={totalExpensesByCategory["Rent & Living"]}
           >
-            {totalExpensesByCategory["Rent & Living Expenses"][0]}
-
+            ${totalExpensesByCategory["Rent & Living Expenses"][0]}
             <span
               className="c-bar-graph__data"
               style={{
@@ -49,7 +48,7 @@ function BarGraph({ totalExpensesByCategory }) {
             className="c-bar-graph__cell"
             data-graph={totalExpensesByCategory["Lifestyle"]}
           >
-            {totalExpensesByCategory["Lifestyle"][0]}
+            ${totalExpensesByCategory["Lifestyle"][0]}
             <span
               className="c-bar-graph__data"
               style={{
@@ -64,8 +63,7 @@ function BarGraph({ totalExpensesByCategory }) {
             className="c-bar-graph__cell"
             data-graph={totalExpensesByCategory["Auto & Transportation"]}
           >
-            {totalExpensesByCategory["Auto & Transportation"][0]}
-
+            ${totalExpensesByCategory["Auto & Transportation"][0]}
             <span
               className="c-bar-graph__data"
               style={{
@@ -81,8 +79,7 @@ function BarGraph({ totalExpensesByCategory }) {
             className="c-bar-graph__cell"
             data-graph={totalExpensesByCategory["Food & Dining"]}
           >
-            {totalExpensesByCategory["Food & Dining"][0]}
-
+            ${totalExpensesByCategory["Food & Dining"][0]}
             <span
               className="c-bar-graph__data"
               style={{
@@ -97,8 +94,7 @@ function BarGraph({ totalExpensesByCategory }) {
             className="c-bar-graph__cell"
             data-graph={totalExpensesByCategory["Health & Fitness"]}
           >
-            {totalExpensesByCategory["Health & Fitness"][0]}
-
+            ${totalExpensesByCategory["Health & Fitness"][0]}
             <span
               className="c-bar-graph__data"
               style={{
@@ -113,8 +109,7 @@ function BarGraph({ totalExpensesByCategory }) {
             className="c-bar-graph__cell"
             data-graph={totalExpensesByCategory["Entertainment"]}
           >
-            {totalExpensesByCategory["Entertainment"][0]}
-
+            ${totalExpensesByCategory["Entertainment"][0]}
             <span
               className="c-bar-graph__data"
               style={{
@@ -129,8 +124,7 @@ function BarGraph({ totalExpensesByCategory }) {
             className="c-bar-graph__cell"
             data-graph={totalExpensesByCategory["Miscellaneous"]}
           >
-            {totalExpensesByCategory["Miscellaneous"][0]}
-
+            ${totalExpensesByCategory["Miscellaneous"][0]}
             <span
               className="c-bar-graph__data"
               style={{
