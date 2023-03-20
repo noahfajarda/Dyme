@@ -1,0 +1,87 @@
+#expenses-title {
+  font-size: 25px;
+}
+.bar-progress {
+  height: 8px;
+  display: inline-block;
+}
+.bar-progress.applications {
+  background-color: #ff7dcb;
+}
+.bar-progress.shortlisted {
+  background-color: #00cfde;
+}
+.bar-progress.on-hold {
+  background-color: #fdac42;
+}
+.bar-progress.rejected {
+  background-color: #ff5c5c;
+}
+.bar-progress.green {
+  background-color: #076107;
+}
+.bar-progress.purple {
+  background-color: #580abd;
+}
+.bar-progress.yellow {
+  background-color: #b7ba0a;
+}
+.progress-bar-info {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.progress-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.progress-color.applications {
+  background-color: #ff7dcb;
+}
+.progress-color.shortlisted {
+  background-color: #00cfde;
+}
+.progress-color.on-hold {
+  background-color: #fdac42;
+}
+.progress-color.rejected {
+  background-color: #ff5c5c;
+}
+.progress-color.green {
+  background-color: #076107;
+}
+.progress-color.purple {
+  background-color: #580abd;
+}
+.progress-color.yellow {
+  background-color: #b7ba0a;
+}
+
+.progress-type {
+  color: var(--secondary-color);
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.progress-amount {
+  color: var(--secondary-color);
+  font-size: 16px;
+  line-height: 16px;
+  margin-left: auto;
+}
+
+@-webkit-keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}

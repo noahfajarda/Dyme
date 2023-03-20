@@ -33,10 +33,13 @@
   --draft-icon: #e9780e;
 }
 
+#welcome {
+  font-size: 3vw;
+}
+
 body {
   height: 100vh;
   width: 100%;
-  overflow: hidden;
   justify-content: center;
   font-family: "Poppins", sans-serif;
   background-color: #050e2d;
@@ -363,20 +366,10 @@ button {
   font-weight: 400;
 }
 
-@-webkit-keyframes progress {
-  0% {
-    stroke-dasharray: 0 100;
-  }
-}
-
-@keyframes progress {
-  0% {
-    stroke-dasharray: 0 100;
-  }
-}
 .chart-container-header {
   display: flex;
   justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   margin-bottom: 12px;
@@ -401,62 +394,6 @@ button {
   margin-top: 16px;
   margin-bottom: 8px;
   display: flex;
-}
-
-.bar-progress {
-  height: 4px;
-  display: inline-block;
-}
-.bar-progress.applications {
-  background-color: #ff7dcb;
-}
-.bar-progress.shortlisted {
-  background-color: #00cfde;
-}
-.bar-progress.on-hold {
-  background-color: #fdac42;
-}
-.bar-progress.rejected {
-  background-color: #ff5c5c;
-}
-
-.progress-bar-info {
-  display: flex;
-  align-items: center;
-  margin-top: 8px;
-  width: 100%;
-}
-
-.progress-color {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-right: 8px;
-}
-.progress-color.applications {
-  background-color: #ff7dcb;
-}
-.progress-color.shortlisted {
-  background-color: #00cfde;
-}
-.progress-color.on-hold {
-  background-color: #fdac42;
-}
-.progress-color.rejected {
-  background-color: #ff5c5c;
-}
-
-.progress-type {
-  color: var(--secondary-color);
-  font-size: 12px;
-  line-height: 16px;
-}
-
-.progress-amount {
-  color: var(--secondary-color);
-  font-size: 12px;
-  line-height: 16px;
-  margin-left: auto;
 }
 
 .applicant-line {
@@ -685,6 +622,13 @@ button {
   padding: 0;
   color: var(--main-color);
   cursor: pointer;
+}
+
+#total-budget {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media screen and (max-width: 1350px) {
