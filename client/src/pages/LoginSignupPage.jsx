@@ -4,6 +4,7 @@ import Signup from "../components/LOGIN_PAGE_COMPONENTS/Signup/Signup";
 import Login from "../components/LOGIN_PAGE_COMPONENTS/Login/Login";
 import { Link, Navigate } from "react-router-dom";
 import Auth from "../utils/auth";
+import imgUrl from "../assets/loginpicc.gif"
 
 function LoginPage() {
   const [signup, setsignup] = useState(false);
@@ -23,6 +24,9 @@ function LoginPage() {
         </div>
 
         {/* <!---------- Left Side Of Sign In Page ---------> */}
+        <header className="login-header">
+            <h1>Financial Budgeter</h1>
+            </header>
         <div className="panels-container">
           <div className="panel left-panel">
             <div className="content">
@@ -36,13 +40,16 @@ function LoginPage() {
                 {signup ? "Sign In" : "Sign Up"}
               </button>
             </div>
+            {/* <header className="login-header">
+            <h1>Financial Budgeter</h1>
+            </header> */}
             <img
-              src="https://i.pinimg.com/originals/d8/c3/af/d8c3afe7e1647fea2d8e9f95dfa820f5.gif"
               className="image"
+              src={imgUrl}
               alt="2nd Pic"
             />
           </div>
-          <div className="panel right-panel">
+          {/* <div className="panel right-panel">
             <div className="content">
               <h3>One of us ?</h3>
               <p>Click the Sign In to see the effect</p>
@@ -55,7 +62,7 @@ function LoginPage() {
               className="image"
               alt="1 Pic"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

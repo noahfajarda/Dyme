@@ -60,6 +60,11 @@ function ExpensesPage() {
         <div className="expense-page">
           <header>
             <h1 id="exp-header-1" className="exp-header">Expenses</h1>
+            {/* <img
+            src="https://media.tenor.com/wCE_eJELZ3kAAAAi/tuzki-usagi-wink.gif"
+            className="money-cat"
+            alt="expense pic"
+            ></img> */}
             <h1 className="exp-header">
               Total: ${total.toLocaleString("en-US")}
             </h1>
