@@ -37,7 +37,7 @@ function LoginPage() {
               </button>
             </div>
             <img
-              src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png"
+              src="https://i.pinimg.com/originals/d8/c3/af/d8c3afe7e1647fea2d8e9f95dfa820f5.gif"
               className="image"
               alt="2nd Pic"
             />

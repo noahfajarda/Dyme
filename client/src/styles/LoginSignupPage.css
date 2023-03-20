@@ -18,7 +18,8 @@ input {
 .container {
   position: relative;
   width: 100%;
-  background: linear-gradient(65.5deg, rgb(23, 205, 205) -15.1%, rgb(23, 25, 95) 71.5%);  min-height: 100vh;
+  background: linear-gradient(65.5deg, rgb(23, 205, 205) -15.1%, rgb(23, 25, 95) 71.5%);  
+  min-height: 100vh;
   overflow: hidden;
 }
 
@@ -66,7 +67,7 @@ form.sign-in-form {
   font-size: 2.2rem;
   color: #ffffff;
   margin-bottom: 10px;
-  text-shadow: 1px 1px 2px #000000;
+  text-shadow: 2px 2px 2px #000000;
 }
 
 .input-field {
@@ -94,11 +95,13 @@ form.sign-in-form {
   background: none;
   outline: none;
   border: none;
+  border-radius: 20px;
   line-height: 1;
   font-weight: 600;
   font-size: 1.1rem;
   color: #333;
 }
+
 
 .input-field input::placeholder {
   color: #aaa;

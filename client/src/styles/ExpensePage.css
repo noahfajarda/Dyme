@@ -14,8 +14,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-family: roboto, helvetica, arial, san-serif;
     color: #666;
-    background: linear-gradient(179.4deg, rgb(12, 20, 69) -16.9%, rgb(71, 30, 84) 119.9%);
-    justify-content: center;
+    background: linear-gradient(45deg, rgba(71,30,84,1) 0%, rgba(12,20,69,1) 100%, rgba(71,30,84,1) 100%);
     align-items: center;
     height: 100vh;
     overflow-y: auto; /* add this line to allow scrolling */
@@ -89,14 +88,14 @@ input[type="checkbox"]:checked ~ .accordion-label:before {
     height: 0;
     transform: scale(1, 0);
     transform-origin: center top;
-    background-color: rgba(81, 59, 171, 0.923);
+    /* background-color: rgba(81, 59, 171, 0.923); */
     color: black;
 }
 
 input[type="checkbox"]:checked ~ .accordion-child {
     /* border: 1px solid #e0e0e0; */
     margin: 0 -20px 15px -20px;
-    box-shadow: 0 3px 6px 1px rgba(255, 255, 255, 0.859);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.859);
     padding: 30px;
     height: auto;
     opacity: 1;
@@ -219,31 +218,38 @@ ul .bullet-point {
     text-align: left;
 }
 
+.expense-table {
+    border-collapse: separate;
+    border-spacing: 10px;
+}
 .expense-table th {
     background-color: #d9e7f6;
     color: white;
+    border-radius: 10px;
 }
 
-.expense-table td {
+
+.expense-table td:not(:last-child) {
     background-color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: smaller;
     font-weight: bold;
     color: black;
+    border-radius: 10px;
 }
 
 #delete-btn {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
     font-weight: bold;
-    background-color: #080000;
+    background-color: #731ea5;
     align-items: center;
     padding: 0px 10px 0px 10px;
     border-radius: 4px;
   }
   
   #delete-btn:hover {
-    box-shadow: 0 0 6px 4px #fe3a3a; /* add box-shadow property */
+    box-shadow: 0 0 6px 4px #ffffff; /* add box-shadow property */
   }
   
 
