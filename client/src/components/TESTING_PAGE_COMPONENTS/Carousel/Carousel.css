@@ -73,6 +73,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
+  color: white;
 }
 #carousel-wrapper #menu1 #current-option #current-option-text2::before {
   content: attr(data-next-text);

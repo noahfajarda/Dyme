@@ -3,9 +3,9 @@ import "./Carousel.css";
 
 function Carousel() {
   const text1_options = [
-    "Why art is so important",
+    "Why Handlebars is important",
     "Why you shouldn't buy the new iPhone",
-    "Is life actually real?",
+    "Tips on how to Budget your money",
     "How to learn JS in 2 months",
   ];
   const text2_options = [
@@ -14,7 +14,7 @@ function Carousel() {
     "8 min. read",
     "87,658.1277 min. read",
   ];
-  const color_options = ["#EBB9D2", "#FE9968", "#7FE0EB", "#6CE5B1"];
+  const color_options = ["#051340 ", "#050e2d", "#051340", "#050e2d"];
   const image_options = [
     "https://images.unsplash.com/photo-1524721696987-b9527df9e512?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1190&q=80",
     "https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
@@ -92,16 +92,17 @@ function Carousel() {
             data-previous-text=""
             data-next-text=""
           ></span>
-          <span
+          <a
+            href="google.com"
             id="current-option-text2"
             data-previous-text=""
             data-next-text=""
-          ></span>
+          ></a>
         </div>
         <button id="previous-option"></button>
         <button id="next-option"></button>
       </div>
-      <div id="image"></div>
+      a <div id="image"></div>
     </div>
   );
 }
