@@ -97,33 +97,39 @@ const swipePower = (offset: number, velocity: number) => {
         return question;
       }));
     };
+
+    // Divide Question[0] / (x) = BudgetAmount 
+    // BudgetAmount - Expenses = BudgetTotal 
     
-    // Sets Total to the input of the first Question 
-    let total = parseFloat(questions[0].answer);
-    // Loops through questions to add up all questions to the total Will later be subtracted from "Monthly Income"
-    for (let i = 1; i < questions.length; i++) { 
-      const answer = parseFloat(questions[i].answer); 
-      if(!isNaN(answer)) { 
-        total -= answer;
-      }
-    }
+    // Sets Total = Income Amount
+    // let total = parseFloat(questions[0].answer);
+    // // Loops through questions to subtracts all questions to the total Will later be divided by (x) value for a Budget
+    // for (let i = 1; i < questions.length; i++) { 
+    //   const answer = parseFloat(questions[i].answer); 
+    //   // answer = user input values
+    //   if(!isNaN(answer)) { 
+    //     total /= 2;
+    //     total -= answer;
+    //   }
+    // }
+
 
     const hundleFormSubmit = () => { 
       // console.log(remainingBalance);
+      const answerNumbers:number[] = []
       questions.forEach((question) => {
-        console.log(Number (question.answer)) 
+        let oneNumber = Number (question.answer)
+        answerNumbers.push(oneNumber) 
       })
+      let total:number = 0 
+      total = answerNumbers[0] / 2
+      total = total-answerNumbers[1] - answerNumbers[2]
+      console.log(total);
+
 
       // VALUE PUT IN DATABASE lOOK HERE
-      console.log(total); 
+      console.log(answerNumbers); 
     }
-
-  // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
-  // then wrap that within 0-2 to find our image ID in the array below. By passing an
-  // absolute page index as the `motion` component's `key` prop, `AnimatePresence` will
-  // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
-
-
   // (x) = 2 / 3 / 4 / 5 
   // Option 1: Offers a budget based off of income and compares that to the expenses 
     // Income / (x) = PartialIncome 
@@ -135,10 +141,6 @@ const swipePower = (offset: number, velocity: number) => {
     // Income - Expenses = Total
     // Total / (x) = BudgetTotal 
     // console.log(BudgetTotal: "Here is the amount of money leftover from your budget when expenses are accounted for, how would you like to adjust this?")
-
-  // Default: 
-    // Universal Budget: 80% of Income 
-
 
   return (
    <div className="question-page">
@@ -199,11 +201,11 @@ const swipePower = (offset: number, velocity: number) => {
               </motion.div>
               </AnimatePresence>
               {/* After all Questions have been answered - Budget will be displayed  */}
-              {QuestionIndex === questions.length[0] && ( 
+              {/* {QuestionIndex === questions.length[0] && ( 
                 <button className = "income-button">
                   Total: {total}
                 </button>
-              )}
+              )} */}
                 </div>
                 // Continue Button -> Href"Homepage"
   );
