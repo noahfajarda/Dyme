@@ -1,21 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Caudex&display=swap");
+
 *,
 *:before,
 *:after {
     box-sizing: border-box;
 }
 
+
 /* html,
 body {
   height: 100%;
 } */
+
+.flexbox {
+    display: flex;
+    /* justify-content: space-around; */
+    width: 100%;
+}
 
 .expense-page {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: roboto, helvetica, arial, san-serif;
     color: #666;
-    background-color: #050e2d;
-    justify-content: center;
+    background: linear-gradient(45deg, rgba(71,30,84,1) 0%, rgba(12,20,69,1) 100%, rgba(71,30,84,1) 100%);
     align-items: center;
     height: 100vh;
     overflow-y: auto; /* add this line to allow scrolling */
@@ -34,10 +42,15 @@ body {
 .accordion {
     background: #fff;
     width: 100%;
-    background-color: #01081f;
+    background-color: #01081f3e;
     color: white;
     margin-top: 10vh;
-    margin-bottom: 10vh;
+    margin-bottom: 40vh;
+    margin-right: 60vw;
+    border-radius: 10px; 
+    /* padding-left: 85px; */
+    /* width: 55%; */
+    /* padding-bottom: 50px; */
 }
 
 .accordion-item {
@@ -51,12 +64,17 @@ body {
 
 .accordion-label {
     padding: 20px 0 20px 30px;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
     width: 100%;
     display: block;
     font-size: 18px;
-}
-
-.accordion-label:hover {
+    transition: all 0.2s ease-in-out; /* add transition for smooth effect */
+  }
+  
+  .accordion-label:hover {
+    padding-left: 50px; /* adjust this value to increase or decrease the slide distance */
     cursor: pointer;
 }
 
@@ -84,44 +102,76 @@ input[type="checkbox"]:checked ~ .accordion-label:before {
     height: 0;
     transform: scale(1, 0);
     transform-origin: center top;
-    background-color: pink;
+    /* background-color: rgba(81, 59, 171, 0.923); */
     color: black;
 }
 
 input[type="checkbox"]:checked ~ .accordion-child {
     /* border: 1px solid #e0e0e0; */
-    margin: 0 -20px 15px -20px;
-    box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.16);
+    margin: 0 0px 15px 1px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.859);
+    border-radius: 10px;
     padding: 30px;
     height: auto;
     opacity: 1;
     transform: scale(1, 1);
 }
 
+#exp-header-1,
 .exp-header {
-    color: white;
+    color: rgb(255, 255, 255);
+    letter-spacing: 0.1em;
     margin-bottom: 5vh;
+    text-shadow: 4px 4px 0px rgba(40, 240, 177, 0.37);
 }
+#exp-header-1 {
+    font-size: 55px;
+}
+
+.exp-header {
+    font-size: 45px;
+}
+
+/* .money-cat {
+    position: fixed;
+    top: 10%;
+    right: 10%;
+    z-index: 9999;
+  }
+   */
 
 .expense-form {
     margin-top: 8vh;
-    margin-left: 20px;
+    /* margin-left: 60px; */
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     color: white;
-}
+    width: 100%;
+} 
 
 .expense-form h2 {
     margin-bottom: 1vh;
+    font-size: 35px;
+    text-shadow: 4px 4px 0px rgba(40, 240, 177, 0.37);
+    padding-bottom: 20px;
+    padding-left: 40px;
+    width: 100%;
 }
 
 .expense-inputs {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     margin-bottom: 1vh;
-}
+    padding-right: 108px;
+    padding-left: 160px;
+  }
+  
 
 .expense-inputs label {
     margin-right: 1vw;
@@ -132,7 +182,13 @@ input[type="checkbox"]:checked ~ .accordion-child {
     padding: 0.5vh;
     border-radius: 4px;
     border: none;
-    margin-right: 1vw;
+    /* margin-right: 1vw; */
+    justify-content: space-between; /* Add this line */
+    margin-bottom: 2vh;
+}
+
+.expense-description {
+    padding-top: 20px;
 }
 
 .expense-inputs select {
@@ -140,17 +196,25 @@ input[type="checkbox"]:checked ~ .accordion-child {
 }
 
 #submit {
-    background-color: #4caf50;
-    border: none;
+    background-color: #347ecd;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    border: white;
     color: white;
-    padding: 1vh 2vw;
+    padding: 0.5vh 2vw;
     text-align: center;
-    text-decoration: none;
+    text-decoration: white;
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
     border-radius: 4px;
     height: 26px;
+    transition: box-shadow 0.3s ease-in-out; /* add transition property */
+}
+
+#submit:hover {
+    box-shadow: 0 0 8px 4px #d9d9da; /* add box-shadow property */
 }
 
 ul .bullet-point {
@@ -185,26 +249,52 @@ ul .bullet-point {
 
 .expense-table th,
 .expense-table td {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding: 8px;
     text-align: left;
 }
 
+.expense-table {
+    border-collapse: separate;
+    border-spacing: 10px;
+}
 .expense-table th {
-    background-color: #4caf50;
+    background-color: #d9e7f6;
     color: white;
+    border-radius: 10px;
 }
 
-.expense-table td {
+
+.expense-table td:not(:last-child) {
     background-color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: smaller;
+    font-weight: bold;
     color: black;
+    border-radius: 10px;
 }
+
+#delete-btn {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    font-weight: bold;
+    background-color: #a60505;
+    align-items: center;
+    padding: 0px 10px 0px 10px;
+    border-radius: 4px;
+  }
+  
+  #delete-btn:hover {
+    box-shadow: 0 0 6px 4px #ffffff; /* add box-shadow property */
+  }
+  
 
 #h3name,
 #h3description,
 #h3amount {
     font-size: 14px;
     font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .heading-container {
@@ -213,17 +303,20 @@ ul .bullet-point {
 }
 
 #h3name {
-    margin-right: 10vw;
+    margin-right: 3vw;
     text-align: center;
+    font-size: 16px;
 }
 
 #h3description {
     margin-right: 30vw;
     text-align: center;
+    font-size: 16px;
 }
 
 #h3amount {
     text-align: center;
+    font-size: 16px;
 }
 
 #form-status {
@@ -231,8 +324,35 @@ ul .bullet-point {
 }
 
 #home-button {
-    color: blue;
-}
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    background-color: #000;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  #home-button:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #ff69b4;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+  
+  #home-button:hover:before {
+    opacity: 1;
+  }
+  
 
 header {
     display: flex;

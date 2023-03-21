@@ -1,32 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 *:focus,
 *:active {
   outline: none !important;
   -webkit-tap-highlight-color: transparent;
 }
-
-/* html,
-body {
-  display: grid;
-  height: 100%;
-  width: 100%;
-  font-family: "Poppins", sans-serif;
-  place-items: center;
-  background: linear-gradient(315deg, #ffffff, #d7e1ec);
-} */
-
 .wrapperr {
   display: inline-flex;
   list-style: none;
+  justify-content: center;
 }
-
 .wrapperr .icon {
   position: relative;
   background: #ffffff;
@@ -44,7 +31,6 @@ body {
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-
 .wrapperr .tooltip {
   position: absolute;
   top: 0;
@@ -58,7 +44,6 @@ body {
   pointer-events: none;
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-
 .wrapperr .tooltip::before {
   position: absolute;
   content: "";
@@ -70,19 +55,16 @@ body {
   transform: translate(-50%) rotate(45deg);
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-
 .wrapperr .icon:hover .tooltip {
   top: -45px;
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
-
 .wrapperr .icon:hover span,
 .wrapperr .icon:hover .tooltip {
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
 }
-
 .wrapperr .noah:hover,
 .wrapperr .noah:hover .tooltip,
 .wrapperr .noah:hover .tooltip::before {
@@ -92,7 +74,6 @@ body {
 li.icon.noah a {
   color: inherit;
 }
-
 .wrapperr .anas:hover,
 .wrapperr .anas:hover .tooltip,
 .wrapperr .anas:hover .tooltip::before {
@@ -102,7 +83,6 @@ li.icon.noah a {
 li.icon.anas a {
   color: inherit;
 }
-
 .wrapperr .amr:hover,
 .wrapperr .amr:hover .tooltip,
 .wrapperr .amr:hover .tooltip::before {
@@ -130,7 +110,6 @@ li.icon.diana a {
 li.icon.keith a {
   color: inherit;
 }
-
 .icon {
   display: flex;
   justify-content: flex-end;
