@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
+import { Link, Navigate } from "react-router-dom";
 
 // styling
 import "../styles/HomePage.css";
@@ -15,6 +15,7 @@ import GithubLinks from "../components/HOME_PAGE_COMPONENTS/GithubLinks/GithubLi
 import getTotalExpensesByCategory from "../utils/calculations";
 
 function HomePage({ user }) {
+  // if no token, redirect back to login
   const [total, setTotal] = useState(0);
   const [totalExpensesByCategory, setTotalExpensesByCategory] = useState({});
   // use effect for the total, so it only updates when the total updates
@@ -39,6 +40,11 @@ function HomePage({ user }) {
     totalExpensesByCategory.Entertainment[1] !== Infinity
   ) {
     console.log(totalExpensesByCategory);
+  }
+
+  // log in check
+  if (!Auth.loggedIn()) {
+    return <Navigate to="/login" />;
   }
 
   return (
