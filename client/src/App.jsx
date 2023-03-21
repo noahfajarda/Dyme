@@ -11,6 +11,7 @@ import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Link, Navigate } from "react-router-dom";
 import { QUERY_ONE_USER, QUERY_me } from "./utils/queries";
+// test
 
 // pages
 import HomePage from "./pages/HomePage";
