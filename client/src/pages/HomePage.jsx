@@ -50,7 +50,7 @@ function TESTINGPage({ user }) {
         return <Navigate to="/login" />;
       }
 
-      if (expenseSort.length > 5) {
+      if (expenseSort.length >= 5) {
         setSortedExpenses([
           expenseSort[0],
           expenseSort[1],
@@ -71,7 +71,7 @@ function TESTINGPage({ user }) {
         <div className="main-header-line">
           <h1 id="welcome">
             Hello, Welcome back{" "}
-            <span className="first-name waviy">{user?.firstName}</span>
+            <span className="first-name">{user?.firstName}</span>
           </h1>
           <Menu />
         </div>
@@ -143,12 +143,11 @@ function TESTINGPage({ user }) {
             <div id="ExpensiveTransactions" className="chart-container">
               <div className="chart-info-wrapper">
                 <div>
-                  {" "}
                   <h2 id="TransactionsTitle">Most Expensive Transactions</h2>
                 </div>
                 <div>
                   {sortedExpenses.length ? (
-                    sortedExpenses.map((expense) => {
+                    sortedExpenses.map((expense, index) => {
                       let categoryColor;
                       switch (expense.category) {
                         case "Rent & Living Expenses":
@@ -164,7 +163,7 @@ function TESTINGPage({ user }) {
                           categoryColor = "#ff5c5c"; // updated red
                           break;
                         case "Health & Fitness":
-                          categoryColor = "#076107"; // updated green
+                          categoryColor = "#55DD33"; // updated green
                           break;
                         case "Entertainment":
                           categoryColor = "#BF40BF"; // updated light purple
@@ -177,7 +176,7 @@ function TESTINGPage({ user }) {
                       }
                       return (
                         <h3 style={{ color: categoryColor }}>
-                          {expense.category} - {expense.name} - $
+                          {index + 1}. {expense.category} - {expense.name} - $
                           {expense.amount}
                         </h3>
                       );

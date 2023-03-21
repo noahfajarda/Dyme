@@ -65,6 +65,11 @@ a {
 button {
   cursor: pointer;
 }
+h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 26px;
+}
 #TransactionsTitle {
   font-size: 3vw;
   color: #fff;
