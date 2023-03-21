@@ -25,7 +25,7 @@ function LoginPage() {
 
         {/* <!---------- Left Side Of Sign In Page ---------> */}
         <header className="login-header">
-            <h1>Financial Budgeter</h1>
+            <h1>DYME</h1>
             </header>
         <div className="panels-container">
           <div className="panel left-panel">

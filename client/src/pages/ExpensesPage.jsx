@@ -73,8 +73,10 @@ function ExpensesPage() {
             </a>
           </header>
           {/* form */}
+          <div className="flexbox">
           <FormComponent userData={userData} categories={categories} />
           <AccordionComponent userData={userData} categories={categories} />
+          </div>
         </div>
       ) : (
         <Navigate to="/login" />

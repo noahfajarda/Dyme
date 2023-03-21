@@ -74,9 +74,9 @@ form.sign-in-form {
   color: #ffffff;
   font-size: 33px;
   text-shadow: 2px 2px 2px #000000;
-  padding-left: 140px;
+  padding-left: 340px;
   padding-top: 80px;
-  text-align: left;
+  text-align: center;
   margin: 0;
   display: inline-block;
 }

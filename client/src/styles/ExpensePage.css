@@ -1,13 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Caudex&display=swap");
+
 *,
 *:before,
 *:after {
     box-sizing: border-box;
 }
 
+
 /* html,
 body {
   height: 100%;
 } */
+
+.flexbox {
+    display: flex;
+    /* justify-content: space-around; */
+    width: 100%;
+}
 
 .expense-page {
     -webkit-font-smoothing: antialiased;
@@ -36,7 +45,12 @@ body {
     background-color: #01081f3e;
     color: white;
     margin-top: 10vh;
-    margin-bottom: 10vh;
+    margin-bottom: 40vh;
+    margin-right: 60vw;
+    border-radius: 10px; 
+    /* padding-left: 85px; */
+    /* width: 55%; */
+    /* padding-bottom: 50px; */
 }
 
 .accordion-item {
@@ -94,8 +108,9 @@ input[type="checkbox"]:checked ~ .accordion-label:before {
 
 input[type="checkbox"]:checked ~ .accordion-child {
     /* border: 1px solid #e0e0e0; */
-    margin: 0 -20px 15px -20px;
+    margin: 0 0px 15px 1px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.859);
+    border-radius: 10px;
     padding: 30px;
     height: auto;
     opacity: 1;
@@ -124,32 +139,39 @@ input[type="checkbox"]:checked ~ .accordion-child {
     z-index: 9999;
   }
    */
-   
+
 .expense-form {
     margin-top: 8vh;
-    margin-left: 60px;
+    /* margin-left: 60px; */
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     color: white;
-}
+    width: 100%;
+} 
 
 .expense-form h2 {
     margin-bottom: 1vh;
-    font-size: 26px;
+    font-size: 35px;
     text-shadow: 4px 4px 0px rgba(40, 240, 177, 0.37);
     padding-bottom: 20px;
+    padding-left: 40px;
+    width: 100%;
 }
 
 .expense-inputs {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
     font-weight: bold;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     margin-bottom: 1vh;
-    padding-left: 125px;
-}
+    padding-right: 108px;
+    padding-left: 160px;
+  }
+  
 
 .expense-inputs label {
     margin-right: 1vw;
@@ -160,11 +182,13 @@ input[type="checkbox"]:checked ~ .accordion-child {
     padding: 0.5vh;
     border-radius: 4px;
     border: none;
-    margin-right: 1vw;
+    /* margin-right: 1vw; */
+    justify-content: space-between; /* Add this line */
+    margin-bottom: 2vh;
 }
 
 .expense-description {
-    padding-left: 20px;
+    padding-top: 20px;
 }
 
 .expense-inputs select {
@@ -254,7 +278,7 @@ ul .bullet-point {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
     font-weight: bold;
-    background-color: #6624bc;
+    background-color: #a60505;
     align-items: center;
     padding: 0px 10px 0px 10px;
     border-radius: 4px;
@@ -279,7 +303,7 @@ ul .bullet-point {
 }
 
 #h3name {
-    margin-right: 10vw;
+    margin-right: 3vw;
     text-align: center;
     font-size: 16px;
 }
