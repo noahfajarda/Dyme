@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Auth from "../utils/auth";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 // styles
 import "../styles/HomePage.css";
 // components
@@ -44,6 +44,11 @@ function TESTINGPage({ user }) {
   function sortExpenses() {
     if (user?.expenses !== undefined && user?.expenses?.length !== 0) {
       let expenseSort = [...user.expenses].sort((a, b) => b.amount - a.amount);
+
+      // log in check
+      if (!Auth.loggedIn()) {
+        return <Navigate to="/login" />;
+      }
 
       if (expenseSort.length > 5) {
         setSortedExpenses([
