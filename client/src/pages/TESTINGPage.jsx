@@ -164,7 +164,7 @@ function TESTINGPage({ user }) {
                           categoryColor = "#076107"; // updated green
                           break;
                         case "Entertainment":
-                          categoryColor = "#580abd"; // updated purple
+                          categoryColor = "#BF40BF"; // updated light purple
                           break;
                         case "Miscellaneous":
                           categoryColor = "#b7ba0a"; // updated yellow

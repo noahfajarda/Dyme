@@ -41,7 +41,7 @@ export default function Menu() {
       <ul className="navbar-list">
         <li className="navbar-item">
           <a className="navbar-link" href="www.google.com">
-            <i className="bi bi-house navbar-link-icon"></i>
+            <i className="bi bi-cash-stack navbar-link-icon"></i>
           </a>
         </li>
 

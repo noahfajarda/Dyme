@@ -8,6 +8,7 @@
   padding-bottom: 1rem;
   font-family: "Caudex", sans-serif;
 }
+
 @media (min-width: 45em) {
   .c-bar-graph {
     font-size: 1.1rem;
@@ -32,28 +33,32 @@
 }
 .c-bar-graph__data {
   height: 30px;
-  /* width: 100%; */
   line-height: 30px;
   font-size: 0.9rem;
   display: block;
-  margin: 0 10%;
-  background: linear-gradient(to bottom, #3654ffd5 0%, #420f0f7c 100%);
+  margin: 0 15%;
+  background: linear-gradient(to bottom, #3654ffd5 0%, #000000bd 100%);
   position: relative;
   animation-name: gradient-animation;
   animation-duration: 2s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-  border-radius: 3px;
+  border-radius: 10px 10px 0px 0px;
+  background-size: 400% 400%;
+  background-position: 0% 50%;
 }
-
+/* 
 @keyframes gradient-animation {
   0% {
-    background-position: 0% 0%;
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
   100% {
-    background-position: 100% 100%;
+    background-position: 0% 50%;
   }
-}
+} */
 .c-bar-graph__helper {
   font-weight: 400;
   font-size: 12px;

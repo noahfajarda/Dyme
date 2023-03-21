@@ -21,6 +21,7 @@
   justify-content: center;
   vertical-align: middle;
   transition: all 0.6s ease-in-out;
+  border-radius: 15px;
 }
 #carousel-wrapper #menu1 #current-option {
   position: relative;
