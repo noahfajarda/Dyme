@@ -18,7 +18,7 @@ input {
 .container {
   position: relative;
   width: 100%;
-  background-color: #fff;
+  background: linear-gradient(65.5deg, rgb(23, 205, 205) -15.1%, rgb(23, 25, 95) 71.5%);  
   min-height: 100vh;
   overflow: hidden;
 }
@@ -65,9 +65,22 @@ form.sign-in-form {
 
 .title {
   font-size: 2.2rem;
-  color: #444;
+  color: #ffffff;
   margin-bottom: 10px;
+  text-shadow: 2px 2px 2px #000000;
 }
+
+.login-header {
+  color: #ffffff;
+  font-size: 33px;
+  text-shadow: 2px 2px 2px #000000;
+  padding-left: 340px;
+  padding-top: 80px;
+  text-align: center;
+  margin: 0;
+  display: inline-block;
+}
+
 
 .input-field {
   max-width: 380px;
@@ -94,11 +107,13 @@ form.sign-in-form {
   background: none;
   outline: none;
   border: none;
+  border-radius: 20px;
   line-height: 1;
   font-weight: 600;
   font-size: 1.1rem;
   color: #333;
 }
+
 
 .input-field input::placeholder {
   color: #aaa;
@@ -151,7 +166,8 @@ form.sign-in-form {
 }
 
 .btn:hover {
-  background-color: #917833;
+  /* background-color: #9e90c5; */
+  box-shadow: 0 0 10px #fff;
 }
 .panels-container {
   position: absolute;
@@ -171,7 +187,7 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, #5244d3 20%, #917833 100%);
+  /* background-image: linear-gradient(-45deg, #5b3dbd 20%, #917833 100%); */
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
@@ -181,6 +197,7 @@ form.sign-in-form {
   width: 100%;
   transition: transform 1.1s ease-in-out;
   transition-delay: 0.4s;
+  padding-bottom: 100px;
 }
 
 .panel {
@@ -204,8 +221,10 @@ form.sign-in-form {
 
 .panel .content {
   color: #fff;
+  padding-top: 270px;
+  padding-right: 120px;
   transition: transform 0.9s ease-in-out;
-  transition-delay: 0.6s;
+  transition-delay: 0.6s; 
 }
 
 .panel h3 {
@@ -229,6 +248,11 @@ form.sign-in-form {
   font-size: 0.8rem;
 }
 
+.btn.transparent:hover {
+  box-shadow: 0 0 10px #fff;
+}
+
+
 .right-panel .image,
 .right-panel .content {
   transform: translateX(800px);
@@ -236,7 +260,7 @@ form.sign-in-form {
 
 /* ANIMATION */
 
-.container.sign-up-mode:before {
+/* .container.sign-up-mode:before {
   transform: translate(100%, -50%);
   right: 52%;
 }
@@ -271,7 +295,7 @@ form.sign-in-form {
 
 .container.sign-up-mode .right-panel {
   pointer-events: all;
-}
+} */
 
 @media (max-width: 870px) {
   .container {
@@ -400,4 +424,9 @@ form.sign-in-form {
     bottom: 28%;
     left: 50%;
   }
+}
+
+#signup-error {
+  font-weight: bold;
+  color: #fff;
 }
