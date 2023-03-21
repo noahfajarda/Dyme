@@ -1,18 +1,27 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./BarGraph.css";
 
 function BarGraph({ totalExpensesByCategory }) {
-  const max = 5000;
+  if (
+    Object.keys(totalExpensesByCategory).length === 0 ||
+    totalExpensesByCategory.Entertainment[1] === Infinity
+  ) {
+    return <div></div>;
+  }
+  const maxValue = Math.max(
+    ...Object.values(totalExpensesByCategory).map((category) => category[0])
+  );
+  const maxHeight = 200; // set the maximum height you want the bars to reach
 
   return (
     <table className="c-bar-graph">
       <tfoot className="c-bar-graph__footer">
         <tr>
-          <td>Rent & Living</td>
-          <td>LifeStyle</td>
-          <td>Auto & Transportation</td>
+          <td>Rent/Living</td>
+          <td>Lifestyle</td>
+          <td>Auto & Trans.</td>
           <td>Food & Dining</td>
-          <td>Health & Fitness</td>
+          <td>Health & Fit</td>
           <td>Entertainment</td>
           <td>Miscellaneous</td>
         </tr>
@@ -20,60 +29,111 @@ function BarGraph({ totalExpensesByCategory }) {
       <tbody>
         <tr>
           <td
-            className="c-bar-graph__cell"
-            data-graph={totalExpensesByCategory["Rent & Living"][0]}
+            className="c-bar-graph__cell "
+            data-graph={totalExpensesByCategory["Rent & Living"]}
           >
-            <span className="c-bar-graph__data">
-              {totalExpensesByCategory["Rent & Living"][0]}
-            </span>
+            ${totalExpensesByCategory["Rent & Living Expenses"][0]}
+            <span
+              className="c-bar-graph__data"
+              style={{
+                height: `${
+                  (totalExpensesByCategory["Rent & Living Expenses"][0] /
+                    maxValue) *
+                  maxHeight
+                }px`,
+              }}
+            ></span>
           </td>
           <td
             className="c-bar-graph__cell"
-            data-graph={totalExpensesByCategory["LifeStyle"][0]}
+            data-graph={totalExpensesByCategory["Lifestyle"]}
           >
-            <span className="c-bar-graph__data">
-              {totalExpensesByCategory["LifeStyle"][0]}
-            </span>
+            ${totalExpensesByCategory["Lifestyle"][0]}
+            <span
+              className="c-bar-graph__data"
+              style={{
+                height: `${
+                  (totalExpensesByCategory["Lifestyle"][0] / maxValue) *
+                  maxHeight
+                }px`,
+              }}
+            ></span>
           </td>
           <td
             className="c-bar-graph__cell"
-            data-graph={totalExpensesByCategory["Auto & Transportation"][0]}
+            data-graph={totalExpensesByCategory["Auto & Transportation"]}
           >
-            <span className="c-bar-graph__data">
-              {totalExpensesByCategory["Auto & Transportation"][0]}
-            </span>
+            ${totalExpensesByCategory["Auto & Transportation"][0]}
+            <span
+              className="c-bar-graph__data"
+              style={{
+                height: `${
+                  (totalExpensesByCategory["Auto & Transportation"][0] /
+                    maxValue) *
+                  maxHeight
+                }px`,
+              }}
+            ></span>
           </td>
           <td
             className="c-bar-graph__cell"
-            data-graph={totalExpensesByCategory["Food & Dining"][0]}
+            data-graph={totalExpensesByCategory["Food & Dining"]}
           >
-            <span className="c-bar-graph__data">
-              {totalExpensesByCategory["Food & Dining"][0]}
-            </span>
+            ${totalExpensesByCategory["Food & Dining"][0]}
+            <span
+              className="c-bar-graph__data"
+              style={{
+                height: `${
+                  (totalExpensesByCategory["Food & Dining"][0] / maxValue) *
+                  maxHeight
+                }px`,
+              }}
+            ></span>
           </td>
           <td
             className="c-bar-graph__cell"
-            data-graph={totalExpensesByCategory["Health & Fitness"][0]}
+            data-graph={totalExpensesByCategory["Health & Fitness"]}
           >
-            <span className="c-bar-graph__data">
-              {totalExpensesByCategory["Health & Fitness"][0]}
-            </span>
+            ${totalExpensesByCategory["Health & Fitness"][0]}
+            <span
+              className="c-bar-graph__data"
+              style={{
+                height: `${
+                  (totalExpensesByCategory["Health & Fitness"][0] / maxValue) *
+                  maxHeight
+                }px`,
+              }}
+            ></span>
           </td>
           <td
             className="c-bar-graph__cell"
-            data-graph={totalExpensesByCategory["Entertainment"][0]}
+            data-graph={totalExpensesByCategory["Entertainment"]}
           >
-            <span className="c-bar-graph__data">
-              {totalExpensesByCategory["Entertainment"][0]}
-            </span>
+            ${totalExpensesByCategory["Entertainment"][0]}
+            <span
+              className="c-bar-graph__data"
+              style={{
+                height: `${
+                  (totalExpensesByCategory["Entertainment"][0] / maxValue) *
+                  maxHeight
+                }px`,
+              }}
+            ></span>
           </td>
           <td
             className="c-bar-graph__cell"
-            data-graph={totalExpensesByCategory["Miscellaneous"][0]}
+            data-graph={totalExpensesByCategory["Miscellaneous"]}
           >
-            <span className="c-bar-graph__data">
-              {totalExpensesByCategory["Miscellaneous"][0]}
-            </span>
+            ${totalExpensesByCategory["Miscellaneous"][0]}
+            <span
+              className="c-bar-graph__data"
+              style={{
+                height: `${
+                  (totalExpensesByCategory["Miscellaneous"][0] / maxValue) *
+                  maxHeight
+                }px`,
+              }}
+            ></span>
           </td>
         </tr>
       </tbody>

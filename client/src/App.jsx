@@ -17,7 +17,6 @@ import HomePage from "./pages/HomePage";
 import QuestionPage from "./pages/QuestionPage";
 import LoginSignupPage from "./pages/LoginSignupPage";
 import ExpensesPage from "./pages/ExpensesPage";
-import TESTINGPage from "./pages/TESTINGPage";
 import Auth from "./utils/auth";
 
 function App() {
@@ -35,7 +34,6 @@ function App() {
             {/* needs below */}
             <Route path="/expenses" element={<ExpensesPage />} />
             <Route path="/expense" element={<ExpensesPage />} />
-            <Route path="/testing" element={<TESTINGPage user={data?.me} />} />
             <Route path="/home" element={<HomePage user={data?.me} />} />
             <Route path="*" element={<LoginSignupPage />} />
           </Routes>
