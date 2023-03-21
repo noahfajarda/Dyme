@@ -11,13 +11,13 @@ import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Link, Navigate } from "react-router-dom";
 import { QUERY_ONE_USER, QUERY_me } from "./utils/queries";
+// test
 
 // pages
 import HomePage from "./pages/HomePage";
 import QuestionPage from "./pages/QuestionPage";
 import LoginSignupPage from "./pages/LoginSignupPage";
 import ExpensesPage from "./pages/ExpensesPage";
-import TESTINGPage from "./pages/TESTINGPage";
 import Auth from "./utils/auth";
 
 function App() {
@@ -35,7 +35,6 @@ function App() {
             {/* needs below */}
             <Route path="/expenses" element={<ExpensesPage />} />
             <Route path="/expense" element={<ExpensesPage />} />
-            <Route path="/testing" element={<TESTINGPage />} />
             <Route path="/home" element={<HomePage user={data?.me} />} />
             <Route path="*" element={<LoginSignupPage />} />
           </Routes>
