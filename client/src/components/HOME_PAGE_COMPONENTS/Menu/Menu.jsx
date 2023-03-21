@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Menu.css";
+import auth from "../../../utils/auth";
 
 export default function Menu() {
   window.onload = function () {
@@ -36,17 +37,23 @@ export default function Menu() {
       }
     }
   };
+
+  function handleLogOut() {
+    console.log("test");
+    auth.logout();
+    document.location.replace("/login");
+  }
   return (
     <nav className="navbar">
       <ul className="navbar-list">
         <li className="navbar-item">
-          <a className="navbar-link" href="www.google.com">
+          <a className="navbar-link" href="/expenses">
             <i className="bi bi-cash-stack navbar-link-icon"></i>
           </a>
         </li>
 
         <li className="navbar-item">
-          <a className="navbar-link" href="www.google.com">
+          <a className="navbar-link" onClick={handleLogOut}>
             <i className="bi bi-door-open navbar-link-icon"></i>
           </a>
         </li>

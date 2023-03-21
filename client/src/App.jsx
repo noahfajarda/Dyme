@@ -36,7 +36,8 @@ function App() {
             <Route path="/expenses" element={<ExpensesPage />} />
             <Route path="/expense" element={<ExpensesPage />} />
             <Route path="/home" element={<HomePage user={data?.me} />} />
-            <Route path="*" element={<LoginSignupPage />} />
+            <Route path="/login" element={<LoginSignupPage />} />
+            <Route path="*" element={<Navigate to="/login" />} />
           </Routes>
         </header>
       </div>

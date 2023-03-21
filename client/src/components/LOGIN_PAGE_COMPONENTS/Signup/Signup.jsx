@@ -43,7 +43,7 @@ export default function Signup() {
       console.log(data);
 
       Auth.login(data.addUser.token);
-      document.location.href = "/home";
+      document.location.href = "/expenses";
     } catch (e) {
       showError("There Was An Error Signing Up. Please Try Again.");
       console.error(e);
