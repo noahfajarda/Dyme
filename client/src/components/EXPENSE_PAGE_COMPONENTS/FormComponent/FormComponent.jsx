@@ -116,17 +116,17 @@ export default function FormComponent({ userData, categories }) {
         };
     };
     return (
+        <div id="forms-container">
         <form
             className="expense-form"
             onSubmit={(e) => {
                 handleSubmit(e);
             }}
         >
-            <div>
                 <h2>Add an expense:</h2>
                 <div className="expense-inputs">
                     <div className="expense-name">
-                        <label htmlFor="name">Name:</label>
+                        <label htmlFor="name">Name of Expense:</label>
                         <input
                             type="text"
                             id="name"
@@ -179,7 +179,7 @@ export default function FormComponent({ userData, categories }) {
                     <button id="submit">Submit</button>
                 </div>
                 <h3 id="form-status"></h3>
-            </div>
         </form>
+        </div>
     );
 }

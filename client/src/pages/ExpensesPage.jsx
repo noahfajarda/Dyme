@@ -59,17 +59,24 @@ function ExpensesPage() {
       ) : data?.me ? (
         <div className="expense-page">
           <header>
-            <h1 className="exp-header">Expenses</h1>
+            <h1 id="exp-header-1" className="exp-header">Expenses</h1>
+            {/* <img
+            src="https://media.tenor.com/wCE_eJELZ3kAAAAi/tuzki-usagi-wink.gif"
+            className="money-cat"
+            alt="expense pic"
+            ></img> */}
             <h1 className="exp-header">
               Total: ${total.toLocaleString("en-US")}
             </h1>
             <a href="/home">
-              <button id="home-button">Back To Home</button>
+              <button id="home-button">Back to Home</button>
             </a>
           </header>
           {/* form */}
+          <div className="flexbox">
           <FormComponent userData={userData} categories={categories} />
           <AccordionComponent userData={userData} categories={categories} />
+          </div>
         </div>
       ) : (
         <Navigate to="/login" />
