@@ -21,30 +21,30 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
-app.get("/api", (req, res) => {
-  const response = {
-    "users": [
-      "This is data recieved from an endpoint '/api'",
-      "data response",
-      "application"
-    ]
-  }
-  res.json(response)
-})
-// run data retrieval query on an endpoint
-app.get("/api", (req, res) => {
-  const response = {
-    "users": [
-      "testing endpoint",
-      "data response",
-      "application"
-    ]
-  }
-  res.json(response)
-})
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// });
+// app.get("/api", (req, res) => {
+//   const response = {
+//     "users": [
+//       "This is data recieved from an endpoint '/api'",
+//       "data response",
+//       "application"
+//     ]
+//   }
+//   res.json(response)
+// })
+// // run data retrieval query on an endpoint
+// app.get("/api", (req, res) => {
+//   const response = {
+//     "users": [
+//       "testing endpoint",
+//       "data response",
+//       "application"
+//     ]
+//   }
+//   res.json(response)
+// })
 
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
