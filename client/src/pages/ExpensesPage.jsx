@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import "../styles/ExpensePage.css";
 import Auth from "../utils/auth";
 import { Link, Navigate } from "react-router-dom";
@@ -27,15 +27,18 @@ function ExpensesPage() {
   });
 
   useEffect(() => {
-    if (userData) {
-      setExpenses(userData?.user?.expenses);
-      // insert logic for the total amount
-      setTotal(0);
-      userData?.user?.expenses.forEach((expense) => {
-        setTotal((prev) => prev + expense.amount);
-      });
-    }
+    if (userData) setExpenses(userData?.user?.expenses);
   }, [userData]);
+
+  // insert logic for the total amount
+  const totalExpenses = useMemo(
+    () =>
+      userData?.user?.expenses.reduce(
+        (acc, expense) => acc + expense.amount,
+        0
+      ),
+    [userData?.user?.expenses]
+  );
 
   // log in check
   if (!Auth.loggedIn()) {
@@ -59,23 +62,23 @@ function ExpensesPage() {
       ) : data?.me ? (
         <div className="expense-page">
           <header>
-            <h1 id="exp-header-1" className="exp-header">Expenses</h1>
+            <h1 id="exp-header-1" className="exp-header">
+              Expenses
+            </h1>
             {/* <img
             src="https://media.tenor.com/wCE_eJELZ3kAAAAi/tuzki-usagi-wink.gif"
             className="money-cat"
             alt="expense pic"
             ></img> */}
-            <h1 className="exp-header">
-              Total: ${total.toLocaleString("en-US")}
-            </h1>
+            <h1 className="exp-header">Total: ${totalExpenses}</h1>
             <a href="/home">
               <button id="home-button">Back to Home</button>
             </a>
           </header>
           {/* form */}
           <div className="flexbox">
-          <FormComponent userData={userData} categories={categories} />
-          <AccordionComponent userData={userData} categories={categories} />
+            <FormComponent userData={userData} categories={categories} />
+            <AccordionComponent userData={userData} categories={categories} />
           </div>
         </div>
       ) : (
